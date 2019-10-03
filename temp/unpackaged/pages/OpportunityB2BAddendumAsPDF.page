@@ -1,0 +1,970 @@
+<!----------------------------------------------------------------------------------------------------
+* Author: Techila Global Services Pvt Ltd.
+* VF Page Name: OpportunityB2BAddendumAsPDF
+* Created Date: 16-May-2017
+* Description: To create and render the "Addendum_Perpetuity" contract as PDF for B2B.
+------------------------------------------------------------------------------------------------------>
+<apex:page standardController="Opportunity" extensions="B2BPricingInlineExtension" showHeader="false" sidebar="false" standardStylesheets="true" renderAs="PDF" docType="HTML">
+    <html>
+        <head>
+            <style>
+                ol {
+                counter-reset: item
+                }
+                li {
+                display: block
+                }
+                li:before {
+                content: counters(item, ".") " ";
+                counter-increment: item
+                }
+                .minfyTable
+                {
+                
+                width : 35%;
+                border-width: 1px;
+                border-color: #000000;
+                border-collapse: collapse;
+                }
+                .minfyTable th 
+                {
+                border-width: 1px;
+                padding: 8px;
+                border-style: groove;
+                border-color: #000000;
+                }
+                .minfyTable td  
+                {
+                border-width: 1px;
+                padding: 8px;
+                border-style: groove;
+                border-color: #000000;
+                background-color: #000000;
+                }
+                .mainTable
+                {
+                border-collapse: collapse;
+                width : 100%;
+                }
+                .boldFont{
+                font-weight: bold;
+                }      
+                .inputTextClass{
+                width:100%;
+                }   
+                /*table {
+                border-collapse: collapse;
+                width: 100%;
+                }*/
+                #heading {
+                background-color: #e5c130;
+                color: black;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                }
+                p{
+                font-size:15px;
+                } 
+                .centerAlign{
+                text-align: center;
+                }
+            </style>
+        </head>
+        
+        <body>
+            <div style="font-size: 12px;font-family: Times New Roman;">
+                <div style="text-align:center">
+                    <u>
+                        <b>
+                            <apex:outputText value="ADDENDUM" /> 
+                        </b>
+                    </u>
+                </div>
+                <br/>
+                <br/>
+                <u>
+                    <b>ADDENDUMTODELHIVERY EXPRESS SERVICES AGREEMENT Dated {!DAY(Today())}/{!MONTH(Today())}/{!YEAR(Today())}("Agreement")</b>
+                </u>
+                <br/>
+                <br/>
+                <b>{!AccountRegisteredName}</b>, a company incorporated under the laws of India, having its registered office at {!Opportunity.Street__c} {!Opportunity.City__c} {!Opportunity.State_Province__c} {!Opportunity.Zip_Postal_Code__c} {!Opportunity.Country__c} (hereinafter referred to as <b>"Client"</b> which expression, unless repugnant to the context, shall mean and include its affiliates, subsidiaries, group companies, successors, assigns etc.) of the One Part
+                <br/>
+                <br/>
+                <br/> AND
+                <br/>
+                <br/>
+                <br/>
+                <b>Delhivery Private Limited</b>, a company incorporated under the laws of India and having its registered office at A-29 (Back Part), Mohan Cooperative Industrial Estate, New Delhi-110044(hereinafter referred to as "Service Provider" which expression shall unless repugnant to the meaning or context thereof also mean and include its successors and permitted assigns) of the Other Part.
+                <br/>
+                <br/>
+                <br/>
+                <br/> The Client and the Service Provider shall be referred to as "<b>Party</b>" individually and collectively as "<b>Parties</b>".
+                <br/> WHEREAS:
+                <br/>
+                <br/>
+                <ol>
+                    <li><i>The Parties have executed an agreement, dated {!DAY(Today())}/{!MONTH(Today())}/{!YEAR(Today())}("<b>Principal Agreement</b>").</i>
+                    </li>
+                    <li><i>The amended agreement shall remain in effect till perpetuity till the time any party has dispute, as specified in the agreement as per which the service provider has agreed to provide certain services to the client.</i>
+                    </li>
+                    <li><i>After the discussions between the parties, it is mutually decided to incorporate certain amendments to the Agreement as described below.</i>
+                    </li>
+                </ol>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                
+                <b>NOW, THEREFORE, IT IS AGREED BY AND BETWEEN THE PARTIES, AS UNDER:</b>
+                <br/>
+                <br/>
+                <br/> 1) The table defining "Commercials" of Annexure II shall stand replaced by the following in the Annexure II with this addendum defining commercials effective from   <apex:outputField value="{!con.Effective_Date__c}"/>.
+                <br/>
+                <br/>
+                <br/>
+                <b>Commercials</b><br/><br/>
+                <apex:outputPanel rendered="{!B2B5By5PriceWrapperList.size>0}">
+                    <table cellspacing="0" cellpadding="10" border="1" class="mainTable" width="100%">
+                        <tr class="boldFont" align="center" >
+                            <td id="heading"></td>
+                            <td id="heading" ><b>North</b></td>
+                            <td id="heading" ><b>West</b></td>
+                            <td id="heading" ><b>South</b></td>
+                            <td id="heading" ><b>East</b></td>
+                            <td id="heading" ><b>North East</b></td>                                                                                    
+                        </tr>
+                        <apex:repeat value="{!B2B5By5PriceWrapperList}" var="w">
+                            <tr align="center">
+                                <td id="heading" class="boldFont"><b><apex:outputText value="{!w.source}"/></b></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.northAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.westAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.southAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.eastAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.northEastAmount}"/></td>                                                                                    
+                            </tr>                            
+                        </apex:repeat>          
+                    </table> 
+                    <br/>
+                    <br/>
+                    <b>Intra City Charges: </b>
+                    <apex:outputfield value="{!objOLI.Intra_City__c}"></apex:outputField>
+                    <br/>
+                    <br/>
+                    <table class = "minfyTable" cellspacing="0" cellpadding="10" border="1"  >
+                        <tr>            
+                            <th class="centerAlign" colspan="2">Overheads</th>
+                        </tr>
+                        <tr>            
+                            <td>Min Billable Weight</td>
+                            <td><apex:outputfield value="{!objOLI.Min_Billable_Weight__c}"></apex:outputField></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">GST</td>
+                            <td>As Applicable</td>
+                        </tr>
+                        <tr>            
+                            <td id="">Max Dead weight/package</td>
+                            <td><apex:outputfield value="{!objOLI.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Divisor</td>
+                            <td><apex:outputfield value="{!objOLI.Divisor__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td>AWB Charges</td>
+                            <td><apex:outputfield value="{!objOLI.AWB_Charges__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CFT</td>
+                            <td><apex:outputfield value="{!objOLI.CFT__c}">  </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Amount(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Amount__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Weight(Kg)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Weight__c}"/></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">Free Storage Period (days)</td>
+                            <td><apex:outputfield value="{!objOLI.Free_Storage_Period__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.DemurrageCharges_Per_awb_per_consignment__c} Per Awb"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Demurrage_Charges_Per_Kg_Per_day__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Public_holiday_SundayPickup_Delivery_Rs__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Fuel Surcharge</td>
+                            <td><apex:outputfield value="{!objOLI.Fuel_Surcharge__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">ODA (Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.ODA_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.ODA_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                            <td><apex:outputfield value="{!objOLI.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Time specific deliveries</td>
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Mall Deliveries(Additional) whichever is higher</td>
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Mawb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Delivery re-attempt charge, in case of failed delivery (whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Insurance (optional)</td>
+                            <td><apex:outputfield value="{!objOLI.Insurance__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">ROV (on invoice value)</td>
+                            <td><apex:outputfield value="{!objOLI.ROV_on_invoice_value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Liability per consignment</td>
+                            <td><apex:outputfield value="{!objOLI.Liability_per_consignment__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Average Diesel Price</td>
+                            <td><apex:outputfield value="{!objOLI.Average_Diesel_Price__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Diesel Tolerance Value</td>
+                            <td><apex:outputfield value="{!objOLI.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">FM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.FM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                        <tr>            
+                            <td id="">LM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.LM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <br/>
+                    
+                    <apex:outputField value="{!objOLI.Description__c}"></apex:outputField>
+                    
+                </apex:outputPanel> 
+                <apex:outputPanel rendered="{!B2B6By6PriceWrapperList.size>0}">            
+                    <table cellspacing="0" cellpadding="5" border="1" style="font-size:12px" width="100%">
+                        <tr class="boldFont" align="center">
+                            <td></td>
+                            <td class="centerAlign"><b>North</b></td>
+                            <td class="centerAlign"><b>West</b></td>
+                            <td class="centerAlign"><b>South</b></td>
+                            <td class="centerAlign"><b>Kerala</b></td>
+                            <td class="centerAlign"><b>East</b></td>
+                            <td class="centerAlign"><b>North East</b></td>                                                                                    
+                        </tr>
+                        <apex:repeat value="{!B2B6By6PriceWrapperList}" var="w">
+                            <tr align="center">
+                                <td class="boldFont"><b><apex:outputText value="{!w.source}"/></b></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.northAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.westAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.southAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.keralaAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.eastAmount}"/></td>
+                                <td class="centerAlign"><apex:outputText value="{!w.northEastAmount}"/></td>                                                                                    
+                            </tr>                            
+                        </apex:repeat>          
+                    </table> 
+                    <br/>
+                    <b>Intra City Charges: </b>
+                    <apex:outputfield value="{!objOLI.Intra_City__c}"></apex:outputField>
+                    <br/>
+                    <br/>
+                    
+                    <table cellspacing="0" cellpadding="6" border="1" style="font-size:12px">
+                        <tr>            
+                            <th class="centerAlign" colspan="2">Overheads</th>
+                        </tr>
+                        <tr>            
+                            <td>Min Billable Weight</td>
+                            <td><apex:outputfield value="{!objOLI.Min_Billable_Weight__c}"></apex:outputField></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">GST</td>
+                            <td>As Applicable</td>
+                        </tr>
+                        <tr>            
+                            <td id="">Max Dead weight/package</td>
+                            <td><apex:outputfield value="{!objOLI.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Divisor</td>
+                            <td><apex:outputfield value="{!objOLI.Divisor__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td>AWB Charges</td>
+                            <td><apex:outputfield value="{!objOLI.AWB_Charges__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CFT</td>
+                            <td><apex:outputfield value="{!objOLI.CFT__c}">  </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Amount(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Amount__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Weight(Kg)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Weight__c}"/></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">Free Storage Period (days)</td>
+                            <td><apex:outputfield value="{!objOLI.Free_Storage_Period__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.DemurrageCharges_Per_awb_per_consignment__c} Per Awb"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Demurrage_Charges_Per_Kg_Per_day__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Public_holiday_SundayPickup_Delivery_Rs__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Fuel Surcharge</td>
+                            <td><apex:outputfield value="{!objOLI.Fuel_Surcharge__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">ODA (Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.ODA_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.ODA_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                            <td><apex:outputfield value="{!objOLI.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Time specific deliveries</td>
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Mall Deliveries(Additional) whichever is higher</td>
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Mawb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Delivery re-attempt charge, in case of failed delivery (whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Insurance (optional)</td>
+                            <td><apex:outputfield value="{!objOLI.Insurance__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">ROV (on invoice value)</td>
+                            <td><apex:outputfield value="{!objOLI.ROV_on_invoice_value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Liability per consignment</td>
+                            <td><apex:outputfield value="{!objOLI.Liability_per_consignment__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Average Diesel Price</td>
+                            <td><apex:outputfield value="{!objOLI.Average_Diesel_Price__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Diesel Tolerance Value</td>
+                            <td><apex:outputfield value="{!objOLI.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">FM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.FM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                        <tr>            
+                            <td id="">LM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.LM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <br/>
+                    
+                    <apex:outputField value="{!objOLI.Description__c}"></apex:outputField>           
+                    
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!B2B14By14PriceWrapperList.size>0}">
+                    
+                    <table cellspacing="0" cellpadding="3" border="1" style="font-size:12px">
+                        <tr class="boldFont">
+                            <td></td>
+                            <td><b>N1</b></td>
+                            <td><b>N2</b></td>
+                            <td><b>N3</b></td>
+                            <td><b>C1</b></td>
+                            <td><b>C2</b></td>
+                            <td><b>W1</b></td>
+                            <td><b>W2</b></td>
+                            <td><b>S1</b></td>
+                            <td><b>S2</b></td>
+                            <td><b>S3</b></td>
+                            <td><b>E1</b></td>
+                            <td><b>E2</b></td>
+                            <td><b>NE1</b></td>
+                            <td><b>NE2</b></td>
+                        </tr>
+                        <apex:repeat value="{!B2B14By14PriceWrapperList}" var="w">
+                            <tr>
+                                <td class="boldFont"><b><apex:outputText value="{!w.source}"/></b></td>
+                                <td><apex:outputText value="{!w.n1Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.n2Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.n3Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.c1Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.c2Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.w1Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.w2Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.s1Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.s2Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.s3Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.e1Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.e2Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.ne1Amount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.ne2Amount}" styleClass="inputTextClass"/></td>
+                            </tr>                            
+                        </apex:repeat>          
+                    </table>
+                    
+                    <br/>
+                    
+                    <table cellspacing="0" cellpadding="9" border="1" style="font-size:12px">
+                        <tr>            
+                            <th class="centerAlign" colspan="2">Overheads</th>
+                        </tr>
+                        <tr>            
+                            <td>Min Billable Weight</td>
+                            <td><apex:outputfield value="{!objOLI.Min_Billable_Weight__c}"></apex:outputField></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">GST</td>
+                            <td>As Applicable</td>
+                        </tr>
+                        <tr>            
+                            <td id="">Max Dead weight/package</td>
+                            <td><apex:outputfield value="{!objOLI.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Divisor</td>
+                            <td><apex:outputfield value="{!objOLI.Divisor__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td>AWB Charges</td>
+                            <td><apex:outputfield value="{!objOLI.AWB_Charges__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CFT</td>
+                            <td><apex:outputfield value="{!objOLI.CFT__c}">  </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Amount(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Amount__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Weight(Kg)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Weight__c}"/></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">Free Storage Period (days)</td>
+                            <td><apex:outputfield value="{!objOLI.Free_Storage_Period__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.DemurrageCharges_Per_awb_per_consignment__c} Per Awb"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Demurrage_Charges_Per_Kg_Per_day__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Public_holiday_SundayPickup_Delivery_Rs__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Fuel Surcharge</td>
+                            <td><apex:outputfield value="{!objOLI.Fuel_Surcharge__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">ODA (Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.ODA_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.ODA_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                            <td><apex:outputfield value="{!objOLI.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Time specific deliveries</td>
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Mall Deliveries(Additional) whichever is higher</td>
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Mawb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Delivery re-attempt charge, in case of failed delivery (whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Insurance (optional)</td>
+                            <td><apex:outputfield value="{!objOLI.Insurance__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">ROV (on invoice value)</td>
+                            <td><apex:outputfield value="{!objOLI.ROV_on_invoice_value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Liability per consignment</td>
+                            <td><apex:outputfield value="{!objOLI.Liability_per_consignment__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Average Diesel Price</td>
+                            <td><apex:outputfield value="{!objOLI.Average_Diesel_Price__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Diesel Tolerance Value</td>
+                            <td><apex:outputfield value="{!objOLI.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">FM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.FM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                        <tr>            
+                            <td id="">LM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.LM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                    </table>
+                    <apex:outputField value="{!objOLI.Description__c}"></apex:outputField> 
+                </apex:outputPanel>
+                <apex:outputPanel rendered="{!B2B15By15PriceWrapperList.size>0}">
+                    <table cellspacing="0" cellpadding="3" border="1" class="mainTable">
+                        <tr class="boldFont">
+                            <td id="heading"></td>
+                            <td id="heading"><b>NCR</b></td>
+                            <td id="heading"><b>LUH</b></td>
+                            <td id="heading"><b>JAI</b></td>
+                            <td id="heading"><b>JAM</b></td>
+                            <td id="heading"><b>LKO</b></td>
+                            <td id="heading"><b>BOM</b></td>
+                            <td id="heading"><b>AMD</b></td>
+                            <td id="heading"><b>GOA</b></td>
+                            <td id="heading"><b>IXR</b></td>
+                            <td id="heading"><b>IDR</b></td>
+                            <td id="heading"><b>BLR</b></td>
+                            <td id="heading"><b>HYD</b></td>
+                            <td id="heading"><b>CJB</b></td>
+                            <td id="heading"><b>CCU</b></td>
+                            <td id="heading"><b>GUA</b></td>                            
+                        </tr>
+                        <apex:repeat value="{!B2B15By15PriceWrapperList}" var="w">
+                            <tr>
+                                <td id="heading" class="boldFont"><b><apex:outputText value="{!w.source}"/></b></td>
+                                <td><apex:outputText value="{!w.ncrAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.luhAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.jaiAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.jamAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.lkoAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.bomAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.amdAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.goaAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.ixrAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.idrAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.blrAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.hydAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.cjbAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.ccuAmount}" styleClass="inputTextClass"/></td>
+                                <td><apex:outputText value="{!w.guaAmount}" styleClass="inputTextClass"/></td>
+                            </tr>                            
+                        </apex:repeat>          
+                    </table>
+                    <br/>
+                    
+                    <table class = "minfyTable" cellspacing="0" cellpadding="10" border="1">
+                        <tr>            
+                            <th class="centerAlign" colspan="2">Overheads</th>
+                        </tr>
+                        <tr>            
+                            <td>Min Billable Weight</td>
+                            <td><apex:outputfield value="{!objOLI.Min_Billable_Weight__c}"></apex:outputField></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">GST</td>
+                            <td>As Applicable</td>
+                        </tr>
+                        <tr>            
+                            <td id="">Max Dead weight/package</td>
+                            <td><apex:outputfield value="{!objOLI.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Divisor</td>
+                            <td><apex:outputfield value="{!objOLI.Divisor__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td>AWB Charges</td>
+                            <td><apex:outputfield value="{!objOLI.AWB_Charges__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CFT</td>
+                            <td><apex:outputfield value="{!objOLI.CFT__c}">  </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Amount(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Amount__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Minimum Chargeable Weight(Kg)</td>
+                            <td><apex:outputfield value="{!objOLI.Minimum_Chargeable_Weight__c}"/></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">Free Storage Period (days)</td>
+                            <td><apex:outputfield value="{!objOLI.Free_Storage_Period__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.DemurrageCharges_Per_awb_per_consignment__c} Per Awb"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Demurrage_Charges_Per_Kg_Per_day__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                            <td><apex:outputfield value="{!objOLI.Public_holiday_SundayPickup_Delivery_Rs__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Fuel Surcharge</td>
+                            <td><apex:outputfield value="{!objOLI.Fuel_Surcharge__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">ODA (Whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.ODA_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.ODA_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                            <td><apex:outputfield value="{!objOLI.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Time specific deliveries</td>
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Mall Deliveries(Additional) whichever is higher</td>
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Mall_Deliveries_Per_Mawb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">Delivery re-attempt charge, in case of failed delivery (whichever is higher)</td>
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td>
+                        </tr>
+                        <tr>                    
+                            <td><apex:outputText value="{!objOLI.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Insurance (optional)</td>
+                            <td><apex:outputfield value="{!objOLI.Insurance__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">ROV (on invoice value)</td>
+                            <td><apex:outputfield value="{!objOLI.ROV_on_invoice_value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Liability per consignment</td>
+                            <td><apex:outputfield value="{!objOLI.Liability_per_consignment__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Average Diesel Price</td>
+                            <td><apex:outputfield value="{!objOLI.Average_Diesel_Price__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Diesel Tolerance Value</td>
+                            <td><apex:outputfield value="{!objOLI.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">FM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.FM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                        <tr>            
+                            <td id="">LM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.LM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <br/>
+                    <apex:outputField value="{!objOLI.Description__c}"></apex:outputField>
+                    
+                </apex:outputPanel>
+                
+                <apex:outputPanel rendered="{!laneWiseList.size>0}">
+                    
+                    <table width="100%" cellspacing="0" cellpadding="10" border="1" class="mainTable">
+                        <tr  class="boldFont">            
+                            <td id="heading"><b>Source</b></td>
+                            <td id="heading"><b>Destination</b></td>
+                            <td id="heading"><b>Amount</b></td>
+                        </tr>
+                        <apex:repeat value="{!laneWiseList}" var="price">          
+                            <tr>
+                                <td><apex:outputText value="{!price.Source__c}"/></td>
+                                <td><apex:outputText value="{!price.Destination__c}"/></td>
+                                <td><apex:outputText value="{!price.Amount__c}"/></td>
+                            </tr>
+                        </apex:repeat>
+                    </table>
+                    <br/>
+                    <table class = "minfyTable" cellspacing="0" cellpadding="10" border="1">
+                        <tr>            
+                            <th id="heading" class="centerAlign" colspan="2">Overheads</th>
+                        </tr>
+                        <tr>            
+                            <td>Min Billable Weight</td>
+                            <td><apex:outputfield value="{!objOLI.Min_Billable_Weight__c}"></apex:outputField></td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">Insurance</td>
+                            <td><apex:outputfield value="{!objOLI.Insurance__c}"> </apex:outputField></td>
+                        </tr>
+                        <!-- <tr>            
+<td id="">GST</td>
+<td><apex:outputfield value="{!objOLI.Entry_Tax_Service_Charge__c}"> </apex:outputField></td>
+</tr> -->
+                        
+                        <tr>            
+                            <td id="">GST</td>
+                            <td>As Applicable</td>
+                        </tr>
+                        
+                        <tr>            
+                            <td id="">Fuel Surcharge</td>
+                            <td><apex:outputfield value="{!objOLI.Fuel_Surcharge__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td rowspan="2">RoV Surcharge</td>
+                            <td><apex:outputText value="{!objOLI.RoV_Surcharge__c} For value  <= Rs 10,000"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <!--<td id="">RoV Surcharge</td>-->
+                            <td><apex:outputText value="{!objOLI.RoV_Surcharge_RS_10_000__c} For value  >= Rs 10,000"></apex:outputText></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Max Dead weight/package</td>
+                            <td><apex:outputfield value="{!objOLI.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">CFT</td>
+                            <td><apex:outputfield value="{!objOLI.CFT__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Divisor</td>
+                            <td><apex:outputfield value="{!objOLI.Divisor__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Average Diesel Price</td>
+                            <td><apex:outputfield value="{!objOLI.Average_Diesel_Price__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">Diesel Tolerance Value</td>
+                            <td><apex:outputfield value="{!objOLI.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                        </tr>
+                        <tr>            
+                            <td id="">FM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.FM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                        <tr>            
+                            <td id="">LM Charges</td>
+                            <td><apex:outputfield styleClass="slds-output" value="{!objOLI.LM_Charge__c}" rendered="{!IF(opp.Co_Loader__c == 'YES',true,false)}"
+></apex:outputField>
+                                <apex:outputLabel value="Not Applicable" rendered="{!IF(opp.Co_Loader__c == 'NO',true,false)}"></apex:outputLabel>
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <apex:outputField value="{!objOLI.Description__c}"></apex:outputField>
+                    
+                </apex:outputPanel>
+                <br/>
+                <br/> 
+                <br/>
+                <br/>
+                <b>MISCELLANEOUS</b>
+                <ol>
+                    <li>Capitalised terms used in this Addendum shall, unless and otherwise defined, have the same meaning as ascribed to them in the Principal Agreement.</li>
+                    <li>These rates are only for surface mode.</li>
+                    <li>This Addendum, upon due execution, shall amend the Agreements in terms hereof ({!DAY(Today())}/{!MONTH(Today())}/{!YEAR(Today())}).</li>
+                    <li>This Addendum amends only the above mentioned sub-clauses/ clauses of the Agreements and all other terms and conditions of the Agreements which have not been amended herein shall remain unaltered. The Principal Agreement and this Addendum shall be read together. In the event of any conflict between the terms of this Addendum and those of the Principal Agreement, the terms of this Addendum shall prevail over the Principal Agreement.</li>
+                    <li>This Addendum together with the Principal Agreement shall constitute the entire understanding between the Parties on the subject hereof.
+                        <br/>
+                        <br/>
+                        <table border="1" cellpadding="0" cellspacing="0" style="width:100%;">
+                            <tr>
+                                <td><b>For</b>
+                                </td>
+                                <td><b>{!opp.Account.Name}</b>
+                                </td>
+                                <td><b>Delhivery Private Limited</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="100"><b>Signatures</b>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>{!contact.Name}</b>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>Designation</b>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </li>
+                </ol>
+            </div>
+            <br/><br/>
+            <apex:outputPanel rendered="{!$CurrentPage.parameters.AddendumAcceptedTime!=null}">
+                <div style="font-size: 12px;font-family: Times New Roman; border:1px solid #000; padding:20px; border-style: double;">
+                    <apex:outputLabel ><b> Agreement Signed by User IP Address: </b> {!$CurrentPage.parameters.AddendumSignerIp} </apex:outputLabel> <br/>
+                    <apex:outputLabel ><b> Accepted Time: </b> {!$CurrentPage.parameters.AddendumAcceptedTime}</apex:outputLabel> <br/>
+                    <apex:outputLabel ><b> Agreement Sent to Email:</b> {!con.Contact__r.Email}</apex:outputLabel> <br/>
+                </div>    
+            </apex:outputPanel>
+        </body>
+    </html>
+</apex:page>

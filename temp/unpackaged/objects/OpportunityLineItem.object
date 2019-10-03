@@ -1,0 +1,1661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>AWB_Charges__c</fullName>
+        <externalId>false</externalId>
+        <label>AWB Charges</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Average_Diesel_Price__c</fullName>
+        <description>Average Diesel Price</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Average Diesel Price</inlineHelpText>
+        <label>Average Diesel Price</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CC_Flat__c</fullName>
+        <externalId>false</externalId>
+        <label>CC Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>CC_percentage__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>CC percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CFT__c</fullName>
+        <externalId>false</externalId>
+        <label>CFT</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>COD_Charges__c</fullName>
+        <externalId>false</externalId>
+        <label>COD Charges</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>COD_Remittance__c</fullName>
+        <externalId>false</externalId>
+        <label>COD Remittance</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Weekly</fullName>
+                    <default>false</default>
+                    <label>Weekly</label>
+                </value>
+                <value>
+                    <fullName>Bi-weekly</fullName>
+                    <default>false</default>
+                    <label>Bi-weekly</label>
+                </value>
+                <value>
+                    <fullName>Tri-weekly</fullName>
+                    <default>false</default>
+                    <label>Tri-weekly</label>
+                </value>
+                <value>
+                    <fullName>Daily</fullName>
+                    <default>false</default>
+                    <label>Daily</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>COD_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>COD % Value</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>CSD_Army_Deliveries_Rs_Per_MAwb__c</fullName>
+        <externalId>false</externalId>
+        <label>CSD(Army) Deliveries Rs. Per MAwb</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Counter__c</fullName>
+        <externalId>false</externalId>
+        <label>Counter</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Card_Rates__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Card Rates</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Credit_Card_Transaction_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>Credit Card Transaction Charge</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>DC_Flat_Greater_then_2k__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>DC Flat Greater then 2k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>DC_Flat__c</fullName>
+        <externalId>false</externalId>
+        <label>DC Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>DC_Percent_Greater_then_2k__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>DC Percent Greater then 2k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>DC_percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>DC percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Debit_After_Rates__c</fullName>
+        <externalId>false</externalId>
+        <label>Debit Card Rates (After Threshold)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Debit_Before_Rates__c</fullName>
+        <externalId>false</externalId>
+        <label>Debit Card Rates (Before Threshold)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Delivery_re_attempt_charge_Per_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery re-attempt charge Per Kg</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Delivery_re_attempt_charge_Per_MAwb__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery re-attempt charge Per MAwb</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DemurrageCharges_Per_awb_per_consignment__c</fullName>
+        <externalId>false</externalId>
+        <label>DemurrageCharges Per awb per consignment</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Demurrage_Charges_Per_Kg_Per_day__c</fullName>
+        <externalId>false</externalId>
+        <label>Demurrage Charges Per Kg Per day</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>32768</length>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Diesel_Tolerance_Value__c</fullName>
+        <description>Diesel Tolerance Value</description>
+        <externalId>false</externalId>
+        <label>Diesel Tolerance Value</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Discount__c</fullName>
+        <externalId>false</externalId>
+        <label>Discount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Divisor__c</fullName>
+        <externalId>false</externalId>
+        <formula>27000 /  CFT__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Divisor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Entry_Tax_Service_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>GST</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>FM_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>FM Charge</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Free_Storage_Period__c</fullName>
+        <externalId>false</externalId>
+        <label>Free Storage Period (days)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Frieght_Value_Factor__c</fullName>
+        <externalId>false</externalId>
+        <label>Frieght Value Factor</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Fuel_Surcharge__c</fullName>
+        <externalId>false</externalId>
+        <label>Fuel Surcharge</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Insurance__c</fullName>
+        <externalId>false</externalId>
+        <label>Insurance</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Intra_City__c</fullName>
+        <description>Intra City Charges</description>
+        <externalId>false</externalId>
+        <label>Intra City</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>IsActive__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>IsActive</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsCustom__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>IsCustom</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LM_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>LM Charge</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Liability_per_consignment__c</fullName>
+        <externalId>false</externalId>
+        <label>Liability per consignment</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mall_Deliveries_Per_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Mall Deliveries Per Kg(Rs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mall_Deliveries_Per_Mawb__c</fullName>
+        <externalId>false</externalId>
+        <label>Mall Deliveries Per Mawb</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>MaxDiscount__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Discount</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>3</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Max_Dead_weight_package__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Dead weight/package</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Maximum_Liability_for_Forward_Percent__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Liability for Forward</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Liability_for_Reverse_Percent__c</fullName>
+        <defaultValue>0.5</defaultValue>
+        <externalId>false</externalId>
+        <label>Maximum Liability for Reverse</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_Liability_for_Reverse__c</fullName>
+        <defaultValue>2000</defaultValue>
+        <externalId>false</externalId>
+        <label>Maximum Liability for Reverse</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Maximum_liability_per_consignment__c</fullName>
+        <externalId>false</externalId>
+        <label>Maximum Liability for Forward</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Min_Billable_Weight__c</fullName>
+        <externalId>false</externalId>
+        <label>Min Billable Weight</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_Chargeable_Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Chargeable Amount(Rs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Minimum_Chargeable_Weight__c</fullName>
+        <externalId>false</externalId>
+        <label>Minimum Chargeable Weight(Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NB_Flat__c</fullName>
+        <externalId>false</externalId>
+        <label>NB Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>NB_Flat_for_other_bank__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>NB Flat for other bank</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>NB_Percent_For_Other_Bank__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>NB Percent For Other Bank</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>NB_Percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>NB Percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>ODA_Per_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>ODA Per Kg</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ODA_Per_MAwb__c</fullName>
+        <externalId>false</externalId>
+        <label>ODA Per MAwb(Rs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Payment_Link__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Payment Link</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Public_holiday_SundayPickup_Delivery_Rs__c</fullName>
+        <externalId>false</externalId>
+        <label>Public holiday/SundayPickup/Delivery(Rs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>QR_CC_Flat__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR CC Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_CC_percentage__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR CC percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_DC_Flat_Greater_then_2k__c</fullName>
+        <externalId>false</externalId>
+        <label>QR DC Flat Greater then 2k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_DC_Flat__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR DC Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_DC_Percent_Greater_then_2k__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR DC Percent Greater then 2k</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_DC_percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>QR DC percentage</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_NB_Flat__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR NB Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_NB_Flat_for_other_bank__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR NB Flat for other bank</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_NB_Percent_For_Other_Bank__c</fullName>
+        <externalId>false</externalId>
+        <label>QR NB Percent For Other Bank</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_NB_Percentage__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR NB Percentage</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_UPI_Flat__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR UPI Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_UPI_Flat_greater_then_2k__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR UPI Flat greater then 2k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_UPI_Percent_for_greater_then_2k__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR UPI Percent for greater then 2k</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_UPI_percentage__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR UPI percentage</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>QR_Wallet_Flat__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>QR Wallet Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>QR_Wallet_percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>QR Wallet percentage</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Qr_Code__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Qr Code</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>ROV_on_invoice_value__c</fullName>
+        <externalId>false</externalId>
+        <label>ROV (on invoice value)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>RoV_Surcharge_RS_10_000__c</fullName>
+        <externalId>false</externalId>
+        <label>RoV Surcharge(&gt;RS 10,000)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>RoV_Surcharge__c</fullName>
+        <externalId>false</externalId>
+        <label>RoV Surcharge(&lt;=RS 10,000)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Rural_Pin_Code_Pricing__c</fullName>
+        <externalId>false</externalId>
+        <label>Rural Pin Code Pricing</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Service_Charges__c</fullName>
+        <externalId>false</externalId>
+        <label>GST</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Corporate Approved</fullName>
+                    <default>false</default>
+                    <label>Corporate Approved</label>
+                </value>
+                <value>
+                    <fullName>Corporate Rejected</fullName>
+                    <default>false</default>
+                    <label>Corporate Rejected</label>
+                </value>
+                <value>
+                    <fullName>Client Approved</fullName>
+                    <default>false</default>
+                    <label>Client Approved</label>
+                </value>
+                <value>
+                    <fullName>Client Rejected</fullName>
+                    <default>false</default>
+                    <label>Client Rejected</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>false</default>
+                    <label>Submitted</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Threshold_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>Delivery Charges Threshold</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Time_specific_deliveries_Per_KG__c</fullName>
+        <externalId>false</externalId>
+        <label>Time specific deliveries Per KG</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_specific_deliveries_Per_MAwb__c</fullName>
+        <externalId>false</externalId>
+        <label>Time specific deliveries Per MAwb</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Transaction_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>Debit Card Transaction Charge</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UPI_Flat__c</fullName>
+        <externalId>false</externalId>
+        <label>UPI Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UPI_Flat_greater_then_2k__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>UPI Flat greater then 2k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>UPI_Percent_for_greater_then_2k__c</fullName>
+        <externalId>false</externalId>
+        <label>UPI Percent for greater then 2k</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>UPI_percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>UPI percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Updated_Product_Name__c</fullName>
+        <description>Used to replace 500gm with base and Incremental weights present on Opportunity</description>
+        <externalId>false</externalId>
+        <formula>CASE( PricebookEntry.Product2.Name , &quot;Upto 500gms&quot;,  SUBSTITUTE(
+&quot;Upto 500gms&quot;, &quot;500&quot;,  Text(Opportunity.Forward_Base__c) )  , &quot;Additional 500gms&quot;,SUBSTITUTE(&quot;Additional 500gms&quot;, &quot;500&quot;,Text(Opportunity.Forward_Incremental__c)), &quot;DTO (500gms)&quot;, SUBSTITUTE(
+&quot;DTO (500gms)&quot;, &quot;500&quot;, Text(Opportunity.DTO_Base__c)  ) ,&quot;DTO (Additional 500gms)&quot;,  SUBSTITUTE(&quot;DTO (Additional 500gms)&quot;, &quot;500&quot;,  Text(Opportunity.DTO_Incremental__c)), &quot;RTO (Every 500gms)&quot;, SUBSTITUTE(&quot;RTO (Every 500gms)&quot;, &quot;500&quot;,  Text(Opportunity.RTO__c) ), &quot;Additional 500gms (up to 3kgs)&quot;, SUBSTITUTE(&quot;Additional 500gms (up to 3kgs)&quot;,&quot;500&quot;, TEXT(Opportunity.Forward_Incremental__c) ), &quot;RTO (Every 1000gms)&quot;,SUBSTITUTE(&quot;RTO (Every 1000gms)&quot;,&quot;1000&quot;, TEXT(Opportunity.RTO__c)), &quot;DTO (Every 1000gms)&quot;,SUBSTITUTE(&quot;DTO (Every 1000gms)&quot;,&quot;1000&quot;,TEXT( Opportunity.DTO_Base__c )),&quot;DTO (Add 1000gms)&quot;,SUBSTITUTE(&quot;DTO (Add 1000gms)&quot;,&quot;1000&quot;,TEXT( Opportunity.DTO_Incremental__c )),&quot;DTO (1000gms)&quot;,SUBSTITUTE(&quot;DTO (1000gms)&quot;,&quot;1000&quot;,TEXT( Opportunity.DTO_Base__c )), PricebookEntry.Product2.Name)</formula>
+        <label>Updated Product Name</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Version__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( OR ( ISBLANK( Counter__c ),  ISNULL( Counter__c ) )    , &apos;&apos; , &apos;Version &apos; + TEXT(Counter__c) + &apos;.0&apos;)</formula>
+        <label>Version</label>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Volumetric_Formulae__c</fullName>
+        <externalId>false</externalId>
+        <label>Volumetric Divisor</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Wallet_Flat__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet Flat</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Wallet_Transaction_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet Transaction Charge</label>
+        <precision>16</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Wallet_Transaction_Rate__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet Transaction Rate</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Wallet_percentage__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet percentage</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Way_Bill_Charge__c</fullName>
+        <externalId>false</externalId>
+        <label>Way Bill Charge</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_0_250gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A 0 - 250gm</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Additional_1kg_Above_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A Additional 1kg Above 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Additional_250_gms_till_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A Additional 250 gms till 500 gms</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Additional_500_gm_till_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A Additional 500 gm till 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_DTO_Upto_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - DTO Upto 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Every_Add_500_gms_upto_3_kgs__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A -Every Add 500 gms (upto 3 kgs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - Every Additional Slab (1 Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Every_additional_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - Every additional 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_RTO_every_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - RTO (every 500 gms)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_A_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone A - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_0_250gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B 0 - 250gm</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Additional_1kg_Above_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B Additional 1kg Above 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Additional_250_gms_till_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B Additional 250 gms till 500 gms</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Additional_500_gm_till_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B Additional 500 gm till 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_DTO_Upto_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - DTO Upto 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Every_Add_500_gms_upto_3_kgs__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - Every Add 500 gms (upto 3 kgs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - Every Additional Slab (1 Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Every_additional_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - Every additional 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_RTO_every_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - RTO (every 500 gms)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_B_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone B - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_0_250gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C 0 - 250gm</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_Additional_1kg_Above_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C Additional 1kg Above 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_Additional_250_gms_till_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C Additional 250 gms till 500 gms</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_Additional_500_gm_till_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C Additional 500 gm till 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_DTO_Upto_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C - DTO Upto 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_Every_additional_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C - Every additional 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N1_DTO_Upto_500gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N1 - DTO Upto 500gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N1_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N1 - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N1_Every_Add_500_gms_Upto_3_kgs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Upto 3 kgs</inlineHelpText>
+        <label>Zone C-N1 -Every Add 500 gms(Upto 3 kgs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N1_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N1 - Every Additional Slab(1 Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N1_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N1 - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N1_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N1 - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N2_DTO_Upto_500gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N2 - DTO Upto 500gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N2_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N2 - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N2_Every_Add_500_gms_Upto_3_kgs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Upto 3 kgs</inlineHelpText>
+        <label>Zone C-N2 -Every Add 500 gms(Upto 3 kgs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N2_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N2 - Every Additional Slab(1 Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N2_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N2 - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_N2_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C-N2 - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_RTO_every_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C - RTO (every 500 gms)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_C_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone C - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_0_250gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D 0 - 250gm</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_Additional_1kg_Above_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D Additional 1kg Above 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_Additional_250_gms_till_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D Additional 250 gms till 500 gms</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_Additional_500_gm_till_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D Additional 500 gm till 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_DTO_Upto_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D - DTO Upto 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_Every_additional_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D - Every additional 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N1_DTO_Upto_500gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N1 - DTO Upto 500gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N1_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N1 - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N1_Every_Add_500_gms_Upto_3_kgs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Upto 3 kgs</inlineHelpText>
+        <label>Zone D-N1 -Every Add 500 gms(Upto 3 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N1_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N1 - Every Additional Slab(1 Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N1_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N1 - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N1_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N1 - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N2_DTO_Upto_500gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N2 - DTO Upto 500gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N2_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N2 - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N2_Every_Add_500_gms_Upto_3_kgs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Upto 3 kgs</inlineHelpText>
+        <label>Zone D-N2 -Every Add 500 gms(Upto 3 kgs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N2_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N2 - Every Additional Slab(1 Kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N2_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N2 - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_N2_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D-N2 - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_RTO_every_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D - RTO (every 500 gms)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_D_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone D - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_0_250gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E 0 - 250gm</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_Additional_1kg_Above_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E Additional 1kg Above 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_Additional_250_gms_till_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E Additional 250 gms till 500 gms</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_Additional_500_gm_till_5kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E Additional 500 gm till 5kg</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_DTO_Upto_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - DTO Upto 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_DTO_every_add_500gm__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - DTO every add 500gm</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_Every_Additional_Slab_1_Kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - Every Additional Slab (1 Kgs)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_Every_additional_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - Every additional 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_RTO_every_1_kg__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - RTO (every 1 kg)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_RTO_every_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - RTO (every 500 gms)</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Zone_E_Upto_500_gms__c</fullName>
+        <externalId>false</externalId>
+        <label>Zone E - Upto 500 gms</label>
+        <precision>12</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+</CustomObject>

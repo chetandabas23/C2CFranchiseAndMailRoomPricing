@@ -1,0 +1,1365 @@
+<!------------------------------------------------------------------
+* Author: Techila Global Services Pvt Ltd.
+* VF Page Name: NewProduct
+* Created Date: 31-May-2016
+* Description: To override the New button of Product.  
+----------------------------------------------------------------- -->
+
+<apex:page standardController="Product2" extensions="NewProduct2Extension" standardStylesheets="false" sidebar="false" applyBodyTag="false" docType="html-5.0">
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            
+            <style>
+                .inputTextClass{
+                width:100%;
+                }
+                .boldFont{
+                font-weight: bold;
+                }
+                table {
+                /*   border-collapse: collapse;*/
+                width: 100%;
+                border-spacing: 10px;
+                border-collapse: collapse;
+                
+                }
+                
+                #heading {
+                background-color: #79A8B8;
+                color: white;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                border-bottom: 2px solid #fff;
+                }
+                #heading2 {
+                background-color: #79A8B8;
+                color: white;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                border-bottom: 2px solid #fff;
+                text-align: center;
+                }
+                p{
+                font-size:15px;
+                }
+                
+                table th, table td{
+                padding: 4px;
+                font-size:13px;
+                font-weight: bold;
+                
+                }
+                #heading {
+                background-color: #79A8B8;
+                color: white;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                } 
+                .pbButton {
+                text-align:center !important;
+                }
+                .pbSubsection .detailList tr th {
+                padding:4px 10px;
+                }
+                .pbSubsection .detailList tr td {
+                padding:4px 10px;
+                }
+                .pbBottomButtons tr td {
+                text-align:center !important;
+                }
+                .errorMsg{
+                color:red;
+                }
+                
+            </style>
+        </head>
+        <body>
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds-scope">
+                
+                
+                <!--apex:pageMessages ></apex:pageMessages>-->
+                <apex:form id="formid">
+                    <div class="slds-page-header">
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <span class="slds-icon_container slds-icon-standard-product" title="Description of icon when needed">
+                                    <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/standard-sprite/svg/symbols.svg#product" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="slds-media__body">
+                                <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Contact Selection">New Product</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <apex:pageBlock > <br/>
+                        <apex:pageBlockButtons id="PB_Button">                
+                            <apex:commandButton styleClass="slds-button slds-button_brand" value="Save" action="{!savePricing}" /> <!--style="margin-left:600px"-->
+                            <apex:commandButton styleClass="slds-button slds-button_brand" value="Cancel" action="{!goBack}"/>
+                        </apex:pageBlockButtons>         
+                        
+                        <apex:actionSupport event="onload" reRender="formid" />
+                        
+                        <apex:outputPanel rendered="{!IF(recTypeName == 'B2B_5x5', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" width="100%"  >
+                                <tr class="slds-text-title_caps boldFont">
+                                    <td></td>
+                                    <td>North</td>
+                                    <td>West</td>
+                                    <td>South</td>
+                                    <td>East</td>
+                                    <td>North East</td>                                                                                    
+                                </tr>
+                                <apex:repeat value="{!B2B5By5PriceWrapperList}" var="w">
+                                    <tr>
+                                        <td class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.northAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.westAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.southAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.eastAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.northEastAmount}"/></td>                                                                                    
+                                    </tr>                            
+                                </apex:repeat>          
+                            </table>
+                            <br/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;<b>Intra City : &nbsp; </b> <apex:inputfield style="width:100px;" styleClass="slds-input" value="{!objProduct.Intra_City__c}"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>&nbsp;&nbsp;<b>OVERHEADS :</b>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <apex:pageBlockSection columns="2">
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Min_Billable_Weight__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Way_Bill_Charge__c}"/>
+                                <apex:outputfield value="{!objProduct.Max_Dead_weight_package__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.AWB_Charges__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CFT__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Free_Storage_Period_days__c}"/>                             
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Fuel_Surcharge__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_MAwb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_KG__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Insurance__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ROV_on_invoice_value__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Liability_per_consignment__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Average_Diesel_Price__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Diesel_Tolerance_Value__c}"/>
+                                
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                        
+                        <!-- 6x6 Matrix -->
+                        <apex:outputPanel rendered="{!IF(recTypeName == 'B2B_6x6', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" width="100%"  >
+                                <tr class="slds-text-title_caps boldFont">
+                                    <td></td>
+                                    <td>North</td>
+                                    <td>West</td>
+                                    <td>South</td>
+                                    <td>Kerala</td>
+                                    <td>East</td>
+                                    <td>North East</td>                                                                                    
+                                </tr>
+                                <apex:repeat value="{!B2B6By6PriceWrapperList}" var="w">
+                                    <tr>
+                                        <td class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.northAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.westAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.southAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.keralaAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.eastAmount}"/></td>
+                                        <td><apex:inputText styleClass="slds-input" value="{!w.northEastAmount}"/></td>                                                                                    
+                                    </tr>                            
+                                </apex:repeat>          
+                            </table>
+                            <br/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;<b>Intra City : &nbsp; </b> <apex:inputfield style="width:100px;" styleClass="slds-input" value="{!objProduct.Intra_City__c}"/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;<b>OVERHEADS :</b>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <apex:pageBlockSection columns="2">
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Min_Billable_Weight__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Way_Bill_Charge__c}"/>
+                                <apex:outputfield value="{!objProduct.Max_Dead_weight_package__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.AWB_Charges__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CFT__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Free_Storage_Period_days__c}"/>                             
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Fuel_Surcharge__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_MAwb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_KG__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Insurance__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ROV_on_invoice_value__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Liability_per_consignment__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Average_Diesel_Price__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Diesel_Tolerance_Value__c}"/>
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                        <!-- End 6x6 Matrix -->
+                        
+                        <!-- 14x14 Matrix -->
+                        <apex:outputPanel rendered="{!IF(recTypeName=='B2B_14x14', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" width="100%">
+                                <tr class="slds-text-title_caps boldFont">
+                                    <td></td>
+                                    <td>N1</td>
+                                    <td>N2</td>
+                                    <td>N3</td>
+                                    <td>C1</td>
+                                    <td>C2</td>
+                                    <td>W1</td>
+                                    <td>W2</td>
+                                    <td>S1</td>
+                                    <td>S2</td>
+                                    <td>S3</td>
+                                    <td>E1</td>
+                                    <td>E2</td>
+                                    <td>NE1</td>
+                                    <td>NE2</td>
+                                </tr>
+                                <apex:repeat value="{!B2B14By14PriceWrapperList}" var="w">
+                                    <tr>
+                                        <td class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                        <td><apex:inputText value="{!w.n1Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.n2Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.n3Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.c1Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.c2Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.w1Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.w2Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.s1Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.s2Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.s3Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.e1Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.e2Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.ne1Amount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.ne2Amount}" styleClass="slds-input inputTextClass"/></td>
+                                    </tr>                            
+                                </apex:repeat>          
+                            </table>
+                            <br/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;<b>OVERHEADS :</b>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <apex:pageBlockSection columns="2">
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Min_Billable_Weight__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Way_Bill_Charge__c}"/>
+                                <apex:outputfield value="{!objProduct.Max_Dead_weight_package__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.AWB_Charges__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CFT__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Free_Storage_Period_days__c}"/>                             
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Fuel_Surcharge__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_MAwb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_KG__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Insurance__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ROV_on_invoice_value__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Liability_per_consignment__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Average_Diesel_Price__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Diesel_Tolerance_Value__c}"/>
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                        <!-- End 14x14 Matrix -->
+                        
+                        <apex:outputPanel id="outputPanelTwo" rendered="{!IF(recTypeName=='B2b_15x15', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" width="100%">
+                                <tr class="slds-text-title_caps boldFont">
+                                    <td></td>
+                                    <td>NCR</td>
+                                    <td>LUH</td>
+                                    <td>JAI</td>
+                                    <td>JAM</td>
+                                    <td>LKO</td>
+                                    <td>BOM</td>
+                                    <td>AMD</td>
+                                    <td>GOA</td>
+                                    <td>IXR</td>
+                                    <td>IDR</td>
+                                    <td>BLR</td>
+                                    <td>HYD</td>
+                                    <td>CJB</td>
+                                    <td>CCU</td>
+                                    <td>GUA</td>                            
+                                </tr>
+                                <apex:repeat value="{!B2B15By15PriceWrapperList}" var="w">
+                                    <tr>
+                                        <td class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                        <td><apex:inputText value="{!w.ncrAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.luhAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.jaiAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.jamAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.lkoAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.bomAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.amdAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.goaAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.ixrAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.idrAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.blrAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.hydAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.cjbAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.ccuAmount}" styleClass="slds-input inputTextClass"/></td>
+                                        <td><apex:inputText value="{!w.guaAmount}" styleClass="slds-input inputTextClass"/></td>
+                                    </tr>                            
+                                </apex:repeat>          
+                            </table>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <apex:pageBlockSection columns="2">
+                                
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Min_Billable_Weight__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Way_Bill_Charge__c}"/>
+                                <apex:outputfield value="{!objProduct.Max_Dead_weight_package__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.AWB_Charges__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CFT__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Free_Storage_Period_days__c}"/>                             
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Fuel_Surcharge__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_MAwb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ODA_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_KG__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Insurance__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.ROV_on_invoice_value__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Liability_per_consignment__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Average_Diesel_Price__c}"/>
+                                <apex:inputfield styleClass="slds-input" value="{!objProduct.Diesel_Tolerance_Value__c}"/>
+                                
+                                
+                            </apex:pageBlockSection>
+                        </apex:outputPanel>
+                        
+                        <apex:outputPanel id="outputPanelThree" rendered="{!IF(recTypeName=='B2B_LanexLane', true, false)}">
+                            B2B Lanewise
+                            <br/>
+                            <br/>
+                            <br/>
+                            <apex:pageBlockSection columns="1">
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.Min_Billable_Weight__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.Way_Bill_Charge__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.Insurance__c}"/>
+                                <!-- <apex:inputfield value="{!objProduct.Entry_Tax_Service_Charge__c}"/> -->
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.Fuel_Surcharge__c}"/>
+                                <apex:outputfield value="{!objProduct.Max_Dead_weight_package__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.RoV_Surcharge__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.RoV_Surcharge_RS_10_000__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.CFT__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.Average_Diesel_Price__c}"/>
+                                <apex:inputfield styleClass="slds-input " value="{!objProduct.Diesel_Tolerance_Value__c}"/>
+                            </apex:pageBlockSection> 
+                        </apex:outputPanel>   
+                        
+                        <apex:outputPanel id="outputPanelFour" rendered="{!IF(recTypeName=='Express_shipping', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="ExpressTable"  >
+                                <tr>
+                                    <td colspan="8" id="heading" ><center><p>Delhivery Commercials - EXPRESS </p></center></td>
+                                </tr> 
+                                
+                                <tr>
+                                    <th rowspan="2" id="heading2">Weight Slabs</th>
+                                    <th id="heading2" >Within-city</th>
+                                    <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                    <th id="heading2" >Metro-Metro</th>
+                                    <th id="heading2">Rest of India</th>
+                                    <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading2">Zone A</th>
+                                    <th id="heading2">Zone B</th>
+                                    <th id="heading2">Zone C</th>
+                                    <th id="heading2">Zone D</th>
+                                    <th id="heading2">Zone E</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Upto 500 gms</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Upto_500_gms__c}"  style="width:100%"   onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td> <!-- onkeypress='return event.charCode >= 46 && event.charCode <= 57' -->
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Upto_500_gms__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Upto_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Upto_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Upto_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Every additional 500 gms</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Every_additional_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Every_additional_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Every_additional_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Every_additional_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Every_additional_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>RTO (Every 500 gms)</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_RTO_every_500_gms__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_RTO_every_500_gms__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_RTO_every_500_gms__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_RTO_every_500_gms__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_RTO_every_500_gms__c}" required="true" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>DTO Upto 500 gm</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_DTO_Upto_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_DTO_Upto_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_DTO_Upto_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_DTO_Upto_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_DTO_Upto_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td> 
+                                </tr>
+                                
+                                <tr>
+                                    <td>DTO Every Add 500 gm</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>COD Charges (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Charges__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    <td><center>COD Charges (%)</center></td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Value__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr><!-- Wallet Transaction Rate And Charges -->
+                                    <td>Wallet Transaction Charge (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>Wallet Transaction Rate (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr><!-- Card  on Delivery Charges -->
+                                    <td>Card on Delivery Charges</td>
+                                    <td>
+                                        Debit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                        Credit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                    </td>
+                                    <td></td>
+                                    <td colspan="5" >
+                                        
+                                        Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                        Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objProduct.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        
+                                    </td>
+                                </tr>
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <td>FOV Factor(Frieght On Value) (%) </td>
+                                    <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objProduct.Frieght_Value_Factor__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Volumetric Divisor</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                </tr>
+                                
+                                <!--<tr>
+<td>GST</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Service_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Fuel Surcharge (FSC)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Fuel_Surcharge__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <!--        <tr>
+<td>Rural Pin Code Pricing</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Rural_Pin_Code_Pricing__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Maximum Liability for Forward (INR)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Maximum Liability for Reverse (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    
+                                    <td colspan="1"><center>Maximum Liability for Reverse (%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                <tr>
+                                    <td>COD Remittance</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                            </table>   
+                            
+                        </apex:outputPanel>  
+                        <apex:outputPanel id="outputPanelSeven" rendered="{!IF(recTypeName=='Franchise_Shipping', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="ExpressTable"  >
+                                <tr>
+                                    <td colspan="8" id="heading" ><center><p>Delhivery Commercials EXPRESS - C2C</p></center></td>
+                                </tr> 
+                                
+                                <tr>
+                                    <th rowspan="2" id="heading2">Weight Slabs</th>
+                                    <th id="heading2" >Within-city</th>
+                                    <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                    <th id="heading2" >Metro-Metro</th>
+                                    <th id="heading2">Rest of India</th>
+                                    <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading2">Zone A</th>
+                                    <th id="heading2">Zone B</th>
+                                    <th id="heading2">Zone C</th>
+                                    <th id="heading2">Zone D</th>
+                                    <th id="heading2">Zone E</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>0-250 gms</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_0_250gm__c}"  style="width:100%"   onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td> <!-- onkeypress='return event.charCode >= 46 && event.charCode <= 57' -->
+                                    <td><apex:inputField value="{!objProduct.Zone_B_0_250gm__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 250gms till 500gms</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 500gms till 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Additional_500_gm_till_5kg__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 1Kg Above 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td> 
+                                </tr>                                
+                             
+                                <tr>
+                                    <td>COD Charges (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Charges__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    <td><center>COD Charges (%)</center></td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Value__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr><!-- Wallet Transaction Rate And Charges -->
+                                    <td>Wallet Transaction Charge (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>Wallet Transaction Rate (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr><!-- Card  on Delivery Charges -->
+                                    <td>Card on Delivery Charges</td>
+                                    <td>
+                                        Debit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                        Credit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                    </td>
+                                    <td></td>
+                                    <td colspan="5" >
+                                        
+                                        Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                        Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objProduct.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        
+                                    </td>
+                                </tr>
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <td>Insurance</td>
+                                    <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objProduct.Insurance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Volumetric Divisor</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                </tr>
+                                
+                                <!--<tr>
+<td>GST</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Service_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Fuel Surcharge (FSC)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Fuel_Surcharge__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <!--        <tr>
+<td>Rural Pin Code Pricing</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Rural_Pin_Code_Pricing__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Maximum Liability for Forward (INR)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Maximum Liability for Reverse (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    
+                                    <td colspan="1"><center>Maximum Liability for Reverse (%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                <tr>
+                                    <td>COD Remittance</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                	
+                                    <td colspan="1"><center>Maximum Liability for Forward(%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct.Maximum_Liability_for_Forward_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                            </table>   
+                              <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="ExpressTable"  >
+                                <tr>
+                                    <td colspan="8" id="heading" ><center><p>Delhivery Commercials Standard - C2C</p></center></td>
+                                </tr> 
+                                
+                                <tr>
+                                    <th rowspan="2" id="heading2">Weight Slabs</th>
+                                    <th id="heading2" >Within-city</th>
+                                    <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                    <th id="heading2" >Metro-Metro</th>
+                                    <th id="heading2">Rest of India</th>
+                                    <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading2">Zone A</th>
+                                    <th id="heading2">Zone B</th>
+                                    <th id="heading2">Zone C</th>
+                                    <th id="heading2">Zone D</th>
+                                    <th id="heading2">Zone E</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>0-250 gms</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_0_250gm__c}"  style="width:100%"   onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td> <!-- onkeypress='return event.charCode >= 46 && event.charCode <= 57' -->
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_0_250gm__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 250gms till 500gms</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 500gms till 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_Additional_500_gm_till_5kg__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 1Kg Above 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td> 
+                                </tr>                                
+                             
+                                <tr>
+                                    <td>COD Charges (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.COD_Charges__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    <td><center>COD Charges (%)</center></td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.COD_Value__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr><!-- Wallet Transaction Rate And Charges -->
+                                    <td>Wallet Transaction Charge (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct1.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>Wallet Transaction Rate (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct1.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr><!-- Card  on Delivery Charges -->
+                                    <td>Card on Delivery Charges</td>
+                                    <td>
+                                        Debit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct1.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                        Credit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct1.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                    </td>
+                                    <td></td>
+                                    <td colspan="5" >
+                                        
+                                        Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct1.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                        Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct1.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct1.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objProduct1.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        
+                                    </td>
+                                </tr>
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <td>Insurance</td>
+                                    <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objProduct1.Insurance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Volumetric Divisor</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct1.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                </tr>
+                                
+                                <!--<tr>
+<td>GST</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Service_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Fuel Surcharge (FSC)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct1.Fuel_Surcharge__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <!--        <tr>
+<td>Rural Pin Code Pricing</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Rural_Pin_Code_Pricing__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Maximum Liability for Forward (INR)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct1.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Maximum Liability for Reverse (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    
+                                    <td colspan="1"><center>Maximum Liability for Reverse (%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                <tr>
+                                    <td>COD Remittance</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                	
+                                    <td colspan="1"><center>Maximum Liability for Forward(%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct1.Maximum_Liability_for_Forward_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                            </table>  
+                        </apex:outputPanel>  
+                                                <apex:outputPanel id="outputPanelEight" rendered="{!IF(recTypeName=='Mail_Room', true, false)}">
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="ExpressTable"  >
+                                <tr>
+                                    <td colspan="8" id="heading" ><center><p>Delhivery Commercials EXPRESS - C2C MailRoom</p></center></td>
+                                </tr> 
+                                
+                                <tr>
+                                    <th rowspan="2" id="heading2">Weight Slabs</th>
+                                    <th id="heading2" >Within-city</th>
+                                    <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                    <th id="heading2" >Metro-Metro</th>
+                                    <th id="heading2">Rest of India</th>
+                                    <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading2">Zone A</th>
+                                    <th id="heading2">Zone B</th>
+                                    <th id="heading2">Zone C</th>
+                                    <th id="heading2">Zone D</th>
+                                    <th id="heading2">Zone E</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>0-250 gms</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_0_250gm__c}"  style="width:100%"   onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td> <!-- onkeypress='return event.charCode >= 46 && event.charCode <= 57' -->
+                                    <td><apex:inputField value="{!objProduct.Zone_B_0_250gm__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 250gms till 500gms</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 500gms till 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Additional_500_gm_till_5kg__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 1Kg Above 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct.Zone_A_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_B_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_C_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_D_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                    <td><apex:inputField value="{!objProduct.Zone_E_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td> 
+                                </tr>                                
+                             
+                                <tr>
+                                    <td>COD Charges (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Charges__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    <td><center>COD Charges (%)</center></td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Value__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr><!-- Wallet Transaction Rate And Charges -->
+                                    <td>Wallet Transaction Charge (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>Wallet Transaction Rate (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr><!-- Card  on Delivery Charges -->
+                                    <td>Card on Delivery Charges</td>
+                                    <td>
+                                        Debit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                        Credit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                    </td>
+                                    <td></td>
+                                    <td colspan="5" >
+                                        
+                                        Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                        Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objProduct.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        
+                                    </td>
+                                </tr>
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <td>Insurance</td>
+                                    <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objProduct.Insurance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Volumetric Divisor</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                </tr>
+                                
+                                <!--<tr>
+<td>GST</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Service_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Fuel Surcharge (FSC)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Fuel_Surcharge__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <!--        <tr>
+<td>Rural Pin Code Pricing</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Rural_Pin_Code_Pricing__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Maximum Liability for Forward (INR)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Maximum Liability for Reverse (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    
+                                    <td colspan="1"><center>Maximum Liability for Reverse (%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                <tr>
+                                    <td>COD Remittance</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                	
+                                    <td colspan="1"><center>Maximum Liability for Forward(%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct.Maximum_Liability_for_Forward_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                            </table>   
+                              <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="ExpressTable"  >
+                                <tr>
+                                    <td colspan="8" id="heading" ><center><p>Delhivery Commercials Standard - C2C MailRoom</p></center></td>
+                                </tr> 
+                                
+                                <tr>
+                                    <th rowspan="2" id="heading2">Weight Slabs</th>
+                                    <th id="heading2" >Within-city</th>
+                                    <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                    <th id="heading2" >Metro-Metro</th>
+                                    <th id="heading2">Rest of India</th>
+                                    <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading2">Zone A</th>
+                                    <th id="heading2">Zone B</th>
+                                    <th id="heading2">Zone C</th>
+                                    <th id="heading2">Zone D</th>
+                                    <th id="heading2">Zone E</th>
+                                </tr>
+                                
+                                <tr>
+                                    <td>0-250 gms</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_0_250gm__c}"  style="width:100%"   onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td> <!-- onkeypress='return event.charCode >= 46 && event.charCode <= 57' -->
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_0_250gm__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 250gms till 500gms</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_Additional_250_gms_till_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 500gms till 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_Additional_500_gm_till_5kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_Additional_500_gm_till_5kg__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Additional 1Kg Above 5Kg</td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_A_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_B_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_C_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_D_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                    <td><apex:inputField value="{!objProduct1.Zone_E_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td> 
+                                </tr>                                
+                             
+                                <tr>
+                                    <td>COD Charges (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.COD_Charges__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    <td><center>COD Charges (%)</center></td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.COD_Value__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr><!-- Wallet Transaction Rate And Charges -->
+                                    <td>Wallet Transaction Charge (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct1.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>Wallet Transaction Rate (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct1.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr><!-- Card  on Delivery Charges -->
+                                    <td>Card on Delivery Charges</td>
+                                    <td>
+                                        Debit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct1.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                        Credit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct1.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                    </td>
+                                    <td></td>
+                                    <td colspan="5" >
+                                        
+                                        Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct1.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                        Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct1.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct1.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objProduct1.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        
+                                    </td>
+                                </tr>
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <td>Insurance</td>
+                                    <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objProduct1.Insurance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Volumetric Divisor</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct1.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                </tr>
+                                
+                                <!--<tr>
+<td>GST</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Service_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Fuel Surcharge (FSC)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct1.Fuel_Surcharge__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <!--        <tr>
+<td>Rural Pin Code Pricing</td>
+<td colspan="5"><apex:inputField value="{!objProduct.Rural_Pin_Code_Pricing__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Maximum Liability for Forward (INR)</td>
+                                    <td colspan="5"><apex:inputField value="{!objProduct1.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Maximum Liability for Reverse (INR)</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    
+                                    <td colspan="1"><center>Maximum Liability for Reverse (%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                <tr>
+                                    <td>COD Remittance</td>
+                                    <td colspan="2"><apex:inputField value="{!objProduct1.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                	
+                                    <td colspan="1"><center>Maximum Liability for Forward(%)</center></td>
+                                    <td colspan="3"><apex:inputField value="{!objProduct1.Maximum_Liability_for_Forward_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                            </table>  
+                        </apex:outputPanel>
+                        <apex:outputPanel id="table1" rendered="{!IF(recTypeName=='Hyperlocal', true, false)}">
+                            <apex:variable value="{!0}" var="cnt" />
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" border="1">      
+                                <tr border="1">
+                                    <td id="heading"><center>Action</center></td>
+                                    <td id="heading"><center>No of Order per trip</center></td>
+                                    <td id="heading"><center>Base Charge per Order(INR)</center></td>
+                                    <td id="heading"><center>Base Range(IN KM)</center></td>
+                                    <td id="heading"><center>Additional Charge(INR Per Km)</center></td>
+                                    <td id="heading"><center>Additional Range(in Km)</center></td>
+                                    <td id="heading"><center>COD Charges(Applicable only on Orders size > INR 100)[%]</center></td>
+                                    <td id="heading"><center>COD Charges(Applicable only on Orders size > INR 100)[INR]</center></td>
+                                </tr>
+                                
+                                <apex:repeat value="{!hpList}" var="hp">   
+                                    <tr border="1">
+                                        <td>
+                                            <apex:commandlink action="{!toDelete}" immediate="true" type="image/png" rerender="table1">
+                                                <apex:param name="index" value="{!cnt}" />
+                                                <apex:image id="theImage" value="{!$Resource.MinusSign}" width="15" height="15" />
+                                            </apex:commandlink>
+                                            <apex:variable var="cnt" value="{!cnt+1}" />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.Number_of_Order_per_trip__c}" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.Base_Charge_per_Order_INR__c}"  />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.Base_Range_in_Km__c}" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.Additional_Charge_INR_per_Km__c}" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.Additional_Range__c}" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.COD_Charges_in__c}" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        <td>
+                                            <apex:inputField styleClass="slds-input" value="{!hp.COD_Charges__c}" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td> 
+                                    </tr>
+                                </apex:repeat>                                              
+                            </table>
+                            <apex:commandlink action="{!toAdd}" rerender="table1" type="image/png">
+                                <apex:image id="theImage" value="{!$Resource.PlusSign}" width="30" height="30" />
+                            </apex:commandlink>
+                        </apex:outputPanel>        
+                        
+                        <apex:outputPanel id="outputPanelSix" rendered="{!IF(recTypeName=='Standard_Shipping', true, false)}">   
+                            <table class="slds-table slds-table_bordered slds-table_cell-buffer" border="0" >
+                                <tr><td colspan="8" id="heading" ><center><p>Delhivery Commercials - STANDARD </p></center></td></tr> 
+                                
+                                <tr>
+                                    <th id="heading"></th>
+                                    <th id="heading" ><center>Within City</center></th>
+                                    <th id="heading" ><center>Regional (Single <br/>Connection And <br/>Less than 500 Kms)</center></th>
+                                    <th colspan ="2" id="heading"><center>Metro to Metro<br/> (ZONE C)</center></th>
+                                    <th colspan="2" id="heading" ><center>Rest of India <br/>(ZONE D)</center></th>
+                                    <th id="heading" ><center>North East,HP,<br/> Port Blair, J And K</center></th>
+                                </tr>
+                                <tr><td id="heading"/><td id="heading"><center>ZONE A</center></td><td id="heading"><center>ZONE B</center></td><td id="heading" ><center>N1</center></td><td id="heading"><center >N2</center></td><td id="heading"><center>N1</center></td><td id="heading"><center>N2</center></td><td id="heading"><center>ZONE E</center></td></tr>
+                                
+                                <tr>
+                                    <td style="width:250px;">Upto 500 gms</td>
+                                    <td><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_A_Upto_500_gms__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_B_Upto_500_gms__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N1_Upto_500_gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N2_Upto_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N1_Upto_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N2_Upto_500_gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_E_Upto_500_gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>Every Additional 500 gms(Upto 3 kgs)</td>
+                                    <td><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_A_Every_Add_500_gms_upto_3_kgs__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_B_Every_Add_500_gms_upto_3_kgs__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N1_Every_Add_500_gms_Upto_3_kgs__c}"   style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N2_Every_Add_500_gms_Upto_3_kgs__c}"   style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N1_Every_Add_500_gms_Upto_3_kgs__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'   /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N2_Every_Add_500_gms_Upto_3_kgs__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'   /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_E_Every_additional_500_gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                </tr>
+                                <tr>
+                                    <td>Every Additional Slab (1 Kg)</td>
+                                    <td><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_A_Every_Additional_Slab_1_Kg__c}"   style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_B_Every_Additional_Slab_1_Kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N1_Every_Additional_Slab_1_Kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N2_Every_Additional_Slab_1_Kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N1_Every_Additional_Slab_1_Kg__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N2_Every_Additional_Slab_1_Kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_E_Every_Additional_Slab_1_Kg__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                </tr>
+                                <tr>
+                                    <td>RTO (Every 1 kg)</td>
+                                    <td><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_A_RTO_every_1_kg__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_B_RTO_every_1_kg__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N1_RTO_every_1_kg__c}" required="true" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N2_RTO_every_1_kg__c}" required="true"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N1_RTO_every_1_kg__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N2_RTO_every_1_kg__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_E_RTO_every_1_kg__c}" required="true" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>DTO Upto 500 gms</td>
+                                    <td><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_A_DTO_Upto_500gm__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_B_DTO_Upto_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N1_DTO_Upto_500gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'   /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N2_DTO_Upto_500gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N1_DTO_Upto_500gms__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'   /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N2_DTO_Upto_500gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_E_DTO_Upto_500gm__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>DTO Every Add 500 gms</td>
+                                    <td><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_A_DTO_every_add_500gm__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_B_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N1_DTO_every_add_500gm__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_C_N2_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N1_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_D_N2_DTO_every_add_500gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    <td><center><apex:inputField styleClass="slds-input" value="{!objProduct.Zone_E_DTO_every_add_500gm__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </center></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>COD Charges (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.COD_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>COD Charges (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct.COD_Value__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr><!-- Wallet Transaction Rate And Charges -->
+                                    <td>Wallet Transaction Charge (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td colspan="2"><center>Wallet Transaction Rate (%)</center></td>
+                                    <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objProduct.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                
+                                <tr><!-- Card  on Delivery Charges -->
+                                    <td>Card on Delivery Charges</td>
+                                    <td>
+                                        Debit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                        Credit Card Transaction Charge (INR) <br/>
+                                        <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                    </td>
+                                    <td></td>
+                                    <td colspan="5" >
+                                        
+                                        Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                        Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objProduct.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                        Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objProduct.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        
+                                    </td>
+                                </tr>
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <td>FOV Factor(Frieght On Value) (%) </td>
+                                    <td colspan="8"> <apex:inputField styleClass="slds-input" value="{!objProduct.Frieght_Value_Factor__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Volumetric Divisor</td>
+                                    <td colspan="8"><apex:inputField styleClass="slds-input" value="{!objProduct.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <!--<tr>
+<td>GST</td>
+<td colspan="8"><apex:inputField value="{!objProduct.Service_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr> 
+
+<tr>
+<td>Fuel Surcharge (FSC)</td>
+<td colspan="8"><apex:inputField value="{!objProduct.Fuel_Surcharge__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>
+
+<tr>
+<td>Rural Pin Code Pricing</td>
+<td colspan="8"><apex:inputField value="{!objProduct.Rural_Pin_Code_Pricing__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr>-->
+                                
+                                <tr>
+                                    <td>Maximum Liability for Forward (INR)</td>
+                                    <td colspan="8"><apex:inputField styleClass="slds-input" value="{!objProduct.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td style="width:250px;" >Maximum Liability for Reverse (INR)</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                    
+                                    <td colspan="2"><center>Maximum Liability for Reverse (%)</center></td>
+                                    <td colspan="4"><apex:inputField styleClass="slds-input" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>COD Remittance</td>
+                                    <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objProduct.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                </tr>
+                                
+                            </table>
+                        </apex:outputPanel> 
+                        <br/>
+                    </apex:pageBlock>
+                </apex:form>
+                
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+        </body>
+    </html>
+    
+</apex:page>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Default_CL</fullName>
+    <fields>Desired_HQ_Name__c</fields>
+    <fields>Account__c</fields>
+    <fields>Opportunity_Name__c</fields>
+    <fields>Contact__c</fields>
+    <fields>Billing_Mode__c</fields>
+    <fields>Status__c</fields>
+    <fields>OwnerId</fields>
+    <label>Default CL</label>
+</CompactLayout>

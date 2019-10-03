@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Client Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Brands/Enterprise</fullName>
+                <default>false</default>
+                <label>Brands/Enterprise</label>
+            </value>
+            <value>
+                <fullName>FAPSSe</fullName>
+                <default>false</default>
+                <label>FAPSSe</label>
+            </value>
+            <value>
+                <fullName>Key Accounts (Ecommerce)</fullName>
+                <default>false</default>
+                <label>Key Accounts (Ecommerce)</label>
+            </value>
+            <value>
+                <fullName>Long Tail/SMB</fullName>
+                <default>false</default>
+                <label>Long Tail/SMB</label>
+            </value>
+            <value>
+                <fullName>Aggregator/Co-loader</fullName>
+                <default>false</default>
+                <label>Aggregator/Co-loader</label>
+            </value>
+            <value>
+                <fullName>X Border - Import</fullName>
+                <default>false</default>
+                <label>X Border - Import</label>
+            </value>
+            <value>
+                <fullName>X Border - Export</fullName>
+                <default>false</default>
+                <label>X Border - Export</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>C2C</fullName>
+                <default>false</default>
+                <label>C2C</label>
+            </value>
+            <value>
+                <fullName>BFSI</fullName>
+                <default>false</default>
+                <label>BFSI</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

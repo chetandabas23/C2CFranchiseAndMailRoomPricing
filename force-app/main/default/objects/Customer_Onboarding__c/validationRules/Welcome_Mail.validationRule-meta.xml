@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Welcome_Mail</fullName>
+    <active>true</active>
+    <errorConditionFormula>And(PRIORVALUE( POC_Welcome_Mail__c ) =false ,POC_Welcome_Mail__c =true,OR(ISBlank(Name_POC1__c),ISBlank(Name_POC2__c),ISBlank(CL_PANEL_User_Name__c)))</errorConditionFormula>
+    <errorMessage>Please fill  POC Assignments and CL PANEL credentials.</errorMessage>
+</ValidationRule>

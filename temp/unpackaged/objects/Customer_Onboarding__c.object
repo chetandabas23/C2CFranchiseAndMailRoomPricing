@@ -1,0 +1,3723 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <content>NewCustomerOnboardingButton</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Customer_Onboarding_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>Default_CL</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Default_CL</fullName>
+        <fields>Desired_HQ_Name__c</fields>
+        <fields>Account__c</fields>
+        <fields>Opportunity_Name__c</fields>
+        <fields>Contact__c</fields>
+        <fields>Billing_Mode__c</fields>
+        <fields>Status__c</fields>
+        <fields>OwnerId</fields>
+        <label>Default CL</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fieldSets>
+        <fullName>HQFieldSet</fullName>
+        <description>CustomerOnboardingTrigger</description>
+        <displayedFields>
+            <field>MPS_Service__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Beneficiary_name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Send_SMS_Reverse__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Contract_End_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>RTGS_IFSC_code__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Wallet_Provider__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Product_category__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Services__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Client_User_Id__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>GST_Not_Registered__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Contract_Start_Date__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>PAN_card__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Send_SMS_COD__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Bank_name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Bank_A_c_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Postal_Cat1__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Contact_number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>X_Ray_Limit__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>allow_no_data__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Client_Id__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Send_mail_Pickup__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Send_SMS_Prepaid__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Billing_Mode__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Company_Registered_Name__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>auto_pickup__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>send_sms_cash__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>DTO_email_recipients__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Wallet_Notification_Mobile__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Wallet_Notification_Email__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Registered_Address_State__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Product_Type__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>push_url__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Registered_Address_Line_1__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Registered_Address_Line_2__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Registered_Address_Country__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Registered_Address_Postal_Code__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Is_Prepaid__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Registered_Address_City__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>VAT_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Billing_Client_Config__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Movement_Config__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>NDR_report_recipients__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Report_Recipients__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>CST_Number__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Return_Address__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Send_SMS_NDR__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>RTO_email_recipients__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>REM_email__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Eco_Code__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <displayedFields>
+            <field>Upload_Recipients__c</field>
+            <isFieldManaged>false</isFieldManaged>
+            <isRequired>false</isRequired>
+        </displayedFields>
+        <label>HQFieldSet</label>
+    </fieldSets>
+    <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Customer Onboardings</relationshipLabel>
+        <relationshipName>Customer_Onboardings</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Average_weight_and_price_of_shipment__c</fullName>
+        <externalId>false</externalId>
+        <label>Average weight and price of shipment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Bank_A_c_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank A/c Number</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bank_name__c</fullName>
+        <externalId>false</externalId>
+        <label>Bank name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Beneficiary_name__c</fullName>
+        <externalId>false</externalId>
+        <label>Beneficiary name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Client_Config__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Client Config</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>--None--</fullName>
+                    <default>false</default>
+                    <label>--None--</label>
+                </value>
+                <value>
+                    <fullName>Client HO</fullName>
+                    <default>false</default>
+                    <label>Client HO</label>
+                </value>
+                <value>
+                    <fullName>Drop State</fullName>
+                    <default>false</default>
+                    <label>Drop State</label>
+                </value>
+                <value>
+                    <fullName>Pickup State</fullName>
+                    <default>false</default>
+                    <label>Pickup State</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Billing_Mode__c</fullName>
+        <externalId>false</externalId>
+        <label>Billing Mode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Express</fullName>
+                    <default>false</default>
+                    <label>Express</label>
+                </value>
+                <value>
+                    <fullName>Surface</fullName>
+                    <default>false</default>
+                    <label>Surface</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Bird_Contract_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>DATE(YEAR( Contract_Start_Date__c) , MONTH(Contract_Start_Date__c ) , 01)</formula>
+        <label>Bird Contract Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Bird_Request_Id_Addendum__c</fullName>
+        <externalId>false</externalId>
+        <label>Bird Request Id (Addendum)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bird_Request_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Bird Request Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Bird_Response_Message_Addendum__c</fullName>
+        <externalId>false</externalId>
+        <label>Bird Response Message (Addendum)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Bird_Response_Message__c</fullName>
+        <externalId>false</externalId>
+        <label>Bird Response Message</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Bird_Response_Status_Addendum__c</fullName>
+        <externalId>false</externalId>
+        <label>Bird Response Status (Addendum)</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bird_Response_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Bird Response Status</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CL_PANEL_Password__c</fullName>
+        <externalId>false</externalId>
+        <label>CL PANEL Password</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CL_PANEL_User_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>CL PANEL User Name</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CST_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>CST Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Label_Alias__c</fullName>
+        <externalId>false</externalId>
+        <label>Client Label/Alias</label>
+        <length>30</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_Serial_No__c</fullName>
+        <description>Client Serial No. received after Client Ware house is created</description>
+        <externalId>false</externalId>
+        <label>Client Serial No.</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Client_User_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Client User Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Company_Registered_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Company Registered Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_First_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact First Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_Last_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact Last Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Customer Onboardings</relationshipLabel>
+        <relationshipName>Customer_Onboardings</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Contact_number__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact number</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Contract_End_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Agreement_End_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contract End Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Contract_Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Agreement_Start_Date__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contract Start Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Customer_s_IP_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Customer&apos;s IP Address</label>
+        <length>15</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DTO_email_recipients__c</fullName>
+        <externalId>false</externalId>
+        <label>DTO email recipients</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Desired_HQ_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Desired HQ Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EMAIL_POC1__c</fullName>
+        <externalId>false</externalId>
+        <label>EMAIL POC1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EMAIL_POC2__c</fullName>
+        <externalId>false</externalId>
+        <label>EMAIL POC2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EMAIL_POC3__c</fullName>
+        <externalId>false</externalId>
+        <label>EMAIL POC3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Eco_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Eco Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Email</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Error__c</fullName>
+        <externalId>false</externalId>
+        <label>Error</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>FC_Email_ID_s__c</fullName>
+        <description>For Fulfillment  COB Only</description>
+        <externalId>false</externalId>
+        <label>FC Email ID(s)</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>FRS_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>FRS Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>File_Uploaded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Synced to Bird</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Fresh_Book_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Freshbook Code</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Fulfilment_Service__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Fulfilment Service</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>GST_No__c</fullName>
+        <description>For Fulfillment Type Only</description>
+        <externalId>false</externalId>
+        <inlineHelpText>15 Digit GST No.</inlineHelpText>
+        <label>GST No.</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GST_Not_Registered__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>GST Not Registered</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Godam_Client_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Godam Client Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>HQ_UUID__c</fullName>
+        <description>Capture HQ UUID when send to HQ is sent</description>
+        <externalId>false</externalId>
+        <label>HQ UUID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Address_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Address City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Address_Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Address Country</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Address_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Address Postal Code</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoice_Address_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoice Address State</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoicing_Mode_F__c</fullName>
+        <externalId>false</externalId>
+        <formula>Text(Invoicing_Mode__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Invoicing Mode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Invoicing_Mode__c</fullName>
+        <externalId>false</externalId>
+        <label>Invoicing Mode</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Prepaid</fullName>
+                    <default>false</default>
+                    <label>Prepaid</label>
+                </value>
+                <value>
+                    <fullName>Monthly Invoiced</fullName>
+                    <default>false</default>
+                    <label>Monthly Invoiced</label>
+                </value>
+                <value>
+                    <fullName>COD Net-off</fullName>
+                    <default>false</default>
+                    <label>COD Net-off</label>
+                </value>
+                <value>
+                    <fullName>Delhivery Miles</fullName>
+                    <default>false</default>
+                    <label>Delhivery Miles</label>
+                </value>
+                <value>
+                    <fullName>Agreement execution</fullName>
+                    <default>false</default>
+                    <label>Agreement execution</label>
+                </value>
+                <value>
+                    <fullName>Post Paid</fullName>
+                    <default>false</default>
+                    <label>Post Paid</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>IsDocuments_Verified__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Documents Verified</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsDraft__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>IsDraft</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Fc_document_Uploaded__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Fc document Uploaded</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Postpaid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Postpaid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_Prepaid__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is Prepaid</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Liability__c</fullName>
+        <externalId>false</externalId>
+        <label>Liability</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>MPS_Service__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>MPS Service</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Mail_Shared__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Mail Shared</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Movement_Config__c</fullName>
+        <externalId>false</externalId>
+        <label>Movement Config</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>--None--</fullName>
+                    <default>false</default>
+                    <label>--None--</label>
+                </value>
+                <value>
+                    <fullName>Client HO state GST IN</fullName>
+                    <default>false</default>
+                    <label>Client HO state GST IN</label>
+                </value>
+                <value>
+                    <fullName>Warehouse state GST IN</fullName>
+                    <default>false</default>
+                    <label>Warehouse state GST IN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>NDR_report_recipients__c</fullName>
+        <externalId>false</externalId>
+        <label>NDR report recipients</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Name_POC1__c</fullName>
+        <externalId>false</externalId>
+        <label>Name POC1</label>
+        <length>45</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_POC2__c</fullName>
+        <externalId>false</externalId>
+        <label>Name POC2</label>
+        <length>45</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OnBoarding_Form_Last_View_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>OnBoarding Form Last View Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>OnBoarding_Form_Receive_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>OnBoarding Form Receive Date</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Onboarding_Accepted__c</fullName>
+        <description>Date/Time when Onboarding form was Accepted</description>
+        <externalId>false</externalId>
+        <label>Onboarding Accepted</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Onboarding_Completed__c</fullName>
+        <externalId>false</externalId>
+        <label>Onboarding Completed</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Operating_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Operating Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Customer Onboardings</relationshipLabel>
+        <relationshipName>Customer_Onboardings1</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Owner_Director__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Owner.Director__r.FirstName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Owner&apos;s Director</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Owner.FirstName + &apos; &apos; + Opportunity__r.Owner.LastName</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Owner</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_Record_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.RecordType.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Opportunity Record Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity_SubCategory__c</fullName>
+        <externalId>false</externalId>
+        <formula>Opportunity__r.Sub_Category_Formula__c</formula>
+        <label>Opportunity SubCategory</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Opportunity__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Opportunity</label>
+        <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Customer Onboardings</relationshipLabel>
+        <relationshipName>Customer_Onboardings</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Oracle_ID__c</fullName>
+        <description>Created against SF - 154</description>
+        <externalId>false</externalId>
+        <label>Oracle ID</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PAN_card__c</fullName>
+        <externalId>false</externalId>
+        <label>PAN card</label>
+        <length>10</length>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>POC_HQ_Response__c</fullName>
+        <externalId>false</externalId>
+        <label>POC HQ Response</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Html</type>
+        <visibleLines>25</visibleLines>
+    </fields>
+    <fields>
+        <fullName>POC_Team__c</fullName>
+        <externalId>false</externalId>
+        <label>POC Team</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>North POC</fullName>
+                    <default>false</default>
+                    <label>North POC</label>
+                </value>
+                <value>
+                    <fullName>Fashion CSM</fullName>
+                    <default>false</default>
+                    <label>Fashion CSM</label>
+                </value>
+                <value>
+                    <fullName>West POC</fullName>
+                    <default>false</default>
+                    <label>West POC</label>
+                </value>
+                <value>
+                    <fullName>South POC</fullName>
+                    <default>false</default>
+                    <label>South POC</label>
+                </value>
+                <value>
+                    <fullName>LT B2C POC</fullName>
+                    <default>false</default>
+                    <label>LT B2C POC</label>
+                </value>
+                <value>
+                    <fullName>Ravinder Thakur</fullName>
+                    <default>false</default>
+                    <label>Ravinder Thakur</label>
+                </value>
+                <value>
+                    <fullName>North CSM B2B</fullName>
+                    <default>false</default>
+                    <label>North CSM B2B</label>
+                </value>
+                <value>
+                    <fullName>West CSM B2B</fullName>
+                    <default>false</default>
+                    <label>West CSM B2B</label>
+                </value>
+                <value>
+                    <fullName>South CSM B2B</fullName>
+                    <default>false</default>
+                    <label>South CSM B2B</label>
+                </value>
+                <value>
+                    <fullName>East CSM B2B</fullName>
+                    <default>false</default>
+                    <label>East CSM B2B</label>
+                </value>
+                <value>
+                    <fullName>LT CSM</fullName>
+                    <default>false</default>
+                    <label>LT CSM</label>
+                </value>
+                <value>
+                    <fullName>C2C</fullName>
+                    <default>false</default>
+                    <label>C2C</label>
+                </value>
+                <value>
+                    <fullName>Xborder Team</fullName>
+                    <default>false</default>
+                    <label>Xborder Team</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>POC_Welcome_Mail__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Is POC Welcome Mail sent ?</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Phone_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone Number(To Send SMS)</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_POC1__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone POC1</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Phone_POC2__c</fullName>
+        <externalId>false</externalId>
+        <label>Phone POC2</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Pickup_Address_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Address City</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Address_Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Address Country</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Address_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Address State</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Location_Pin_code__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Location Pin-code</label>
+        <precision>7</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Pickup_Location__c</fullName>
+        <externalId>false</externalId>
+        <label>Pickup Location</label>
+        <length>2000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Postal_Cat1__c</fullName>
+        <externalId>false</externalId>
+        <label>Postal Cat</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>---------</fullName>
+                    <default>false</default>
+                    <label>---------</label>
+                </value>
+                <value>
+                    <fullName>CatA</fullName>
+                    <default>false</default>
+                    <label>CatA</label>
+                </value>
+                <value>
+                    <fullName>CatB</fullName>
+                    <default>false</default>
+                    <label>CatB</label>
+                </value>
+                <value>
+                    <fullName>CatC</fullName>
+                    <default>false</default>
+                    <label>CatC</label>
+                </value>
+                <value>
+                    <fullName>CatD</fullName>
+                    <default>false</default>
+                    <label>CatD</label>
+                </value>
+                <value>
+                    <fullName>CatE</fullName>
+                    <default>false</default>
+                    <label>CatE</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Product Type</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>B2B</fullName>
+                    <default>false</default>
+                    <label>B2B</label>
+                </value>
+                <value>
+                    <fullName>Heavy</fullName>
+                    <default>false</default>
+                    <label>Heavy</label>
+                </value>
+                <value>
+                    <fullName>C2C Lite</fullName>
+                    <default>false</default>
+                    <label>C2C Lite</label>
+                </value>
+                <value>
+                    <fullName>B2C</fullName>
+                    <default>false</default>
+                    <label>B2C</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Product_category__c</fullName>
+        <externalId>false</externalId>
+        <label>Product category</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>REM_email__c</fullName>
+        <externalId>false</externalId>
+        <label>REM email</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>RTGS_IFSC_code__c</fullName>
+        <externalId>false</externalId>
+        <label>RTGS/ IFSC code</label>
+        <length>40</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RTO_email_recipients__c</fullName>
+        <externalId>false</externalId>
+        <label>RTO email recipients</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address City</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address Country</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_Oracle_ID__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address Oracle ID</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address Postal Code</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Registered_Address_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Registered Address State</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Report_Recipients__c</fullName>
+        <externalId>false</externalId>
+        <label>Report Recipient Email</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Return_Address_City__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address City</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Address_Country__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address Country</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Address_Line_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address Line 1</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Address_Line_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address Line 2</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Address_Postal_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address Postal Code</label>
+        <length>25</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Address_State__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address State</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Return_Address__c</fullName>
+        <externalId>false</externalId>
+        <label>Return Address</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Client Warehouse</fullName>
+                    <default>false</default>
+                    <label>Client Warehouse</label>
+                </value>
+                <value>
+                    <fullName>In Center</fullName>
+                    <default>false</default>
+                    <label>In Center</label>
+                </value>
+                <value>
+                    <fullName>Null</fullName>
+                    <default>false</default>
+                    <label>Null</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Send_SMS_COD__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Send SMS COD</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_SMS_NDR__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Send SMS NDR</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_SMS_Prepaid__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Send SMS Prepaid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_SMS_Reverse__c</fullName>
+        <defaultValue>true</defaultValue>
+        <externalId>false</externalId>
+        <label>Send SMS Reverse</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_mail_Pickup__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Send mail Pickup</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Send_to_Operating_Account__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Send to Operating Account?</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Services__c</fullName>
+        <externalId>false</externalId>
+        <label>Services</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>COD</fullName>
+                    <default>false</default>
+                    <label>COD</label>
+                </value>
+                <value>
+                    <fullName>Pre-Paid</fullName>
+                    <default>false</default>
+                    <label>Pre-Paid</label>
+                </value>
+                <value>
+                    <fullName>DTO</fullName>
+                    <default>false</default>
+                    <label>DTO</label>
+                </value>
+                <value>
+                    <fullName>REPL</fullName>
+                    <default>false</default>
+                    <label>REPL</label>
+                </value>
+                <value>
+                    <fullName>MPS</fullName>
+                    <default>false</default>
+                    <label>MPS</label>
+                </value>
+                <value>
+                    <fullName>Fulfilment</fullName>
+                    <default>false</default>
+                    <label>Fulfilment</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Draft</fullName>
+                    <default>false</default>
+                    <label>Draft</label>
+                </value>
+                <value>
+                    <fullName>Accepted</fullName>
+                    <default>false</default>
+                    <label>Accepted</label>
+                </value>
+                <value>
+                    <fullName>Final</fullName>
+                    <default>false</default>
+                    <label>Final</label>
+                </value>
+                <value>
+                    <fullName>Viewed</fullName>
+                    <default>false</default>
+                    <label>Viewed</label>
+                </value>
+                <value>
+                    <fullName>On-boarded Manually</fullName>
+                    <default>false</default>
+                    <label>On-boarded Manually</label>
+                </value>
+                <value>
+                    <fullName>Synced To HQ</fullName>
+                    <default>false</default>
+                    <label>Synced To HQ</label>
+                </value>
+                <value>
+                    <fullName>Synced To Oracle</fullName>
+                    <default>false</default>
+                    <label>Synced To Oracle</label>
+                </value>
+                <value>
+                    <fullName>Submitted</fullName>
+                    <default>true</default>
+                    <label>Submitted</label>
+                </value>
+                <value>
+                    <fullName>Duplicate</fullName>
+                    <default>false</default>
+                    <label>Duplicate</label>
+                </value>
+                <value>
+                    <fullName>Incomplete</fullName>
+                    <default>false</default>
+                    <label>Incomplete</label>
+                </value>
+                <value>
+                    <fullName>Completed</fullName>
+                    <default>false</default>
+                    <label>Completed</label>
+                </value>
+                <value>
+                    <fullName>Error</fullName>
+                    <default>false</default>
+                    <label>Error</label>
+                </value>
+                <value>
+                    <fullName>Send to godam</fullName>
+                    <default>false</default>
+                    <label>Send to godam</label>
+                </value>
+                <value>
+                    <fullName>Synced to Bird</fullName>
+                    <default>false</default>
+                    <label>Synced to Bird</label>
+                </value>
+                <value>
+                    <fullName>Error HQ</fullName>
+                    <default>false</default>
+                    <label>Error HQ</label>
+                </value>
+                <value>
+                    <fullName>Error Oracle</fullName>
+                    <default>false</default>
+                    <label>Error Oracle</label>
+                </value>
+                <value>
+                    <fullName>Error Bird</fullName>
+                    <default>false</default>
+                    <label>Error Bird</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Success__c</fullName>
+        <externalId>false</externalId>
+        <label>Success</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Synced_to_Bird_As_Addendum__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Synced to Bird As Addendum</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>TAN_No__c</fullName>
+        <description>Tan Number for Fulfillment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Tan Number for Fulfillment</inlineHelpText>
+        <label>TAN No.</label>
+        <length>20</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Time_Invested__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((FLOOR((Onboarding_Completed__c-Onboarding_Accepted__c))&gt;0), Text(FLOOR((Onboarding_Completed__c-Onboarding_Accepted__c))) + &quot; Days&quot;, &quot;0 Days&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Time Invested</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UUID_Key__c</fullName>
+        <description>UUID key received after Client Ware house is created</description>
+        <externalId>false</externalId>
+        <label>UUID Key</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Upload_Recipients__c</fullName>
+        <externalId>false</externalId>
+        <label>Upload Recipient Email</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>2</visibleLines>
+    </fields>
+    <fields>
+        <fullName>VAT_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>VAT Number</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Volume_per_day__c</fullName>
+        <externalId>false</externalId>
+        <label>Volume per day</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Wallet_Notification_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet Notification Email</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Wallet_Notification_Mobile__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet Notification Mobile</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>Wallet_Provider__c</fullName>
+        <externalId>false</externalId>
+        <label>Wallet Provider</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Delhivery miles</fullName>
+                    <default>true</default>
+                    <label>Delhivery miles</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Warehouse_Client_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Warehouse Client Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>X_Ray_Limit__c</fullName>
+        <defaultValue>7000</defaultValue>
+        <externalId>false</externalId>
+        <label>X-Ray Limit</label>
+        <precision>10</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>allow_no_data__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>allow no data</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>auto_pickup__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>auto pickup</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isCo_Owner__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Opportunity__r.Owner.Id = $User.Id , true, false)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>isCo-Owner</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>push_url__c</fullName>
+        <externalId>false</externalId>
+        <label>push_url</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>send_sms_cash__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>send sms cash</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Customer Onboarding</label>
+    <listViews>
+        <fullName>Accepted_COB</fullName>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <columns>NAME</columns>
+        <columns>Desired_HQ_Name__c</columns>
+        <columns>Company_Registered_Name__c</columns>
+        <columns>Status__c</columns>
+        <columns>IsDocuments_Verified__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Opportunity_Owner__c</columns>
+        <columns>Opportunity_Record_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Accepted</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Synced To HQ</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Incomplete</value>
+        </filters>
+        <label>Accepted COB</label>
+        <sharedTo>
+            <group>Customer_Onboarding_All_View</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Desired_HQ_Name__c</columns>
+        <columns>Company_Registered_Name__c</columns>
+        <columns>Status__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Opportunity_Owner__c</columns>
+        <columns>Opportunity_Record_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <sharedTo>
+            <group>Customer_Onboarding_All_View</group>
+            <group>System_Admin</group>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>My_Customer_Onboarding</fullName>
+        <columns>NAME</columns>
+        <columns>Email__c</columns>
+        <columns>Desired_HQ_Name__c</columns>
+        <columns>Company_Registered_Name__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>Opportunity_Owner__c</columns>
+        <columns>Opportunity_Record_Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>isCo_Owner__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>My Customer Onboarding</label>
+    </listViews>
+    <listViews>
+        <fullName>Today_s</fullName>
+        <columns>NAME</columns>
+        <columns>Desired_HQ_Name__c</columns>
+        <columns>Status__c</columns>
+        <columns>Email__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>Opportunity_Record_Type__c</columns>
+        <columns>Opportunity_Owner__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>LAST_UPDATE</field>
+            <operation>equals</operation>
+            <value>TODAY</value>
+        </filters>
+        <label>Today&apos;s</label>
+    </listViews>
+    <nameField>
+        <displayFormat>COB-{0000000}</displayFormat>
+        <label>Customer Onboarding Name</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Customer Onboardings</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Customer_Onboarding_Layout</fullName>
+        <active>true</active>
+        <label>Customer Onboarding Layout</label>
+        <picklistValues>
+            <picklist>Billing_Client_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drop State</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pickup State</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Billing_Mode__c</picklist>
+            <values>
+                <fullName>Express</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surface</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Invoicing_Mode__c</picklist>
+            <values>
+                <fullName>Agreement execution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COD Net-off</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delhivery Miles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly Invoiced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prepaid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Movement_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO state GST IN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warehouse state GST IN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POC_Team__c</picklist>
+            <values>
+                <fullName>C2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>East CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT B2C POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ravinder Thakur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West POC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Postal_Cat1__c</picklist>
+            <values>
+                <fullName>---------</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatE</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Type__c</picklist>
+            <values>
+                <fullName>B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>B2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C2C Lite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Heavy</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Return_Address__c</picklist>
+            <values>
+                <fullName>Client Warehouse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Null</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Services__c</picklist>
+            <values>
+                <fullName>COD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfilment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REPL</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error Bird</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error HQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error Oracle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On-boarded Manually</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Synced To HQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Synced To Oracle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Synced to Bird</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Viewed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wallet_Provider__c</picklist>
+            <values>
+                <fullName>Delhivery miles</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Fulfillment</fullName>
+        <active>true</active>
+        <description>For Fulfillment Opportunities</description>
+        <label>Fulfillment</label>
+        <picklistValues>
+            <picklist>Billing_Client_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drop State</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pickup State</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Billing_Mode__c</picklist>
+            <values>
+                <fullName>Express</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surface</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Invoicing_Mode__c</picklist>
+            <values>
+                <fullName>Agreement execution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COD Net-off</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delhivery Miles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly Invoiced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prepaid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Movement_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO state GST IN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warehouse state GST IN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POC_Team__c</picklist>
+            <values>
+                <fullName>C2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>East CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT B2C POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ravinder Thakur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West POC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Postal_Cat1__c</picklist>
+            <values>
+                <fullName>---------</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatE</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Type__c</picklist>
+            <values>
+                <fullName>B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C2C Lite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Heavy</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Return_Address__c</picklist>
+            <values>
+                <fullName>Client Warehouse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Null</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Services__c</picklist>
+            <values>
+                <fullName>COD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfilment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REPL</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On-boarded Manually</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Send to godam</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Viewed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wallet_Provider__c</picklist>
+            <values>
+                <fullName>Delhivery miles</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Read_Only_custom</fullName>
+        <active>true</active>
+        <label>Read Only custom</label>
+        <picklistValues>
+            <picklist>Billing_Client_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drop State</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pickup State</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Billing_Mode__c</picklist>
+            <values>
+                <fullName>Express</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surface</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Invoicing_Mode__c</picklist>
+            <values>
+                <fullName>Agreement execution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COD Net-off</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delhivery Miles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly Invoiced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prepaid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Movement_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO state GST IN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warehouse state GST IN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POC_Team__c</picklist>
+            <values>
+                <fullName>C2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>East CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT B2C POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ravinder Thakur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West POC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Postal_Cat1__c</picklist>
+            <values>
+                <fullName>---------</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatE</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Type__c</picklist>
+            <values>
+                <fullName>B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C2C Lite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Heavy</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Return_Address__c</picklist>
+            <values>
+                <fullName>Client Warehouse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Null</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Services__c</picklist>
+            <values>
+                <fullName>COD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfilment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REPL</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error Bird</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error HQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error Oracle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On-boarded Manually</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Synced To HQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Synced To Oracle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Synced to Bird</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Viewed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wallet_Provider__c</picklist>
+            <values>
+                <fullName>Delhivery miles</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>SaaS_Cob</fullName>
+        <active>true</active>
+        <label>SaaS_Cob</label>
+        <picklistValues>
+            <picklist>Billing_Client_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Drop State</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pickup State</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Billing_Mode__c</picklist>
+            <values>
+                <fullName>Express</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Surface</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Invoicing_Mode__c</picklist>
+            <values>
+                <fullName>Agreement execution</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>COD Net-off</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Delhivery Miles</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Monthly Invoiced</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Post Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Prepaid</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Movement_Config__c</picklist>
+            <values>
+                <fullName>--None--</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Client HO state GST IN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Warehouse state GST IN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>POC_Team__c</picklist>
+            <values>
+                <fullName>C2C</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>East CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fashion CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT B2C POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LT CSM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>North POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Ravinder Thakur</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>South POC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West CSM B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>West POC</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Postal_Cat1__c</picklist>
+            <values>
+                <fullName>---------</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatB</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>CatE</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Product_Type__c</picklist>
+            <values>
+                <fullName>B2B</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>C2C Lite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Heavy</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Return_Address__c</picklist>
+            <values>
+                <fullName>Client Warehouse</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>In Center</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Null</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Services__c</picklist>
+            <values>
+                <fullName>COD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Fulfilment</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MPS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pre-Paid</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REPL</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Completed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Draft</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error Bird</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error HQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Error Oracle</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Final</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>On-boarded Manually</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Submitted</fullName>
+                <default>true</default>
+            </values>
+            <values>
+                <fullName>Synced To HQ</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Viewed</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Wallet_Provider__c</picklist>
+            <values>
+                <fullName>Delhivery miles</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>CREATED_DATE</customTabListAdditionalFields>
+        <excludedStandardButtons>New</excludedStandardButtons>
+        <listViewButtons>New_Customer_Onboarding</listViewButtons>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Desired_HQ_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Company_Registered_Name__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>IFSC_Code_to_be_11_Digits_alphanumeric</fullName>
+        <active>false</active>
+        <errorConditionFormula>OR(
+NOT( REGEX( RTGS_IFSC_code__c , &quot;[a-zA-Z0-9_+-]+&quot;)),
+(LEN( RTGS_IFSC_code__c )&lt;&gt;11)
+)</errorConditionFormula>
+        <errorDisplayField>RTGS_IFSC_code__c</errorDisplayField>
+        <errorMessage>IFSC Code must be 11 Digits and Alphanumeric</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Invoicing_Mode_to_be_read_only</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(!ISNEW() , $Profile.Name &lt;&gt; &quot;System Administrator&quot;,$Profile.Name &lt;&gt; &quot;Customer Onboarding Profile&quot;,$Profile.Name &lt;&gt; &quot;CustomerOnboarding Profile&quot;)</errorConditionFormula>
+        <errorDisplayField>Invoicing_Mode__c</errorDisplayField>
+        <errorMessage>Invoicing mode cannot be edited.Please contact System Administrator.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_SMS_Services_for_B2B_Clients</fullName>
+        <active>false</active>
+        <description>SF-266</description>
+        <errorConditionFormula>$Profile.Name &lt;&gt; &apos;System Administrator&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;CustomerOnboarding Profile&apos; &amp;&amp; Opportunity__r.RecordType.Name = &apos;B2B&apos; &amp;&amp; ( ISCHANGED( send_sms_cash__c ) || ISCHANGED( Send_SMS_COD__c ) || ISCHANGED( Send_SMS_NDR__c ) || ISCHANGED( Send_SMS_Prepaid__c ) || ISCHANGED( Send_SMS_Reverse__c ) )</errorConditionFormula>
+        <errorMessage>SMS Services can only be edited by System Administrator for B2B Clients</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Onbaording_readonly_when_Synched</fullName>
+        <active>true</active>
+        <description>When the COB is synced to HQ, it will be read-only for all users except system Admin.</description>
+        <errorConditionFormula>AND(!ISNEW() , $Profile.Name &lt;&gt; &quot;System Administrator&quot;,$Profile.Name &lt;&gt; &quot;Customer Onboarding Profile&quot;,$Profile.Name &lt;&gt; &quot;SignContractPage Profile&quot;  ,NOT( ISBLANK(Client_Id__c) ) )</errorConditionFormula>
+        <errorMessage>Customer onboarding cannot be updated.Please contact System Administrator.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Wallet_Email_required_based_isprepaid</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND( !ISNEW(),Is_Prepaid__c ,ISBLANK(  Wallet_Notification_Email__c ))</errorConditionFormula>
+        <errorDisplayField>Wallet_Notification_Email__c</errorDisplayField>
+        <errorMessage>Please Enter the Email</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Wallet_Mobile_required_based_isprepaid</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(!ISNEW(),( Is_Prepaid__c ),ISBLANK(  Wallet_Notification_Mobile__c ))</errorConditionFormula>
+        <errorDisplayField>Wallet_Notification_Mobile__c</errorDisplayField>
+        <errorMessage>Please Enter the  Mobile</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Wallet_Provider_required_based_isprepaid</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(!ISNEW(),( Is_Prepaid__c ),
+
+ISBLANK(TEXT(  Wallet_Provider__c ))
+
+)</errorConditionFormula>
+        <errorDisplayField>Wallet_Provider__c</errorDisplayField>
+        <errorMessage>Please Enter the Wallet Provider</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Welcome_Mail</fullName>
+        <active>true</active>
+        <errorConditionFormula>And(PRIORVALUE( POC_Welcome_Mail__c ) =false ,POC_Welcome_Mail__c =true,OR(ISBlank(Name_POC1__c),ISBlank(Name_POC2__c),ISBlank(CL_PANEL_User_Name__c)))</errorConditionFormula>
+        <errorMessage>Please fill  POC Assignments and CL PANEL credentials.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Create_Client_Warehouse</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Create Client Warehouse</masterLabel>
+        <openType>sidebar</openType>
+        <page>CreateClientWareHousePage</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Generate_FRS</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Generate FRS</masterLabel>
+        <openType>newWindow</openType>
+        <page>FreshbooksTokenBasedAuth</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
+    <webLinks>
+        <fullName>New_CustomerOnBoarding</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New CustomerOnBoarding</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/opportunityOnboardingPage?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Customer_Onboarding</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>New Customer Onboarding</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>if(&apos;{!Opportunity.StageName }&apos; == &apos;Contract Signed&apos;) 
+{ 
+   if({!Opportunity.Onboarding_form_submitted__c})
+  {
+    alert(&apos;Customer Onboarding form is already submitted.&apos;); 
+  }
+  else{
+   window.open(&apos;/apex/ContactSelectionOnboarding?id={!Opportunity.Id}&apos;,&apos;_blank&apos;); 
+  }
+}
+else { 
+   alert(&apos;Customer Onboarding will be send only when Opportunity stage is Contract  Signed&apos;); 
+}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>New_Customer_Onbording_Saas</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <height>600</height>
+        <linkType>url</linkType>
+        <masterLabel>New Customer Onbording(Saas)</masterLabel>
+        <openType>sidebar</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>/apex/opportunityOnboardingPageSaas?id={!Opportunity.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_To_AmazonS3</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Send To AmazonS3</masterLabel>
+        <openType>sidebar</openType>
+        <page>AmazonS3FileUpload</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_To_Oracle</fullName>
+        <availability>online</availability>
+        <description>CoB To Oracle</description>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Send To Oracle</masterLabel>
+        <openType>replace</openType>
+        <page>OnBoardingToOracle</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_to_Godam</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Send to Godam</masterLabel>
+        <openType>newWindow</openType>
+        <page>sendtoGodamvf</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
+    <webLinks>
+        <fullName>Send_to_HQ</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Send to HQ</masterLabel>
+        <openType>sidebar</openType>
+        <page>OnboardingSendToHQ</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Sync_to_Bird</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Sync to Bird</masterLabel>
+        <openType>sidebar</openType>
+        <page>birdPricingUplodad</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Sync_to_Bird_As_Addendum</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Sync to Bird As Addendum</masterLabel>
+        <openType>sidebar</openType>
+        <page>birdPricingAddendumPage</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Update_to_HQ</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>page</linkType>
+        <masterLabel>Update to HQ</masterLabel>
+        <openType>newWindow</openType>
+        <page>OnboardingUpdateToHQ</page>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+    </webLinks>
+</CustomObject>

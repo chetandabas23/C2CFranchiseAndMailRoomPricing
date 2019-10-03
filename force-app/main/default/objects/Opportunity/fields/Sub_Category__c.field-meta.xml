@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Client_Category__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Large Horizontals</fullName>
+                <default>false</default>
+                <label>Large Horizontals</label>
+            </value>
+            <value>
+                <fullName>Vertical Leaders</fullName>
+                <default>false</default>
+                <label>Vertical Leaders</label>
+            </value>
+            <value>
+                <fullName>Long tail e-tailers and platform sellers</fullName>
+                <default>false</default>
+                <label>Long tail e-tailers and platform sellers</label>
+            </value>
+            <value>
+                <fullName>Marketplace Vendors</fullName>
+                <default>false</default>
+                <label>Marketplace Vendors</label>
+            </value>
+            <value>
+                <fullName>Independent SMBs</fullName>
+                <default>false</default>
+                <label>Independent SMBs</label>
+            </value>
+            <value>
+                <fullName>Fashion</fullName>
+                <default>false</default>
+                <label>Fashion</label>
+            </value>
+            <value>
+                <fullName>Electronics</fullName>
+                <default>false</default>
+                <label>Electronics</label>
+            </value>
+            <value>
+                <fullName>FMCG</fullName>
+                <default>false</default>
+                <label>FMCG</label>
+            </value>
+            <value>
+                <fullName>Home</fullName>
+                <default>false</default>
+                <label>Home</label>
+            </value>
+            <value>
+                <fullName>Auto</fullName>
+                <default>false</default>
+                <label>Auto</label>
+            </value>
+            <value>
+                <fullName>Education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>Health,Pharma</fullName>
+                <default>false</default>
+                <label>Health,Pharma</label>
+            </value>
+            <value>
+                <fullName>Industrial</fullName>
+                <default>false</default>
+                <label>Industrial</label>
+            </value>
+            <value>
+                <fullName>Office Products</fullName>
+                <default>false</default>
+                <label>Office Products</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+                <label>Aggregator</label>
+            </value>
+            <value>
+                <fullName>C2C</fullName>
+                <default>false</default>
+                <label>C2C</label>
+            </value>
+            <value>
+                <fullName>Franchise</fullName>
+                <default>false</default>
+                <label>Franchise</label>
+            </value>
+            <value>
+                <fullName>Mail-Room</fullName>
+                <default>false</default>
+                <label>Mail-Room</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>C2C</controllingFieldValue>
+            <valueName>C2C</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C2C</controllingFieldValue>
+            <valueName>Franchise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C2C</controllingFieldValue>
+            <valueName>Mail-Room</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E-tail</controllingFieldValue>
+            <valueName>Large Horizontals</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E-tail</controllingFieldValue>
+            <valueName>Vertical Leaders</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>E-tail</controllingFieldValue>
+            <valueName>Long tail e-tailers and platform sellers</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SMB</controllingFieldValue>
+            <valueName>Marketplace Vendors</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>SMB</controllingFieldValue>
+            <valueName>Independent SMBs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Fashion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Electronics</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>FMCG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Home</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Auto</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Education</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Health,Pharma</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Industrial</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Office Products</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <controllingFieldValue>Other Customers</controllingFieldValue>
+            <controllingFieldValue>Long Tail Clients</controllingFieldValue>
+            <valueName>Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Aggregator</controllingFieldValue>
+            <valueName>Aggregator</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

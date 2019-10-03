@@ -1,0 +1,25 @@
+<apex:page standardController="Customer_Onboarding__c" extensions="clsNotification" action="{!sentEmailNotification}"   showHeader="false" sidebar="false" lightningStylesheets="true">
+  <apex:form >
+      <apex:inputHidden value="{!Customer_Onboarding__c.EMAIL_POC1__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.EMAIL_POC2__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.EMAIL_POC3__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Name_POC1__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Name_POC2__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Phone_POC1__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Phone_POC2__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.CL_PANEL_User_Name__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.CL_PANEL_Password__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.POC_Welcome_Mail__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Email__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Opportunity__r.owner.Email}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Contact__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Desired_HQ_Name__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Opportunity_Record_Type__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Status__c}"/>
+      <apex:inputHidden value="{!Customer_Onboarding__c.Is_Postpaid__c}"/>
+
+      <apex:pageBlock >
+           <apex:pageMessages ></apex:pageMessages>
+      </apex:pageBlock>
+  </apex:form>
+</apex:page>

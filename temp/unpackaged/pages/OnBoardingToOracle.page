@@ -1,0 +1,74 @@
+<apex:page StandardController="Customer_Onboarding__c" extensions="OnBoardingToOracle_Ctl" action="{!sendToOracle}" lightningStylesheets="true">
+    <apex:form >
+        <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+            <head>
+                
+                <meta charset="utf-8" />
+                <meta http-equiv="x-ua-compatible" content="ie=edge" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <apex:slds />
+                
+            </head>
+            <style type="text/css">
+                .col3 {width:200px;}        
+            </style>
+            <body>                
+                
+                <apex:pageBlock id="pageBlockId">
+                    
+                    <apex:pageMessages />
+                    
+                    <apex:outputPanel style="margin: 24px 0px 28px 48px;" rendered="{!AND(listOf_mandatoryFields.size > 0,listOf_mandatoryFields[0] != '-- Present in Oracle --')}" layout="block">
+                       Please Fill all the mandatory fields mentioned below :
+                        <ul>
+                            <apex:repeat value="{!listOf_mandatoryFields}" var="mf">
+                                <li><apex:outputText value="{!mf}"/></li>
+                            </apex:repeat>
+                        </ul>
+                    </apex:outputPanel>
+                    
+                    <apex:pageBlockButtons location="bottom" >
+                        <apex:commandButton styleClass="slds-button slds-button_brand" action="{!backToCOB}" value="Back To COB's Detail Page" />
+                    </apex:pageBlockButtons>
+                    <apex:outputPanel id="insertPanelID" rendered="{!IsResponsed}" style="margin-left:18px" styleClass="slds-grid slds-gutters slds-text-body_regular" layout="block">
+                        <div class="slds-col">
+                            <b>Operating Account ID :</b> &nbsp;<apex:OutputText value="{!IF(OperatingAccID == null,"NO Data",OperatingAccID)}"/><br/>
+                            <b>Company Registered Name :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Company_Registered_Name__c == null,"NO Data",listOnBoarding[0].Company_Registered_Name__c)}" /><br/>
+                            <b>Desired HQ Name : </b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Desired_HQ_Name__c == null,"NO Data",listOnBoarding[0].Desired_HQ_Name__c)}" /><br/>
+                            <b>Contact FirstName :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Contact_First_Name__c == null,"NO Data",listOnBoarding[0].Contact_First_Name__c)}" /><br/>
+                            <b>Contact LastName :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Contact_Last_Name__c == null,"NO Data",listOnBoarding[0].Contact_Last_Name__c)}" /><br/>
+                            <b>Email ID :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Email__c == null,"NO Data",listOnBoarding[0].Email__c)}" /><br/>
+                            <b>Contact Number :</b> &nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Contact_number__c == null,"NO Data",listOnBoarding[0].Contact_number__c)}" /><br/>
+                            <b>Contract Start Date :</b> &nbsp;<apex:outputField value="{!listOnBoarding[0].Account__r.Contract_Start_Date__c}" /><br/>
+                            <b>Contract End Date :</b> &nbsp;<apex:OutputField value="{!listOnBoarding[0].Account__r.Contract_End_Date__c}" /><br/>
+                        </div>
+                        <div class="slds-col">
+                            <b>Service ID : </b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Account__c == null,"NO Data",listOnBoarding[0].Account__c)}" /><br/>
+                            <b>Bank Name : </b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Bank_name__c == null,"NO Data",listOnBoarding[0].Bank_name__c)}" /><br/>
+                            <b>Beneficiary Name :</b>&nbsp; <apex:OutputText value="{!IF(listOnBoarding[0].Beneficiary_name__c == null,"NO Data",listOnBoarding[0].Beneficiary_name__c)}" /><br/>
+                            <b>Bank A/c Number :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Bank_A_c_Number__c == null,"NO Data",listOnBoarding[0].Bank_A_c_Number__c)}" /><br/>
+                            <b>IFSC Code :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].RTGS_IFSC_code__c == null,"NO Data",listOnBoarding[0].RTGS_IFSC_code__c)}" /><br/>
+                            <b>PAN CARD NO. :</b>&nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].PAN_card__c == null,"NO Data",listOnBoarding[0].PAN_card__c)}" /><br/>
+                            
+                       <!-- <b>Address :</b> &nbsp; <apex:OutputText value="{!IF(listOnBoarding[0].Registered_Address_Line_1__c == null,"NO Data",listOnBoarding[0].Registered_Address_Line_1__c)}" /><br/>
+                            <b>City :</b> &nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Registered_Address_City__c == null,"NO Data",listOnBoarding[0].Registered_Address_City__c)}" /><br/>
+                            <b>State :</b> &nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Registered_Address_State__c == null,"NO Data",listOnBoarding[0].Registered_Address_State__c)}" /><br/>
+                            <b>Country :</b> &nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].Registered_Address_Country__c == null,"NO Data",listOnBoarding[0].Registered_Address_Country__c)}" /><br/>
+                            <b>Postal Code :</b> &nbsp; <apex:OutputText value="{!IF(listOnBoarding[0].Registered_Address_Postal_Code__c == null,"NO Data",listOnBoarding[0].Registered_Address_Postal_Code__c)}" /><br/>
+                            <b>GST Number :</b> &nbsp;<apex:OutputText value="{!IF(listOnBoarding[0].States__r[0].GST_Number__c == null,"NO Data",listOnBoarding[0].States__r[0].GST_Number__c)}" /><br/>-->
+                            <b>States : </b>
+                            <apex:repeat rendered="{!listOnBoarding[0].States__r.size > 0}" value="{!listOnBoarding[0].States__r}" var="each_state"> 
+                               <div>
+                                    {!each_state.state__c} 
+                                </div>
+                            </apex:repeat>
+                        </div>
+                    </apex:outputPanel>
+                    
+                </apex:pageBlock>
+                
+                
+            </body>
+        </html>
+    </apex:form>
+</apex:page>

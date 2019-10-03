@@ -1,0 +1,5 @@
+<apex:page standardController="Customer_Onboarding__c" extensions="updatePocAssignmentExt" lightningStylesheets="true" action="{!checkValidation}" >
+  <apex:pageBlock >
+           <apex:pageMessages ></apex:pageMessages>
+      </apex:pageBlock>
+</apex:page>

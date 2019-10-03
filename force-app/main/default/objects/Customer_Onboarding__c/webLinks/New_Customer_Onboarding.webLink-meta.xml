@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>New_Customer_Onboarding</fullName>
+    <availability>online</availability>
+    <displayType>massActionButton</displayType>
+    <linkType>javascript</linkType>
+    <masterLabel>New Customer Onboarding</masterLabel>
+    <openType>onClickJavaScript</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>if(&#39;{!Opportunity.StageName }&#39; == &#39;Contract Signed&#39;) 
+{ 
+   if({!Opportunity.Onboarding_form_submitted__c})
+  {
+    alert(&#39;Customer Onboarding form is already submitted.&#39;); 
+  }
+  else{
+   window.open(&#39;/apex/ContactSelectionOnboarding?id={!Opportunity.Id}&#39;,&#39;_blank&#39;); 
+  }
+}
+else { 
+   alert(&#39;Customer Onboarding will be send only when Opportunity stage is Contract  Signed&#39;); 
+}</url>
+</WebLink>

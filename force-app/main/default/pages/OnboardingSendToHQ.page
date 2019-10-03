@@ -1,0 +1,7 @@
+<apex:page StandardController="Customer_Onboarding__c" extensions="OnboardingSendToHQ_Ctl" action="{!sendToHQ}" lightningStylesheets="true">
+  <apex:slds />
+  <apex:pagemessages escape="false" ></apex:pagemessages>
+  <apex:form >
+      <apex:commandButton action="{!Cancel}" value="Back" status="status"/>
+  </apex:form>
+</apex:page>

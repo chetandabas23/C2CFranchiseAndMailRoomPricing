@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Other_Service__c</fullName>
+    <externalId>false</externalId>
+    <label>Client Other Service</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Owner Website</fullName>
+                <default>false</default>
+                <label>Owner Website</label>
+            </value>
+            <value>
+                <fullName>Marketplace</fullName>
+                <default>false</default>
+                <label>Marketplace</label>
+            </value>
+            <value>
+                <fullName>Paytm</fullName>
+                <default>false</default>
+                <label>Paytm</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

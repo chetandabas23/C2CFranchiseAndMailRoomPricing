@@ -1,0 +1,1398 @@
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+* Author: Techila Global Services Pvt Ltd.
+* VF Page Name: ExpSurfacePDF
+* Created Date: 29-June-2017
+* Description: Contract Agreement for Express and Surface Page Layout to send as PDF in email. 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<apex:page standardController="Opportunity" extensions="ProductPricingVFExtension" renderAs="PDF"   applyHtmlTag="false" showHeader="false" applyBodyTag="false" >
+    <html>  
+        <body>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+                <style type="text/css">
+                    @page {
+                    size:A4 portrait;
+                    border: 2px solid black;    
+                    }
+                    table {
+                    border-collapse: collapse;
+                    width: 100%;
+                    padding:0;
+                    margin:0;
+                    }
+                    #ExpressTable{
+                    height:100%
+                    }
+                    #heading {
+                    background-color: #ECD26B;
+                    color: white;
+                    font-weight: bold;
+                    padding: 8px;
+                    letter-spacing: 0.5px;
+                    font-size:13px;
+                    }
+                    p{
+                    font-size:15px;
+                    }
+                </style>
+                
+            </head>
+            <apex:form >
+                <div style="font-size: 11px;font-family: Times New Roman; border:1px solid #000; padding:20px; border-style: double;">
+                    <center>
+                        <b>
+                            <u>
+                                Terms &amp; Conditions
+                            </u>
+                        </b>
+                    </center>
+                    <br/>
+                    <b>Definitions</b><br/>
+                    Herein, "we," "our," "us," and "Delhivery" refer to Delhivery Private Limited, its subsidiaries, branches, and controlled entities, and their respective employees, agents, and independent contractors. "Merchant","you" and "your" refer to <b>{!AccountRegisteredName}</b> and its employees, principals, and agents. 
+                    <br/><b>'Customer'</b> shall mean any Person/party/entity who/which is transacts on any platform operated by the Merchant.
+                    <br/><b>'Shipment'</b> means all the products consolidated, packaged and/ or invoiced together and handed over to the Service Provider by the Merchant for Delivery. 
+                    <br/><br/>
+                    <b>Term:</b>
+                    <ul type="disc">
+                        <li>These terms and conditions shall be effective on the date you accept the said terms and conditions and shall be valid, legal and binding from such date unless terminated by either Party.</li>
+                        <li> <apex:outputLabel ><b> Agreement Start Date:</b> {!con.Start_Date__c}</apex:outputLabel> <br/></li>
+                        <li> <apex:outputLabel ><b> Agreement End Date:</b> {!con.End_Date__c}</apex:outputLabel> <br/></li>
+                    </ul>
+                    <b>Fees:</b>
+                    <ul type="disc">
+                        <li>As set out in Annexure I.</li>
+                    </ul>
+                    <b>Responsibility for Payment</b>
+                    <ul type="disc">
+                        <li>You shall make payment of all Fees for availing Delivery Services through the Delhivery Miles purchased by you.</li>
+                    </ul>
+                    <b>Your Obligations</b>
+                    <ul type="disc">
+                        <li>You warrant that each Shipment is properly described along with all relevant documents, acceptable for transport by us, and properly marked, addressed (including postal code), and packed to ensure safe transportation with ordinary care in handling. You are responsible for and shall indemnify us against all charges and possible surcharges and assessments including fees related to our prepayment of the same, governmental penalties and fines, taxes, and our lawyers&apos; fees and legal costs, related to this Shipment.</li>
+                        <li>You shall not book / handover or allow to be handed over any Shipment which is banned, restricted, illegal, prohibited, stolen, infringing of any third party rights, hazardous or dangerous or in breach of any tax laws.</li>
+                    </ul>
+                    <b>Limitation of Liability</b>
+                    <ul type="disc">
+                        <li>Our maximum liability for the damage, loss, theft or misappropriation of any Shipment during the transit period shall be <b><apex:outputField value="{!olt.Maximum_liability_per_consignment__c}"></apex:outputField></b> or the actual aggregate value of the product, whichever is lower.</li>
+                        <li>Our maximum liability for Reverse Pick-ups shall be limited to <b><apex:outputField value="{!olt.Maximum_Liability_for_Reverse__c}"></apex:outputField></b> per Shipment or <b><apex:outputField value="{!olt.Maximum_Liability_for_Reverse_Percent__c}"></apex:outputField></b> of the aggregate value of the product shared in the manifest whichever is lower.</li>
+                        <li>For any loss or theft or misappropriation of any Shipment with a value above <b><apex:outputField value="{!olt.Maximum_liability_per_consignment__c}"></apex:outputField></b> we shall provide you a COF only.</li>
+                    </ul>
+                    <b>Insurance</b>
+                    <ul type="disc">
+                        <li>We are not the insurer of the products. Our liability is limited subject to the Limitation of Liability as provided above.</li>
+                    </ul>
+                    <b>Indemnity</b>
+                    <ul type="disc">
+                        <li>Each Party shall defend, hold harmless, indemnify and keep indemnified and harmless the other Party, it’s directors, employees, contractors and agents against all suits, investigations, enforcements, actions, fines, penalties, fees, interests, losses, damages and costs (including reasonable attorney fees) incurred by the other Party due to any breach of this Agreement.</li>
+                    </ul>     
+                    <br/>
+                    <br/>
+                    Both Parties shall observe all applicable laws, rules and regulations as may be prescribed by the Government of India and authorities in relation to the delivery services.<br/>
+                    <br/>
+                    This Agreement is to be read in conjunction with the detailed agreement and scope of work available at <a id="texttt" href="{!$Label.SiteURL}/TermsAndConditions" rel="external" target="_blank">here</a>. In case of a conflict of any of the terms of this Agreement, it is agreed between the Parties that in such cases, the terms of this Agreement shall supersede. We reserve the right to make changes to the detailed agreement and scope of work. We will keep you informed of any such changes on the email provided by you.
+                    <br/><br/>
+                    This Agreement shall be construed and governed by the laws of India.
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>                 
+                    
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>           
+                
+                <div style="font-size: 11px;font-family: Times New Roman; border:1px solid #000; padding:20px; border-style: double;">
+                    <center>
+                        <b>
+                            Annexure I: Fees
+                        </b>
+                    </center>    
+                    <br/>
+                    <br/>
+                    <apex:pageBlock id="CustomExpress" rendered="{!IF(AND(Opportunity.RecordType.DeveloperName=='Express_Shipping',opp.OpportunityLineItems.size>0, opp.OpportunityLineItems[0].isCustom__c),true,false )}">
+                        <apex:pageMessages ></apex:pageMessages>
+                        <center>
+                            <table cellspacing="0" cellpadding="9" border="1" id="CustomExpress" >
+                                <tr><td colspan="8" id="heading" ><center><p><b>Delhivery Commercials - EXPRESS</b></p></center></td></tr> 
+                                
+                                <tr>
+                                    
+                                    <th id="heading" colspan="3"><center>Weight Slabs</center></th>
+                                    
+                                    <th id="heading" ><center>Within-city</center></th>
+                                    <th id="heading" > <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                                    <th id="heading" ><center> Metro-Metro </center></th>
+                                    <th id="heading"><center> Rest of India </center></th>
+                                    <th id="heading"><center>North East, HP,<br/> Port Blair,J And K </center></th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading"><center>START RANGE</center></th>
+                                    <th id="heading"><center>END RANGE</center></th>
+                                    <th id="heading"><center>EACH SLAB <br/>(in grams)</center></th>
+                                    <th id="heading"><center>ZONE A</center></th>
+                                    <th id="heading"><center>ZONE B </center></th>
+                                    <th id="heading"><center>ZONE C</center></th>
+                                    <th id="heading"><center>ZONE D</center></th>
+                                    <th id="heading"><center>ZONE E</center></th>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading" colspan="8">Forward</th>
+                                </tr>
+                                
+                                <!-- <apex:outputPanel rendered="{!BaseList.size > 0}" > -->
+                                <apex:repeat value="{!BaseList}" var="base"  rendered="{!BaseList.size > 0}">
+                                    <tr>
+                                        <td><apex:outputField value="{!base.Start_Range__c}"   /></td> 
+                                        <td>
+                                            <apex:outputField value="{!base.End_Range__c}" rendered="{!if(base.End_Range__c!=null,true,false)}"/>
+                                            <apex:outputLabel rendered="{!if(base.End_Range__c==null,true,false)}">
+                                                <center>
+                                                    <!--   <apex:image value="{!$Resource.InfinityImage}" width="20" height="20"/>-->
+                                                </center>
+                                            </apex:outputLabel>
+                                        </td>
+                                        <td><apex:outputField value="{!base.Slab__c}"   /></td>
+                                        <td><apex:outputField value="{!base.Zone_A_Custom_Price__c}"   /></td>
+                                        <td><apex:outputField value="{!base.Zone_B_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!base.Zone_C_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!base.Zone_D_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!base.Zone_E_Custom_Price__c}"    /></td>
+                                    </tr>
+                                </apex:repeat>                
+                                <!--  </apex:outputPanel> -->
+                                
+                                <tr><td colspan="8">
+                                    <apex:outputPanel rendered="{!BaseList.size == 0 }" > 
+                                        <center><i>No Pricing selected for Forward</i></center>
+                                    </apex:outputPanel>
+                                    </td></tr>  
+                                
+                                
+                                <tr>
+                                    <th id="heading" colspan="8" >RTO</th>
+                                </tr>
+                                
+                                <!-- <apex:outputPanel rendered="{!RTOList.size > 0}" >  -->
+                                <apex:repeat value="{!RTOList}" var="RTO" rendered="{!RTOList.size > 0}" >
+                                    <tr>
+                                        <td><apex:outputField value="{!RTO.Start_Range__c}"   /></td> 
+                                        <td>
+                                            <apex:outputField value="{!RTO.End_Range__c}" rendered="{!if(RTO.End_Range__c!=null,true,false)}"/>
+                                            <apex:outputLabel rendered="{!if(RTO.End_Range__c==null,true,false)}">
+                                                <center>
+                                                    
+                                                </center>
+                                            </apex:outputLabel>
+                                        </td>
+                                        <td><apex:outputField value="{!RTO.Slab__c}"   /></td>
+                                        <td><apex:outputField value="{!RTO.Zone_A_Custom_Price__c}"   /></td>
+                                        <td><apex:outputField value="{!RTO.Zone_B_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!RTO.Zone_C_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!RTO.Zone_D_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!RTO.Zone_E_Custom_Price__c}"    /></td>
+                                    </tr>
+                                </apex:repeat>                
+                                <!-- </apex:outputPanel>   -->
+                                
+                                <tr><td colspan="8">
+                                    <apex:outputPanel rendered="{!RTOList.size==0 }" >
+                                        <center><i>No Pricing selected for RTO</i></center>
+                                    </apex:outputPanel>
+                                    </td></tr>  
+                                
+                                <tr>
+                                    
+                                    <th id="heading" colspan="8" >DTO</th>
+                                </tr>
+                                
+                                <!-- <apex:outputPanel rendered="{!DTOList.size > 0}" > -->
+                                <apex:repeat value="{!DTOList}" var="DTO" rendered="{!DTOList.size > 0}" >
+                                    <tr>
+                                        <td><apex:outputField value="{!DTO.Start_Range__c}"   /></td> 
+                                        <td>
+                                            <apex:outputField value="{!DTO.End_Range__c}" rendered="{!if(DTO.End_Range__c!=null,true,false)}"/>
+                                            <apex:outputLabel rendered="{!if(DTO.End_Range__c==null,true,false)}">
+                                                <center>
+                                                    
+                                                </center>
+                                            </apex:outputLabel>
+                                        </td>
+                                        <td><apex:outputField value="{!DTO.Slab__c}"   /></td>
+                                        <td><apex:outputField value="{!DTO.Zone_A_Custom_Price__c}"   /></td>
+                                        <td><apex:outputField value="{!DTO.Zone_B_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!DTO.Zone_C_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!DTO.Zone_D_Custom_Price__c}"    /></td>
+                                        <td><apex:outputField value="{!DTO.Zone_E_Custom_Price__c}"    /></td>
+                                    </tr>
+                                </apex:repeat>
+                                <!-- </apex:outputPanel>  -->       
+                                
+                                <tr><td colspan="8">
+                                    <apex:outputPanel rendered="{!DTOList.size == 0 }" > 
+                                        <center><i>No Pricing selected for DTO</i></center>
+                                    </apex:outputPanel>
+                                    </td></tr>   
+                                <tr>
+                                    
+                                    <th id="heading" colspan="2">COD Charges</th>
+                                    
+                                    <td colspan="6"><center>{!CODStatement}</center>
+                                    </td>
+                                    
+                                </tr>
+                                
+                                <tr><!-- For Wallet Delivery Charges -->
+                                    
+                                    <th>Wallet on Delivery Charges (Paytm)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            {!WalletStatement}
+                                        </center>
+                                    </td>
+                                    
+                                </tr>
+                                
+                                
+                                
+                                <tr><!-- For Card on Delivery Charges -->
+                                    
+                                    <th>Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                        {!DBCardDeliveryChargesLeft}
+                                    </td>
+                                    <td colspan="6">
+                                        <apex:outputText value="{!DBCardDeliveryChargesRight}" escape="false"/>
+                                    </td>
+                                    
+                                </tr>
+                                
+                                
+                                <tr><!-- For FOV Factor -->
+                                    <th>FOV Factor(Frieght On Value)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            {!FOVStatement}
+                                        </center>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th id="heading" colspan="2" >Volumetric Formulae</th>
+                                    <td colspan="6"><center> L*B*H / (<apex:outputText value="{!opp.OpportunityLineItems[0].Volumetric_Formulae__c}"/>)  L, B, H in cms </center></td>
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading" colspan="2">GST</th>
+                                    <td colspan="6"><center>As Applicable</center></td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <th id="heading" colspan="2" >Fuel Surcharge (FSC)</th>
+                                    
+                                    <td colspan="6"><center>{!FSCStatement}</center></td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading" colspan="2">Maximum Liability for Forward </th>
+                                    <td colspan="6"><center><apex:outputField value="{!opp.OpportunityLineItems[0].Maximum_liability_per_consignment__c}"    /></center></td>
+                                </tr> 
+                                
+                                <tr>
+                                    <th id="heading" colspan="2" >Maximum Liability for Reverse </th>
+                                    <td colspan="6"><center> {!MaxLiabilityReverse}</center></td>
+                                    
+                                </tr>
+                                
+                                <tr>
+                                    <th id="heading" colspan="2">COD Remittance</th>
+                                    <td colspan="6"><center>
+                                        <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Weekly'}">
+                                            {!opp.OpportunityLineItems[0].COD_Remittance__c}(Fri)
+                                        </apex:outputLabel>
+                                        <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Bi-weekly'}">
+                                            {!opp.OpportunityLineItems[0].COD_Remittance__c}(Tue,Fri)
+                                        </apex:outputLabel>
+                                        <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Tri-weekly'}">
+                                            {!opp.OpportunityLineItems[0].COD_Remittance__c}(Mon,Wed,Fri)
+                                        </apex:outputLabel>
+                                        <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Daily'}">
+                                            {!opp.OpportunityLineItems[0].COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                        </apex:outputLabel></center>
+                                    </td>
+                                </tr>
+                                
+                                <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Payment_Link__c==true,true,false)}">  
+                                <tr>
+                                    <th colspan="11"> <center> Payment Link </center></th>
+                                    <tr Style="background-color: darkcyan;">
+                                        <th  colspan="2">Type</th>
+                                        <th colspan="2">Threshold</th>
+                                        <th colspan="3">Transaction Charge (INR)</th>
+                                        <th colspan="3">Transaction Rate (%)</th>
+                                </tr> 
+                                <tr>
+                                    <th colspan="2">Credit Card</th>
+                                    <td colspan="2"></td>
+                                    <td colspan="3" ><apex:outputField id="idCCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_Flat__c}" style="width:100%" /> </td>
+                                    <td colspan="3" ><apex:outputField id="idCCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_percentage__c}" style="width:100%" /></td>
+                                </tr> 
+                                <tr>
+                                    <th colspan="2"  rowspan="2">Debit Card</th>
+                                    <td colspan="2">&lt; 2000</td>
+                                    <td colspan="3" ><apex:outputField id="idDCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat__c}" style="width:100%" /></td>
+                                    <td colspan="3" ><apex:outputField id="idDCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_percentage__c}" style="width:100%" /> </td>
+                                </tr> 
+                                <tr>
+                                    <td colspan="2">2000</td>
+                                    <td colspan="3" ><apex:outputField id="idDCFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+                                    <td colspan="3" ><apex:outputField id="idDCpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"  rowspan="2">Net Banking</th>
+                                    <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+                                    <td colspan="3" ><apex:outputField id="idNBFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat__c}" style="width:100%" /> </td>
+                                    <td colspan="3" ><apex:outputField id="idNBpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percentage__c}" style="width:100%" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Others</td>
+                                    <td colspan="3" ><apex:outputField id="idNBFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+                                    <td colspan="3" ><apex:outputField id="idNBpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+                                </tr> 
+                                <tr>
+                                    <th colspan="2" rowspan="2">UPI</th>
+                                    <td colspan="2">&lt; 2000</td>
+                                    <td colspan="3"><apex:outputField id="idUPIFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat__c}" style="width:100%" /> </td>
+                                    <td colspan="3" ><apex:outputField id="idUPIpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_percentage__c}" style="width:100%" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">&gt; 2000</td>
+                                    <td colspan="3"><apex:outputField id="idUPIFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+                                    <td colspan="3" ><apex:outputField id="idUPIpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+                                </tr> 
+                                <tr>
+                                    <th colspan="2">Wallet</th>
+                                    <td colspan="2"></td>
+                                    <td colspan="3" ><apex:outputField id="idWalletFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_Flat__c}" style="width:100%" /> </td>
+                                    <td colspan="3" ><apex:outputField id="idWalletpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_percentage__c}" style="width:100%" /></td>
+                                </tr>
+                            </tr>
+                            </apex:outputText>
+                            
+                            <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Qr_Code__c==true,true,false)}">
+                            <tr>
+                                <th colspan="11"> <center> QR Code </center></th>
+                                <tr Style="background-color: darkcyan;">
+                                    <th  colspan="2">Type</th>
+                                    <th colspan="2">Threshold</th>
+                                    <th colspan="3">Transaction Charge (INR)</th>
+                                    <th colspan="3">Transaction Rate (%)</th>
+                            </tr> 
+                            <tr>
+                                <th colspan="2">Credit Card</th>
+                                <td colspan="2"></td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_Flat__c}" style="width:100%" /> </td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_percentage__c}" style="width:100%" /></td>
+                            </tr> 
+                            <tr>
+                                <th colspan="2"  rowspan="2">Debit Card</th>
+                                <td colspan="2">&lt; 2000</td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat__c}" style="width:100%" /></td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_percentage__c}" style="width:100%" /> </td>
+                            </tr> 
+                            <tr>
+                                <td colspan="2">2000</td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2"  rowspan="2">Net Banking</th>
+                                <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat__c}" style="width:100%" /> </td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percentage__c}" style="width:100%" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Others</td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+                            </tr> 
+                            <tr>
+                                <th colspan="2" rowspan="2">UPI</th>
+                                <td colspan="2">&lt; 2000</td>
+                                <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat__c}" style="width:100%" /> </td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_percentage__c}" style="width:100%" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">&gt; 2000</td>
+                                <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+                            </tr> 
+                            <tr>
+                                <th colspan="2">Wallet</th>
+                                <td colspan="2"></td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_Flat__c}" style="width:100%" /> </td>
+                                <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_percentage__c}" style="width:100%" /></td>
+                            </tr>
+                        </tr>
+                        </apex:outputText>
+                    </table>
+                </center>
+                <apex:pageBlockSection >
+                    <apex:pageBlockSectionItem >
+                        <apex:repeat value="{!opp.OpportunityLineItems}" var="oli">
+                            <apex:outputField value="{!oli.Description__c}"></apex:outputField>
+                        </apex:repeat>
+                    </apex:pageBlockSectionItem> 
+                </apex:pageBlockSection>
+                
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="Express" rendered="{!IF(AND(Opportunity.RecordType.DeveloperName=='Express_Shipping',opp.OpportunityLineItems.size>0, !opp.OpportunityLineItems[0].isCustom__c),true,false )}">
+                <apex:pageMessages ></apex:pageMessages>
+                
+                <table cellspacing="0" cellpadding="10" border="1" id="ExpressTable" >
+                    <tr><td colspan="8" id="heading" ><center><p><b>Delhivery Commercials - EXPRESS</b></p></center></td></tr> 
+                    
+                    <tr>
+                        <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                        <th id="heading" ><center>Within-city</center></th>
+                        <th id="heading" > <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                        <th id="heading" ><center> Metro-Metro </center></th>
+                        <th id="heading"><center> Rest of India </center></th>
+                        <th id="heading"><center>North East, HP,<br/> Port Blair,J And K </center></th>
+                    </tr>
+                    
+                    <tr>
+                        
+                        <th id="heading"><center>ZONE A</center></th>
+                        <th id="heading"><center>ZONE B </center></th>
+                        <th id="heading"><center>ZONE C</center></th>
+                        <th id="heading"><center>ZONE D</center></th>
+                        <th id="heading"><center>ZONE E</center></th>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading" >Upto 500 gms</th>
+                        
+                        <td><apex:outputField value="{!objectOLI.Zone_A_Upto_500_gms__c}"   /></td> 
+                        <td><apex:outputField value="{!objectOLI.Zone_B_Upto_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_C_Upto_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_D_Upto_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_E_Upto_500_gms__c}"   /></td>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading">Every additional 500 gms</th>
+                        <td><apex:outputField value="{!objectOLI.Zone_A_Every_additional_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_B_Every_additional_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_C_Every_additional_500_gms__c}"    /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_D_Every_additional_500_gms__c}"    /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_E_Every_additional_500_gms__c}"    /></td>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading">RTO (Every 500 gms)</th>
+                        <td><apex:outputField value="{!objectOLI.Zone_A_RTO_every_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_B_RTO_every_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_C_RTO_every_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_D_RTO_every_500_gms__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_E_RTO_every_500_gms__c}"   /></td>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading" >DTO Upto 500 gm</th>
+                        <td><apex:outputField value="{!objectOLI.Zone_A_DTO_Upto_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_B_DTO_Upto_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_C_DTO_Upto_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_D_DTO_Upto_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_E_DTO_Upto_500gm__c}"   /></td>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading" >DTO Every Add 500 gm</th>
+                        <td><apex:outputField value="{!objectOLI.Zone_A_DTO_every_add_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_B_DTO_every_add_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_C_DTO_every_add_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_D_DTO_every_add_500gm__c}"   /></td>
+                        <td><apex:outputField value="{!objectOLI.Zone_E_DTO_every_add_500gm__c}"   /></td>
+                    </tr>
+                    
+                    <tr><th id="heading" >COD Charges</th>
+                        <td colspan="5"> <center>{!CODStatement} </center>    </td>
+                        
+                    </tr>
+                    <tr><!-- For Wallet Delivery Charges -->
+                        
+                        <th>Wallet on Delivery Charges (Paytm)</th>
+                        <td colspan="5">
+                            <center>
+                                {!WalletStatement}
+                            </center>
+                        </td>
+                        
+                    </tr>
+                    
+                    
+                    
+                    <tr><!-- For Card on Delivery Charges -->
+                        
+                        <th>Card on Delivery Charges</th>
+                        
+                        <td colspan="2">
+                            {!DBCardDeliveryChargesLeft}
+                        </td>
+                        <td colspan="3">
+                            <apex:outputText value="{!DBCardDeliveryChargesRight}" escape="false"/>
+                        </td>
+                        
+                    </tr>
+                    
+                    
+                    <tr><!-- For FOV Factor -->
+                        <th>FOV Factor(Frieght On Value)</th>
+                        <td colspan="5">
+                            <center>
+                                {!FOVStatement}
+                            </center>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th id="heading">Volumetric Formulae</th>
+                        <td colspan="5"> <center>L*B*H / (<apex:outputText value="{!objectOLI.Volumetric_Formulae__c}"/>)  L, B, H in cms </center></td>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading">GST</th>
+                        <td colspan="5"><center>As Applicable </center></td>
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading">Fuel Surcharge (FSC)</th>
+                        <td colspan="5"><center>{!FSCStatement}</center></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <th id="heading">Maximum Liability for Forward</th>
+                        <td colspan="5"><center><apex:outputField value="{!objectOLI.Maximum_liability_per_consignment__c}"  /></center></td>
+                    </tr> 
+                    
+                    
+                    <tr>
+                        <th id="heading">Maximum Liability for Reverse </th>
+                        <td colspan="5"><center>{!MaxLiabilityReverse} </center></td>
+                        
+                    </tr>
+                    
+                    
+                    <tr>
+                        <th id="heading">COD Remittance</th>
+                        <td colspan="5"><center>
+                            <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Weekly'}">
+                                {!objectOLI.COD_Remittance__c}(Fri)
+                            </apex:outputLabel>
+                            <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Bi-weekly'}">
+                                {!objectOLI.COD_Remittance__c}(Tue,Fri)
+                            </apex:outputLabel>
+                            <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Tri-weekly'}">
+                                {!objectOLI.COD_Remittance__c}(Mon,Wed,Fri)
+                            </apex:outputLabel>
+                            <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Daily'}">
+                                {!objectOLI.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                            </apex:outputLabel></center>
+                        </td>
+                    </tr>
+                    
+                    <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Payment_Link__c==true,true,false)}"> 
+                    <tr>
+                       
+                    <th colspan="11"> <center> Payment Link </center></th>
+                    <tr Style="background-color: darkcyan;">
+                        <th  colspan="2">Type</th>
+                        <th colspan="2">Threshold</th>
+                        <th colspan="3">Transaction Charge (INR)</th>
+                        <th colspan="3">Transaction Rate (%)</th>
+                    </tr> 
+                    <tr>
+                        <th colspan="2">Credit Card</th>
+                        <td colspan="2"></td>
+                        <td colspan="3" ><apex:outputField id="idCCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_Flat__c}" style="width:100%" /> </td>
+                        <td colspan="3" ><apex:outputField id="idCCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_percentage__c}" style="width:100%" /></td>
+                    </tr> 
+                    <tr>
+                        <th colspan="2"  rowspan="2">Debit Card</th>
+                        <td colspan="2">&lt; 2000</td>
+                        <td colspan="3" ><apex:outputField id="idDCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat__c}" style="width:100%" /></td>
+                        <td colspan="3" ><apex:outputField id="idDCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_percentage__c}" style="width:100%" /> </td>
+                    </tr> 
+                    <tr>
+                        <td colspan="2">2000</td>
+                        <td colspan="3" ><apex:outputField id="idDCFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+                        <td colspan="3" ><apex:outputField id="idDCpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+                    </tr>
+                    <tr>
+                        <th colspan="2"  rowspan="2">Net Banking</th>
+                        <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+                        <td colspan="3" ><apex:outputField id="idNBFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat__c}" style="width:100%" /> </td>
+                        <td colspan="3" ><apex:outputField id="idNBpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percentage__c}" style="width:100%" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Others</td>
+                        <td colspan="3" ><apex:outputField id="idNBFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+                        <td colspan="3" ><apex:outputField id="idNBpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+                    </tr> 
+                    <tr>
+                        <th colspan="2" rowspan="2">UPI</th>
+                        <td colspan="2">&lt; 2000</td>
+                        <td colspan="3"><apex:outputField id="idUPIFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat__c}" style="width:100%" /> </td>
+                        <td colspan="3" ><apex:outputField id="idUPIpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_percentage__c}" style="width:100%" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">&gt; 2000</td>
+                        <td colspan="3"><apex:outputField id="idUPIFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+                        <td colspan="3" ><apex:outputField id="idUPIpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+                    </tr> 
+                    <tr>
+                        <th colspan="2">Wallet</th>
+                        <td colspan="2"></td>
+                        <td colspan="3" ><apex:outputField id="idWalletFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_Flat__c}" style="width:100%" /> </td>
+                        <td colspan="3" ><apex:outputField id="idWalletpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_percentage__c}" style="width:100%" /></td>
+                    </tr>
+                </tr>
+                </apex:outputText> 
+                
+                <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Qr_Code__c==true,true,false)}">
+                <tr>
+                    <th colspan="11"> <center> QR Code </center></th>
+                    <tr Style="background-color: darkcyan;">
+                        <th  colspan="2">Type</th>
+                        <th colspan="2">Threshold</th>
+                        <th colspan="3">Transaction Charge (INR)</th>
+                        <th colspan="3">Transaction Rate (%)</th>
+                </tr> 
+                <tr>
+                    <th colspan="2">Credit Card</th>
+                    <td colspan="2"></td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_Flat__c}" style="width:100%" /> </td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_percentage__c}" style="width:100%" /></td>
+                </tr> 
+                <tr>
+                    <th colspan="2"  rowspan="2">Debit Card</th>
+                    <td colspan="2">&lt; 2000</td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat__c}" style="width:100%" /></td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_percentage__c}" style="width:100%" /> </td>
+                </tr> 
+                <tr>
+                    <td colspan="2">2000</td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+                </tr>
+                <tr>
+                    <th colspan="2"  rowspan="2">Net Banking</th>
+                    <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat__c}" style="width:100%" /> </td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percentage__c}" style="width:100%" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">Others</td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+                </tr> 
+                <tr>
+                    <th colspan="2" rowspan="2">UPI</th>
+                    <td colspan="2">&lt; 2000</td>
+                    <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat__c}" style="width:100%" /> </td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_percentage__c}" style="width:100%" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">&gt; 2000</td>
+                    <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+                </tr> 
+                <tr>
+                    <th colspan="2">Wallet</th>
+                    <td colspan="2"></td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_Flat__c}" style="width:100%" /> </td>
+                    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_percentage__c}" style="width:100%" /></td>
+                </tr> 
+            </tr>
+            </apex:outputText>
+        </table>
+        
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+                <apex:repeat value="{!opp.OpportunityLineItems}" var="oli">
+                    <apex:outputField value="{!oli.Description__c}"></apex:outputField>
+                </apex:repeat>
+            </apex:pageBlockSectionItem> 
+        </apex:pageBlockSection>   
+    </apex:pageBlock> 
+    
+    <apex:pageBlock rendered="{!IF(AND(Opportunity.RecordType.DeveloperName=='Standard_Shipping',opp.OpportunityLineItems.size>0, !opp.OpportunityLineItems[0].isCustom__c),true,false )}" >
+        <apex:pageMessages ></apex:pageMessages>
+        <table cellspacing="0" cellpadding="5" border="1" >
+            <tr><td colspan="8" id="heading" ><center><p><b>Delhivery Commercials - STANDARD</b></p></center></td></tr> 
+            <tr>
+                <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                <th id="heading" ><center>Within City</center></th>
+                <th id="heading" ><center>Regional (Single <br/>Connection And Less <br/>than 500 Kms)</center></th>
+                <th colspan ="2" id="heading"><center>Metro to Metro <br/>(ZONE C)</center></th>
+                <th colspan="2" id="heading" ><center>Rest of India <br/>(ZONE D)</center></th>
+                <th id="heading" ><center>North East,HP,<br/> Port Blair, J And K</center></th>
+            </tr>
+            
+            <tr>
+                <td id="heading"><center>ZONE A</center></td>
+                <td id="heading"><center>ZONE B</center></td>
+                <td id="heading" ><center>N1</center></td>
+                <td id="heading"><center >N2</center></td>
+                <td id="heading"><center>N1</center></td>
+                <td id="heading"><center>N2</center></td>
+                <td id="heading"><center>ZONE E</center></td>
+            </tr>
+            
+            <tr>
+                <th id="heading">Upto 500 gms</th>
+                <td><apex:outputField value="{!objectOLI.Zone_A_Upto_500_gms__c}"  /> </td>
+                <td><apex:outputField value="{!objectOLI.Zone_B_Upto_500_gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N1_Upto_500_gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N2_Upto_500_gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N1_Upto_500_gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N2_Upto_500_gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_E_Upto_500_gms__c}"   /></td>
+            </tr>
+            
+            <tr>
+                <th id="heading" >Every Additional 500 gms(Upto 3 kgs)</th>
+                <td><apex:outputField value="{!objectOLI.Zone_A_Every_Add_500_gms_upto_3_kgs__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_B_Every_Add_500_gms_upto_3_kgs__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N1_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N2_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N1_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N2_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_E_Every_additional_500_gms__c}"    /></td>
+            </tr>
+            
+            <tr>
+                <th id="heading" >Every Additional Slab (1 Kg)</th>
+                <td><apex:outputField value="{!objectOLI.Zone_A_Every_Additional_Slab_1_Kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_B_Every_Additional_Slab_1_Kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N1_Every_Additional_Slab_1_Kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N2_Every_Additional_Slab_1_Kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N1_Every_Additional_Slab_1_Kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N2_Every_Additional_Slab_1_Kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_E_Every_Additional_Slab_1_Kg__c}"   /></td>
+            </tr>
+            <tr>
+                <th id="heading" >RTO (Every 1 kg)</th>
+                <td><apex:outputField value="{!objectOLI.Zone_A_RTO_every_1_kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_B_RTO_every_1_kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N1_RTO_every_1_kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N2_RTO_every_1_kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N1_RTO_every_1_kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N2_RTO_every_1_kg__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_E_RTO_every_1_kg__c}"   /></td>
+            </tr>
+            
+            <tr>
+                <th id="heading" >DTO Upto 500 gms</th>
+                <td><apex:outputField value="{!objectOLI.Zone_A_DTO_Upto_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_B_DTO_Upto_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N1_DTO_Upto_500gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N2_DTO_Upto_500gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N1_DTO_Upto_500gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N2_DTO_Upto_500gms__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_E_DTO_Upto_500gm__c}"   /></td>
+            </tr>
+            
+            <tr>
+                <th id="heading">DTO Every Add 500 gms</th>
+                <td><apex:outputField value="{!objectOLI.Zone_A_DTO_every_add_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_B_DTO_every_add_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N1_DTO_every_add_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_C_N2_DTO_every_add_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N1_DTO_every_add_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_D_N2_DTO_every_add_500gm__c}"   /></td>
+                <td><apex:outputField value="{!objectOLI.Zone_E_DTO_every_add_500gm__c}"   /></td>
+            </tr>
+            
+            <tr>
+                <th id="heading">COD Charges</th>
+                <td colspan="8"><center>  {!CODStatement}  </center> </td>
+                
+            </tr>
+            
+            <tr><!-- For Wallet Delivery Charges -->
+                
+                <th>Wallet on Delivery Charges (Paytm)</th>
+                <td colspan="8">
+                    <center>
+                        {!WalletStatement}
+                    </center>
+                </td>
+                
+            </tr>
+            
+            
+            
+            <tr><!-- For Card on Delivery Charges -->
+                
+                <th>Card on Delivery Charges</th>
+                
+                <td colspan="2">
+                    {!DBCardDeliveryChargesLeft}
+                </td>
+                <td colspan="6">
+                    <apex:outputText value="{!DBCardDeliveryChargesRight}" escape="false"/>
+                </td>
+                
+            </tr>
+            
+            
+            <tr><!-- For FOV Factor -->
+                <th>FOV Factor(Frieght On Value)</th>
+                <td colspan="8">
+                    <center>
+                        {!FOVStatement}
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <th id="heading" >Volumetric Formulae</th>
+                <td colspan="8"><center> L*B*H / (<apex:outputText value="{!objectOLI.Volumetric_Formulae__c}"/>)  L, B, H in cms </center></td>
+            </tr>    
+            <tr>
+                <th id="heading" >GST</th>
+                <td colspan="8"><center>As Applicable</center></td>
+            </tr>
+            
+            <tr>
+                <th id="heading">Fuel Surcharge (FSC)</th>
+                <td colspan="8"><center>{!FSCStatement}</center></td>
+            </tr>
+            
+            
+            <tr>
+                <th id="heading" >Maximum Liability for Forward</th>
+                <td colspan="8"><center><apex:outputField value="{!objectOLI.Maximum_liability_per_consignment__c}" /></center></td>
+            </tr>
+            
+            <tr>
+                
+                <th id="heading">Maximum Liability for Reverse </th>
+                <td colspan="8"><center> {!MaxLiabilityReverse} </center></td>
+                
+                
+            </tr>
+            
+            <tr>
+                <th id="heading">COD Remittance</th>
+                <td colspan="8"><center>
+                    <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Weekly'}">
+                        {!objectOLI.COD_Remittance__c}(Fri)
+                    </apex:outputLabel>
+                    <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Bi-weekly'}">
+                        {!objectOLI.COD_Remittance__c}(Tue,Fri)
+                    </apex:outputLabel>
+                    <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Tri-weekly'}">
+                        {!objectOLI.COD_Remittance__c}(Mon,Wed,Fri)
+                    </apex:outputLabel>
+                    <apex:outputLabel rendered="{!objectOLI.COD_Remittance__c=='Daily'}">
+                        {!objectOLI.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                    </apex:outputLabel></center>
+                </td>
+            </tr>
+            
+            <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Payment_Link__c==true,true,false)}">
+            <tr id="heading">
+                <th colspan="11"> <center> Payment Link </center></th>
+                <tr Style="background-color: darkcyan;">
+                    <th  colspan="2">Type</th>
+                    <th colspan="2">Threshold</th>
+                    <th colspan="3">Transaction Charge (INR)</th>
+                    <th colspan="3">Transaction Rate (%)</th>
+            </tr> 
+            <tr>
+                <th colspan="2">Credit Card</th>
+                <td colspan="2"></td>
+                <td colspan="3" ><apex:outputField id="idCCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_Flat__c}" style="width:100%" /> </td>
+                <td colspan="3" ><apex:outputField id="idCCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_percentage__c}" style="width:100%" /></td>
+            </tr> 
+            <tr>
+                <th colspan="2"  rowspan="2">Debit Card</th>
+                <td colspan="2">&lt; 2000</td>
+                <td colspan="3" ><apex:outputField id="idDCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat__c}" style="width:100%" /></td>
+                <td colspan="3" ><apex:outputField id="idDCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_percentage__c}" style="width:100%" /> </td>
+            </tr> 
+            <tr>
+                <td colspan="2">2000</td>
+                <td colspan="3" ><apex:outputField id="idDCFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+                <td colspan="3" ><apex:outputField id="idDCpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+            </tr>
+            <tr>
+                <th colspan="2"  rowspan="2">Net Banking</th>
+                <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+                <td colspan="3" ><apex:outputField id="idNBFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat__c}" style="width:100%" /> </td>
+                <td colspan="3" ><apex:outputField id="idNBpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percentage__c}" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">Others</td>
+                <td colspan="3" ><apex:outputField id="idNBFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+                <td colspan="3" ><apex:outputField id="idNBpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+            </tr> 
+            <tr>
+                <th colspan="2" rowspan="2">UPI</th>
+                <td colspan="2">&lt; 2000</td>
+                <td colspan="3"><apex:outputField id="idUPIFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat__c}" style="width:100%" /> </td>
+                <td colspan="3" ><apex:outputField id="idUPIpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_percentage__c}" style="width:100%" /></td>
+            </tr>
+            <tr>
+                <td colspan="2">&gt; 2000</td>
+                <td colspan="3"><apex:outputField id="idUPIFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+                <td colspan="3" ><apex:outputField id="idUPIpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+            </tr> 
+            <tr>
+                <th colspan="2">Wallet</th>
+                <td colspan="2"></td>
+                <td colspan="3" ><apex:outputField id="idWalletFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_Flat__c}" style="width:100%" /> </td>
+                <td colspan="3" ><apex:outputField id="idWalletpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_percentage__c}" style="width:100%" /></td>
+            </tr> 
+        </tr>
+        </apex:outputText>
+        
+        
+        <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Qr_Code__c==true,true,false)}">
+        <tr>
+        
+            <th colspan="11"> <center> QR Code </center></th>
+            <tr Style="background-color: darkcyan;">
+                <th  colspan="2">Type</th>
+                <th colspan="2">Threshold</th>
+                <th colspan="3">Transaction Charge (INR)</th>
+                <th colspan="3">Transaction Rate (%)</th>
+        </tr> 
+        <tr>
+            <th colspan="2">Credit Card</th>
+            <td colspan="2"></td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_Flat__c}" style="width:100%" /> </td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_percentage__c}" style="width:100%" /></td>
+        </tr> 
+        <tr>
+            <th colspan="2"  rowspan="2">Debit Card</th>
+            <td colspan="2">&lt; 2000</td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat__c}" style="width:100%" /></td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_percentage__c}" style="width:100%" /> </td>
+        </tr> 
+        <tr>
+            <td colspan="2">2000</td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+        </tr>
+        <tr>
+            <th colspan="2"  rowspan="2">Net Banking</th>
+            <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat__c}" style="width:100%" /> </td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percentage__c}" style="width:100%" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">Others</td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+        </tr> 
+        <tr>
+            <th colspan="2" rowspan="2">UPI</th>
+            <td colspan="2">&lt; 2000</td>
+            <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat__c}" style="width:100%" /> </td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_percentage__c}" style="width:100%" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">&gt; 2000</td>
+            <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+        </tr> 
+        <tr>
+            <th colspan="2">Wallet</th>
+            <td colspan="2"></td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_Flat__c}" style="width:100%" /> </td>
+            <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_percentage__c}" style="width:100%" /></td>
+        </tr> 
+        
+    </tr>
+    </apex:outputText>
+    
+</table>  
+
+<apex:pageBlockSection >
+    <apex:pageBlockSectionItem >
+        <apex:repeat value="{!opp.OpportunityLineItems}" var="oli">
+            <apex:outputField value="{!oli.Description__c}"></apex:outputField>
+        </apex:repeat>
+    </apex:pageBlockSectionItem> 
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+<apex:pageBlock rendered="{!IF(AND(Opportunity.RecordType.DeveloperName=='Standard_Shipping',opp.OpportunityLineItems.size>0, opp.OpportunityLineItems[0].isCustom__c),true,false )}">
+    <apex:pageMessages ></apex:pageMessages>
+    <table cellspacing="0" cellpadding="5" border="1" >
+        <tr><td colspan="10" id="heading" ><center><p><b>Delhivery Commercials - STANDARD</b></p></center></td></tr> 
+        <tr>
+            
+            <th colspan="3" id="heading"><center> Weight Slabs</center></th>
+            <th id="heading" ><center>Within City</center></th>
+            <th id="heading" ><center>Regional (Single <br/>Connection And Less <br/>than 500 Kms)</center></th>
+            <th colspan ="2" id="heading"><center>Metro to Metro <br/>(ZONE C)</center></th>
+            <th colspan="2" id="heading" ><center>Rest of India <br/>(ZONE D)</center></th>
+            <th id="heading" ><center>North East,HP,<br/> Port Blair, J And K</center></th>
+        </tr>
+        
+        <tr>
+            <th id="heading"><center>START RANGE</center></th>
+            <th id="heading"><center>END RANGE</center></th>
+            <th id="heading"><center>EACH SLAB<br/>(in grams)</center></th>
+            <td id="heading"><center><b>ZONE A</b></center></td>
+            <td id="heading"><center><b>ZONE B</b></center></td>
+            <td id="heading" style="width:200px;"><center><b>N1</b></center></td>
+            <td id="heading" style="width:200px;"><center><b>N2</b></center></td>
+            <td id="heading" style="width:200px;" ><center><b>N1</b></center></td>
+            <td id="heading" style="width:200px;"><center><b>N2</b></center></td>
+            <td id="heading"><center><b>ZONE E</b></center></td>
+        </tr>
+        
+        <tr>
+            <th id="heading" colspan="12"><center>Forward</center></th>
+            <tr>
+                <!--apex:outputPanel rendered="{!BaseList.size > 0}" >-->
+                <apex:repeat value="{!BaseList}" var="base" >
+                    <tr>
+                        <td><apex:outputField value="{!base.Start_Range__c}"   /></td> 
+                        <td>
+                            <apex:outputField value="{!base.End_Range__c}" rendered="{!if(base.End_Range__c!=null,true,false)}"/>
+                            <apex:outputLabel rendered="{!if(base.End_Range__c==null,true,false)}">
+                                <center>
+                                    
+                                </center>
+                            </apex:outputLabel>
+                        </td>
+                        <td><apex:outputField value="{!base.Slab__c}"   /></td>
+                        <td><apex:outputField value="{!base.Zone_A_Custom_Price__c}"   /></td>
+                        <td><apex:outputField value="{!base.Zone_B_Custom_Price__c}"    /></td>
+                        <td ><apex:outputField value="{!base.Zone_C_N1_Custom_Price__c}"   /></td>
+                        <td ><apex:outputField value="{!base.Zone_C_N2_Custom_Price__c}"    /></td>
+                        <td ><apex:outputField value="{!base.Zone_D_N1_Custom_Price__c}"  /></td>
+                        <td ><apex:outputField value="{!base.Zone_D_N2_Custom_Price__c}"    /></td>
+                        <td><apex:outputField value="{!base.Zone_E_Custom_Price__c}"    /></td>
+                    </tr>
+                </apex:repeat>                
+                <!--</apex:outputPanel>-->
+        </tr>
+    </tr>
+    
+    <tr><td colspan="12">
+        <apex:outputPanel rendered="{!BaseList.size == 0 }" > 
+            <center><i>No Pricing selected for Forward</i></center>
+        </apex:outputPanel>
+        </td></tr>  
+    
+    <tr>
+        <th id="heading" colspan="12" ><center>RTO</center></th>
+    </tr>
+    
+    
+    <apex:repeat value="{!RTOList}" var="RTO" rendered="{!RTOList.size > 0}" >
+        <tr>
+            <td><apex:outputField value="{!RTO.Start_Range__c}"/></td> 
+            <td>
+                <apex:outputField value="{!RTO.End_Range__c}" rendered="{!if(RTO.End_Range__c!=null,true,false)}"/>
+                <apex:outputLabel rendered="{!if(RTO.End_Range__c==null,true,false)}">
+                    <center>
+                        
+                    </center>
+                </apex:outputLabel>
+            </td>
+            <td><apex:outputField value="{!RTO.Slab__c}"   /></td>
+            <td><apex:outputField value="{!RTO.Zone_A_Custom_Price__c}"   /></td>
+            <td><apex:outputField value="{!RTO.Zone_B_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!RTO.Zone_C_N1_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!RTO.Zone_C_N2_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!RTO.Zone_D_N1_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!RTO.Zone_D_N2_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!RTO.Zone_E_Custom_Price__c}"    /></td>
+        </tr>
+    </apex:repeat>                
+    <tr><td colspan="12">
+        <apex:outputPanel rendered="{!RTOList.size==0 }" >
+            <center><i>No Pricing selected for RTO</i></center>
+        </apex:outputPanel>
+        </td></tr> 
+    <tr>
+        <th id="heading" colspan="12" ><center>DTO</center></th>
+    </tr>
+    
+    <!-- <apex:outputPanel rendered="{!DTOList.size > 0}" > -->
+    <apex:repeat value="{!DTOList}" var="DTO" rendered="{!DTOList.size > 0}" >
+        <tr>
+            <td><apex:outputField value="{!DTO.Start_Range__c}"   /></td> 
+            <td>
+                <apex:outputField value="{!DTO.End_Range__c}" rendered="{!if(DTO.End_Range__c!=null,true,false)}"/>
+                <apex:outputLabel rendered="{!if(DTO.End_Range__c==null,true,false)}">
+                    <center>
+                        
+                    </center>
+                </apex:outputLabel>
+            </td>
+            <td><apex:outputField value="{!DTO.Slab__c}"   /></td>
+            <td><apex:outputField value="{!DTO.Zone_A_Custom_Price__c}"   /></td>
+            <td><apex:outputField value="{!DTO.Zone_B_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!DTO.Zone_C_N1_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!DTO.Zone_C_N2_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!DTO.Zone_D_N1_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!DTO.Zone_D_N2_Custom_Price__c}"    /></td>
+            <td><apex:outputField value="{!DTO.Zone_E_Custom_Price__c}"    /></td>
+        </tr>
+    </apex:repeat>
+    <!-- </apex:outputPanel>  -->       
+    
+    <tr><td colspan="12">
+        <apex:outputPanel rendered="{!DTOList.size == 0 }" > 
+            <center><i>No Pricing selected for DTO</i></center>
+        </apex:outputPanel>
+        </td></tr>  
+    
+    <tr>
+        <th id="heading" colspan="2">COD Charges</th>
+        <td colspan="8"><center>   {!CODStatement}     </center>  </td>
+        
+    </tr>
+    
+    <tr><!-- For Wallet Delivery Charges -->
+        
+        <th>Wallet on Delivery Charges (Paytm)</th>
+        <td colspan="8">
+            <center>
+                {!WalletStatement}
+            </center>
+        </td>
+        
+    </tr>
+    
+    
+    
+    <tr><!-- For Card on Delivery Charges -->
+        
+        <th>Card on Delivery Charges</th>
+        
+        <td colspan="2">
+            {!DBCardDeliveryChargesLeft}
+        </td>
+        <td colspan="6">
+            <apex:outputText value="{!DBCardDeliveryChargesRight}" escape="false"/>
+        </td>
+        
+    </tr>
+    
+    
+    <tr><!-- For FOV Factor -->
+        <th>FOV Factor(Frieght On Value)</th>
+        <td colspan="8">
+            <center>
+                {!FOVStatement}
+            </center>
+        </td>
+    </tr>
+    
+    
+    <tr>
+        <th id="heading" colspan="2" >Volumetric Formulae</th>
+        <td colspan="8"><center> L*B*H / (<apex:outputText value="{!opp.OpportunityLineItems[0].Volumetric_Formulae__c}"/>)  L, B, H in cms </center></td>
+    </tr>
+    <tr>
+        <th id="heading" colspan="2">GST</th>
+        <td colspan="8"><center>As Applicable</center></td>
+    </tr>
+    
+    
+    <tr>
+        <th id="heading" colspan="2">Fuel Surcharge (FSC)</th>          
+        <td colspan="8"><center>{!FSCStatement}</center></td>
+    </tr>
+    
+    <tr>
+        <th id="heading" colspan="2">Maximum Liability for Forward</th>
+        <td colspan="8"><center><apex:outputField value="{!opp.OpportunityLineItems[0].Maximum_liability_per_consignment__c}"    /></center></td>
+    </tr>
+    
+    <tr>
+        <th id="heading" colspan="2" >Maximum Liability for Reverse </th>
+        <td colspan="8"><center>   {!MaxLiabilityReverse}  </center>    </td>
+        
+    </tr>
+    
+    <tr>
+        <th id="heading" colspan="2">COD Remittance</th>
+        <td colspan="8"><center>
+            <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Weekly'}">
+                {!opp.OpportunityLineItems[0].COD_Remittance__c}(Fri)
+            </apex:outputLabel>
+            <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Bi-weekly'}">
+                {!opp.OpportunityLineItems[0].COD_Remittance__c}(Tue,Fri)
+            </apex:outputLabel>
+            <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Tri-weekly'}">
+                {!opp.OpportunityLineItems[0].COD_Remittance__c}(Mon,Wed,Fri)
+            </apex:outputLabel>
+            <apex:outputLabel rendered="{!opp.OpportunityLineItems[0].COD_Remittance__c=='Daily'}">
+                {!opp.OpportunityLineItems[0].COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+            </apex:outputLabel></center>
+        </td>
+    </tr>
+   
+    <apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Payment_Link__c==true,true,false)}">
+    <tr>
+        <th colspan="11"> <center> Payment Link </center></th>
+        <tr Style="background-color: darkcyan;">
+            <th  colspan="2">Type</th>
+            <th colspan="2">Threshold</th>
+            <th colspan="3">Transaction Charge (INR)</th>
+            <th colspan="3">Transaction Rate (%)</th>
+    </tr> 
+    <tr>
+        <th colspan="2">Credit Card</th>
+        <td colspan="2"></td>
+        <td colspan="3" ><apex:outputField id="idCCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_Flat__c}" style="width:100%" /> </td>
+        <td colspan="3" ><apex:outputField id="idCCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].CC_percentage__c}" style="width:100%" /></td>
+    </tr> 
+    <tr>
+        <th colspan="2"  rowspan="2">Debit Card</th>
+        <td colspan="2">&lt; 2000</td>
+        <td colspan="3" ><apex:outputField id="idDCFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat__c}" style="width:100%" /></td>
+        <td colspan="3" ><apex:outputField id="idDCpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_percentage__c}" style="width:100%" /> </td>
+    </tr> 
+    <tr>
+        <td colspan="2">2000</td>
+        <td colspan="3" ><apex:outputField id="idDCFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+        <td colspan="3" ><apex:outputField id="idDCpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+    </tr>
+    <tr>
+        <th colspan="2"  rowspan="2">Net Banking</th>
+        <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+        <td colspan="3" ><apex:outputField id="idNBFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat__c}" style="width:100%" /> </td>
+        <td colspan="3" ><apex:outputField id="idNBpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percentage__c}" style="width:100%" /></td>
+    </tr>
+    <tr>
+        <td colspan="2">Others</td>
+        <td colspan="3" ><apex:outputField id="idNBFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+        <td colspan="3" ><apex:outputField id="idNBpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+    </tr> 
+    <tr>
+        <th colspan="2" rowspan="2">UPI</th>
+        <td colspan="2">&lt; 2000</td>
+        <td colspan="3"><apex:outputField id="idUPIFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat__c}" style="width:100%" /> </td>
+        <td colspan="3" ><apex:outputField id="idUPIpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_percentage__c}" style="width:100%" /></td>
+    </tr>
+    <tr>
+        <td colspan="2">&gt; 2000</td>
+        <td colspan="3"><apex:outputField id="idUPIFlat1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+        <td colspan="3" ><apex:outputField id="idUPIpercentage1" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+    </tr> 
+    <tr>
+        <th colspan="2">Wallet</th>
+        <td colspan="2"></td>
+        <td colspan="3" ><apex:outputField id="idWalletFlat" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_Flat__c}" style="width:100%" /> </td>
+        <td colspan="3" ><apex:outputField id="idWalletpercentage" styleClass="slds-input" value="{!opp.OpportunityLineItems[0].Wallet_percentage__c}" style="width:100%" /></td>
+    </tr> 
+</tr>
+</apex:outputText>
+
+<apex:outputText rendered="{!IF(opp.OpportunityLineItems[0].Qr_Code__c==true,true,false)}">
+<tr>
+    <th colspan="11"> <center> QR Code </center></th>
+    <tr Style="background-color: darkcyan;">
+        <th  colspan="2">Type</th>
+        <th colspan="2">Threshold</th>
+        <th colspan="3">Transaction Charge (INR)</th>
+        <th colspan="3">Transaction Rate (%)</th>
+</tr> 
+<tr>
+    <th colspan="2">Credit Card</th>
+    <td colspan="2"></td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_Flat__c}" style="width:100%" /> </td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_CC_percentage__c}" style="width:100%" /></td>
+</tr> 
+<tr>
+    <th colspan="2"  rowspan="2">Debit Card</th>
+    <td colspan="2">&lt; 2000</td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat__c}" style="width:100%" /></td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_percentage__c}" style="width:100%" /> </td>
+</tr> 
+<tr>
+    <td colspan="2">2000</td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Flat_Greater_then_2k__c}" style="width:100%" /></td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_DC_Percent_Greater_then_2k__c}" style="width:100%" /> </td>
+</tr>
+<tr>
+    <th colspan="2"  rowspan="2">Net Banking</th>
+    <td colspan="2">HDFC,ICICI, AXIS, SBI, KOTAK, YES</td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat__c}" style="width:100%" /> </td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percentage__c}" style="width:100%" /></td>
+</tr>
+<tr>
+    <td colspan="2">Others</td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Flat_for_other_bank__c}" style="width:100%" /> </td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_NB_Percent_For_Other_Bank__c}" style="width:100%" /></td>
+</tr> 
+<tr>
+    <th colspan="2" rowspan="2">UPI</th>
+    <td colspan="2">&lt; 2000</td>
+    <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat__c}" style="width:100%" /> </td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_percentage__c}" style="width:100%" /></td>
+</tr>
+<tr>
+    <td colspan="2">&gt; 2000</td>
+    <td colspan="3"><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Flat_greater_then_2k__c}" style="width:100%" /> </td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_UPI_Percent_for_greater_then_2k__c}" style="width:100%" /></td>
+</tr> 
+<tr>
+    <th colspan="2">Wallet</th>
+    <td colspan="2"></td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_Flat__c}" style="width:100%" /> </td>
+    <td colspan="3" ><apex:outputField styleClass="slds-input" value="{!opp.OpportunityLineItems[0].QR_Wallet_percentage__c}" style="width:100%" /></td>
+</tr> 
+</tr>
+</apex:outputText>
+</table>
+
+<apex:pageBlockSection >
+    <apex:pageBlockSectionItem >
+        <apex:repeat value="{!opp.OpportunityLineItems}" var="oli">
+            <apex:outputField value="{!oli.Description__c}"></apex:outputField>
+        </apex:repeat>
+    </apex:pageBlockSectionItem> 
+</apex:pageBlockSection>
+</apex:pageBlock>
+<br/> 
+</div>
+<br/> 
+<apex:outputPanel rendered="{!$CurrentPage.parameters.acceptedTime!=null}">
+    <div style="font-size: 11px;font-family: Times New Roman; border:1px solid #000; padding:20px; border-style: double;">
+        <apex:outputLabel rendered="{!$CurrentPage.parameters.SignerIp!=null}"> <b> Agreement Signed by User IP Address: </b> {!$CurrentPage.parameters.SignerIp} </apex:outputLabel> <br/>
+        <apex:outputLabel rendered="{!$CurrentPage.parameters.acceptedTime!=null}"><b> Accepted Time: </b> {!$CurrentPage.parameters.acceptedTime}</apex:outputLabel> <br/>
+        <apex:outputLabel rendered="{!$CurrentPage.parameters.acceptedTime!=null}"><b> Agreement Sent to Email:</b> {!con.Contact__r.Email}</apex:outputLabel> <br/>                    
+    </div>    
+</apex:outputPanel>
+</apex:form>
+</body>
+</html>
+
+</apex:page>

@@ -1,0 +1,562 @@
+<!------------------------------------------------------------------
+* Author: Chetan Dabas
+* VF Page Name: CreateC2CPricing
+* Created Date: 15-July-2019
+* Description: Create Pricing for C2C Opportunities. 
+----------------------------------------------------------------- -->
+
+<apex:page standardController="Opportunity" action="{!isOpportunitySubmitted}" extensions="FranchisePricingExt" standardStylesheets="false" sidebar="false"  applyBodyTag="false" docType="html-5.0">
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            
+            
+            <style>
+                table {
+                /*   border-collapse: collapse;*/
+                width: 100%;
+                border-spacing: 10px;
+                border-collapse: collapse;
+                
+                }
+                
+                #heading {
+                background-color: #698abf;
+                color: white;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                border-bottom: 2px solid #fff;
+                
+                }
+                #heading2 {
+                background-color: #698abf;
+                color: white;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                border-bottom: 2px solid #fff;
+                text-align: center;
+                }
+                p{
+                font-size:15px;
+                }
+                
+                table th, table td {
+                padding: 7px;
+                font-size: 13px;
+                font-weight: bold;
+                //text-align: center;
+                }
+                .pbButton {
+                text-align:center !important;
+                }
+                .pbBottomButtons tr td {
+                text-align:center !important;
+                }
+                .pbBody table tr td {
+                padding:5px;
+                }
+                .errorMsg{
+                color:red;
+                }
+                .messageTable tr td{
+                display: none;
+                }
+                
+                
+            </style>
+            
+        </head>
+        <body>
+            
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds-scope">
+                
+                <apex:outputPanel id="errorMsgID" >
+                    <apex:outputPanel rendered="{!isStatusSubmitted}">
+                        <div class="demo-only" style="height: 4rem;">
+                            <div class="slds-notify_container slds-is-relative">
+                                <div class="slds-notify slds-notify_toast slds-theme_{!successError}" role="alert">
+                                    <span class="slds-assistive-text">{!successError}</span>
+                                    <span class="slds-icon_container slds-icon-utility-{!successError} slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#{!successError}" />
+                                        </svg>
+                                    </span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small ">{!msg}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                    <apex:form >
+                        <apex:commandButton rendered="{!isStatusSubmitted}" styleClass="slds-button slds-button_brand slds-align_absolute-center" immediate="true"
+                                            html-formnovalidate="formnovalidate"  value="Back" action="{!cancelOLI}"/>
+                    </apex:form>
+                </apex:outputPanel>
+                
+                
+                <apex:outputPanel id="errorMesgID" >
+                    <apex:outputPanel rendered="{!showContent}">
+                        <div class="demo-only" style="height: 4rem;">
+                            <div class="slds-notify_container slds-is-relative">
+                                <div class="slds-notify slds-notify_toast slds-theme_{!successError}" role="alert">
+                                    <span class="slds-assistive-text">{!successError}</span>
+                                    <span class="slds-icon_container slds-icon-utility-{!successError} slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#{!successError}" />
+                                        </svg>
+                                    </span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small ">{!msg}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                
+                <apex:outputPanel id="createPricingNewID" >
+                    <apex:outputPanel rendered="{!!isStatusSubmitted}">                
+                        <apex:form rendered="{!AND(Opportunity.RecordType.DeveloperName=='C2C')}">
+                            <script type="text/javascript">
+                            function BlankValueCheck(inputValue){
+                                var uservalue=inputValue.value;
+                                if(uservalue  == ''){
+                                }
+                            }
+                            
+                            /*SF-169 Starts*/
+                            var matrixExpress = new Array(25);
+                            matrixExpress = {!listRackRateExpress};
+                            
+                            function calculateAdditionalCharges(selectedOption, selectedPrice){
+                                /*alert('selectedOption>>'+selectedOption.value);
+                                    alert('selectedPrice>>'+selectedPrice);
+                                    alert('document.getElementById(selectedOption).value>>'+document.getElementById(selectedOption).value);
+                                    alert('document.getElementById(selectedPrice).value>>'+document.getElementById(selectedPrice).value);
+                                    alert('document.getElementsByClassName("rackrate")[0].value>>'+document.getElementsByClassName("rackrate")[0].value);*/
+                                    var optionValue = document.getElementById(selectedOption).value;
+                                    var priceValue = document.getElementById(selectedPrice).value;
+                                    
+                                    
+                                    if(optionValue=='Add' && priceValue!=''){
+                                        for(var i=0; i<document.getElementsByClassName("rackrate").length; i++){
+                                            document.getElementsByClassName("rackrate")[i].value = (parseFloat(matrixExpress[i]) + parseFloat(priceValue)).toFixed(2);
+                                        }
+                                    }else if(optionValue=='Subtract' && priceValue!=''){
+                                        for(var i=0; i<document.getElementsByClassName("rackrate").length; i++){
+                                            document.getElementsByClassName("rackrate")[i].value = (parseFloat(matrixExpress[i]) - parseFloat(priceValue)).toFixed(2);
+                                        }   
+                                    }
+                                }
+                            /*SF-169 End*/
+                            
+                            
+                            </script>
+                            <apex:pageBlock >
+                                <!--
+                                        Comment 
+                                                Following 
+                                                            Lines
+                                                                    of
+                                                                        code  -->
+                             <!--   <apex:pageBlockButtons >
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="Save" action="{!saveOLI}" />
+                                    <apex:commandButton styleClass="slds-button slds-button_brand"  value="Cancel" action="{!cancelOLI}" html-formnovalidate="formnovalidate" immediate="true"/>
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="Custom Pricing" action="{!redirectToCustomPricing}" immediate="true" html-formnovalidate="formnovalidate"/>
+                                </apex:pageBlockButtons> -->
+                                <br/>
+                                
+                                <!--<apex:pageMessages ></apex:pageMessages>-->
+                                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                                     <tr><td colspan="8" id="heading" ><center><p>Delhivery Commercial - Standard</p></center></td></tr> 
+                                                             <tr>
+                                        <th rowspan="2" id="heading2">Weight Slabs</th>
+                                        <th id="heading2" >Within-city</th>
+                                        <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                        <th id="heading2" >Metro-Metro</th>
+                                        <th id="heading2">Rest of India</th>
+                                        <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        
+                                        <th id="heading2">Zone A</th>
+                                        <th id="heading2">Zone B</th>
+                                        <th id="heading2">Zone C</th>
+                                        <th id="heading2">Zone D</th>
+                                        <th id="heading2">Zone E</th>
+                                    </tr>
+                                    
+                                   
+                                    <tr>
+                                        <td>0-250 gm</td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_A_0_250gm__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_B_0_250gm__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_C_0_250gm__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_D_0_250gm__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_E_0_250gm__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                       </tr>
+                                    
+                                    <tr>
+                                        <td style='width:250px;'>Additional 250 gms till 500 gms</td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_A_Additional_250_gms_till_500_gms__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_B_Additional_250_gms_till_500_gms__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_C_Additional_250_gms_till_500_gms__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_D_Additional_250_gms_till_500_gms__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_E_Additional_250_gms_till_500_gms__c}"   style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                       </tr>
+                                    
+                                    <tr>
+                                        <td>Additional 500 gm till 5kg</td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_A_Additional_500_gm_till_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_B_Additional_500_gm_till_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_C_Additional_500_gm_till_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_D_Additional_500_gm_till_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_E_Additional_500_gm_till_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                   </tr>
+                                                                      
+                                    <tr>
+                                        <td  >Additional 1kg Above 5kg</td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_A_Additional_1kg_Above_5kg__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_B_Additional_1kg_Above_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_C_Additional_1kg_Above_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_D_Additional_1kg_Above_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrateStd" value="{!objectOLI.Zone_E_Additional_1kg_Above_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>COD Charges (INR)</td>
+                                        <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objectOLI.COD_Charges__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        
+                                        <td >COD Charges (%)</td>
+                                        <center><td colspan="4" ><apex:inputField styleClass="slds-input" value="{!objectOLI.COD_Value__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td></center>
+                                    </tr>
+                                    
+                                    <tr><!-- Wallet Transaction Rate And Charges -->
+                                        <td>Wallet Transaction Charge (INR)</td>
+                                        <td colspan="2" ><apex:inputField styleClass="slds-input" value="{!objectOLI.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><center>Wallet Transaction Rate (%)</center></td>
+                                        <td colspan="4" ><apex:inputField styleClass="slds-input" value="{!objectOLI.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    
+                                    <tr><!-- Card  on Delivery Charges -->
+                                        <td>Card on Delivery Charges</td>
+                                        <td colspan="3">
+                                            Debit Card Transaction Charge (INR) <br/>
+                                            <apex:inputField styleClass="slds-input" value="{!objectOLI.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                            Credit Card Transaction Charge (INR) <br/>
+                                            <apex:inputField styleClass="slds-input" value="{!objectOLI.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        
+                                        <td colspan="5" >
+                                            
+                                            Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objectOLI.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                            Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objectOLI.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                            Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objectOLI.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                            Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objectOLI.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                   <!-- <tr>
+                                        <td>FOV Factor(Frieght On Value) (%) </td>
+                                        <td colspan="8"> <apex:inputField styleClass="slds-input" value="{!objectOLI.Frieght_Value_Factor__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                    </tr>-->
+                                    
+                                    <tr>
+                                    <td>Insurance (%)</td>
+                                        <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objectOLI.Insurance__c}" style="width:100%" onkeyPress='return event.charCode >= 46 && event.charCode <= 57' required="true"/> </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td  >Volumetric Divisor</td>
+                                        <center><td colspan="8"><apex:inputField styleClass="slds-input" value="{!objectOLI.Volumetric_Formulae__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td></center>
+                                    </tr>
+                                    
+                                    <!--  <tr>
+<td >GST</td>
+<center><td colspan="8"><apex:inputField value="{!objectOLI.Service_Charges__c}" style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td></center>
+</tr> -->
+                                    <tr>
+                                        <td>Fuel Surcharge (FSC)</td>
+                                        <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objectOLI.Fuel_Surcharge__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Maximum Liability for Forward (INR)</td>
+                                        <td colspan="8"><apex:inputField styleClass="slds-input" value="{!objectOLI.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>    
+                                    
+                                    <tr>
+                                        <td>Maximum Liability for Reverse (INR)</td>
+                                        <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objectOLI.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td ><center>Maximum Liability for Forward (%)</center></td>
+                                        <td colspan="4"><apex:inputField styleClass="slds-input" value="{!objectOLI.Maximum_Liability_for_Forward_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>                                    
+                                    </tr>
+                                    
+                                        
+                                        
+                                    
+                                    
+                                    <tr>
+                                        <td >COD Remittance</td>
+                                        <center><td colspan="2"><apex:inputField styleClass="slds-input" value="{!objectOLI.COD_Remittance__c}" style="width:96%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td></center>
+                                        
+                                    <td ><center>Maximum Liability for Reverse (%)</center></td>
+                                        <td colspan="4"><apex:inputField styleClass="slds-input" value="{!objectOLI.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    <!--SF-169 Start-->
+                                    <tr>
+                                        <td>Additional Charges</td>
+                                        <td>
+                                            <apex:selectList id="selectedOption1" styleClass="slds-input" value="{!selectedOption}" size="1" multiselect="false">
+                                                <apex:selectOptions value="{!options}" />
+                                            </apex:selectList>
+                                        </td>
+                                        <td colspan="2"><apex:inputText id="selectedPrice1" styleClass="slds-input" value="{!selectedPrice}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' onchange="calculateAdditionalChargesStd('{!$Component.selectedOption1}', '{!$Component.selectedPrice1}');"/></td>
+                                    </tr>
+                                    <!--SF-169 End-->
+                                    
+                                </table>
+                                <br/>
+                                <!--      <br/>
+<br/>
+<br/>
+<br/>
+<apex:pageBlockSection rendered="{!opp.OpportunityLineItems.size>0}">
+<apex:repeat value="{!opp.OpportunityLineItems}" var="line">              
+<apex:inputField value="{!line.Description__c}"/>
+</apex:repeat>
+</apex:pageBlockSection>
+<apex:pageBlockSection rendered="{!opp.OpportunityLineItems.size==0}">
+<apex:inputField value="{!objectOLI.Description__c}"/>
+</apex:pageBlockSection>-->
+<!--
+        Code Needs to be Commented
+-->
+                           <!-- </apex:pageBlock>             
+                        </apex:form>
+                        
+                        <apex:form > -->
+                            <script>
+                            /*SF-169 Start*/
+                            var matrixStandard = new Array(42);
+                            matrixStandard = {!listRackRateStandard};
+                            
+                            function calculateAdditionalChargesStd(selectedOption, selectedPrice){
+                                /*alert('selectedOption>>'+selectedOption.value);
+                                    alert('selectedPrice>>'+selectedPrice);
+                                    alert('document.getElementById(selectedOption).value>>'+document.getElementById(selectedOption).value);
+                                    alert('document.getElementById(selectedPrice).value>>'+document.getElementById(selectedPrice).value);*/
+                                    
+                                    var optionValue = document.getElementById(selectedOption).value;
+                                    var priceValue = document.getElementById(selectedPrice).value;
+                                    
+                                    if(optionValue=='Add' && priceValue!=''){
+                                        for(var i=0; i<document.getElementsByClassName("rackrateStd").length; i++){
+                                            document.getElementsByClassName("rackrateStd")[i].value = (parseFloat(matrixStandard[i]) + parseFloat(priceValue)).toFixed(2);
+                                        }
+                                    }else if(optionValue=='Subtract' && priceValue!=''){
+                                        for(var i=0; i<document.getElementsByClassName("rackrateStd").length; i++){
+                                            document.getElementsByClassName("rackrateStd")[i].value = (parseFloat(matrixStandard[i]) - parseFloat(priceValue)).toFixed(2);
+                                        }   
+                                    }
+                                }
+                            /*SF-169 End*/
+                            
+                            </script>
+                         <!--   <apex:pageBlock >  -->
+                              <center>   <apex:pageBlockButtons >
+                                   <apex:commandButton styleClass="slds-button slds-button_brand" style="margin-left:-45%" value="Save" action="{!saveOLI}" />
+                                    <apex:commandButton styleClass="slds-button slds-button_brand"  value="Cancel" action="{!cancelOLI}"  html-formnovalidate="formnovalidate" immediate="true"/> 
+                                   <!-- <apex:commandButton styleClass="slds-button slds-button_brand" value="Custom Pricing" action="{!redirectToCustomPricing}" immediate="true" html-formnovalidate="formnovalidate"/> -->
+                                </apex:pageBlockButtons>
+                                  </center>
+                                <br/>
+                                
+                                <!--<apex:pageMessages ></apex:pageMessages>-->
+                                <table ><!-- class="surface" -->
+                                    <tr><td colspan="8" id="heading" ><center><p>Delhivery Commercial - Express</p></center></td></tr> 
+                                                             <tr>
+                                        <th rowspan="2" id="heading2">Weight Slabs</th>
+                                        <th id="heading2" >Within-city</th>
+                                        <th id="heading2" >Regional (Single <br/>Connection And <br/> Less than 500 Kms)</th>
+                                        <th id="heading2" >Metro-Metro</th>
+                                        <th id="heading2">Rest of India</th>
+                                        <th id="heading2">North East, HP,<br/> Port Blair,J And K</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        
+                                        <th id="heading2">Zone A</th>
+                                        <th id="heading2">Zone B</th>
+                                        <th id="heading2">Zone C</th>
+                                        <th id="heading2">Zone D</th>
+                                        <th id="heading2">Zone E</th>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td >0-250 gm</td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_A_0_250gm__c}" style="width:100%" onchange="BlankValueCheck(this);" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_B_0_250gm__c}"   style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_C_0_250gm__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_D_0_250gm__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_E_0_250gm__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td  >Additional 250 gms till 500 gms</td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_A_Additional_250_gms_till_500_gms__c}"   style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_B_Additional_250_gms_till_500_gms__c}"   style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_C_Additional_250_gms_till_500_gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_D_Additional_250_gms_till_500_gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_E_Additional_250_gms_till_500_gms__c}"  style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                    </tr>
+                                     <tr>
+                                        <td>Additional 500 gm till 5kg</td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_A_Additional_500_gm_till_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_B_Additional_500_gm_till_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_C_Additional_500_gm_till_5kg__c}"  style="width:100%;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_D_Additional_500_gm_till_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></center></td>
+                                        <td><center><apex:inputField styleClass="slds-input rackrate" value="{!objectOLI1.Zone_E_Additional_500_gm_till_5kg__c}" style="width:100%;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></center></td>
+                                   </tr>
+                                    <tr>
+                                        <td  >Additional 1kg Above 5kg</td>
+                                        <td><apex:inputField styleClass="slds-input  rackrate" value="{!objectOLI1.Zone_A_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'/></td>
+                                        <td><apex:inputField styleClass="slds-input  rackrate" value="{!objectOLI1.Zone_B_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57'  /></td>
+                                        <td><apex:inputField styleClass="slds-input  rackrate" value="{!objectOLI1.Zone_C_Additional_1kg_Above_5kg__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input  rackrate" value="{!objectOLI1.Zone_D_Additional_1kg_Above_5kg__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><apex:inputField styleClass="slds-input  rackrate" value="{!objectOLI1.Zone_E_Additional_1kg_Above_5kg__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>                                    
+                                  
+                                    <tr>
+                                        <td >COD Charges (INR)</td>
+                                        <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objectOLI1.COD_Charges__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        
+                                        <td >COD Charges (%)</td>
+                                        <center><td colspan="3" ><apex:inputField styleClass="slds-input" value="{!objectOLI1.COD_Value__c}"   style="width:100%; " onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td></center>
+                                    </tr>
+                                    
+                                    <tr><!-- Wallet Transaction Rate And Charges -->
+                                        <td>Wallet Transaction Charge (INR)</td>
+                                        <td colspan="2" ><apex:inputField styleClass="slds-input" value="{!objectOLI1.Wallet_Transaction_Charge__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td><center>Wallet Transaction Rate (%)</center></td>
+                                        <td colspan="3" ><apex:inputField styleClass="slds-input" value="{!objectOLI1.Wallet_Transaction_Rate__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    
+                                    <tr><!-- Card  on Delivery Charges -->
+                                        <td>Card on Delivery Charges</td>
+                                        <td>
+                                            Debit Card Transaction Charge (INR) <br/>
+                                            <apex:inputField styleClass="slds-input" value="{!objectOLI1.Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/><br/>
+                                            Credit Card Transaction Charge (INR) <br/>
+                                            <apex:inputField styleClass="slds-input" value="{!objectOLI1.Credit_Card_Transaction_Charge__c}" style="width:50%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                        </td>
+                                        <td></td>
+                                        <td colspan="3" >
+                                            
+                                            Credit Card Rate (%) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objectOLI1.Credit_Card_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' />  <br/> 
+                                            Debit Card Transaction Amount Threshold (INR)  :&nbsp; <apex:inputField styleClass="slds-input" value="{!objectOLI1.Threshold_Charge__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                            Debit Card Rates (%) (Before Threshold) :&nbsp; <apex:inputField styleClass="slds-input" value="{!objectOLI1.Debit_Before_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /><br/>
+                                            Debit Card Rates (%) (After Threshold) :&nbsp;<apex:inputField styleClass="slds-input" value="{!objectOLI1.Debit_After_Rates__c}" style="width:25%;margin: 2px 0 2px 0px;" onkeypress='return event.charCode >= 46 && event.charCode <= 57' />
+                                            
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- <tr><!-- For FOV Factor
+                                        <td>FOV Factor(Frieght On Value) (%) </td>
+                                        <td colspan="5"> <apex:inputField styleClass="slds-input" value="{!objectOLI1.Frieght_Value_Factor__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /> </td>
+                                    </tr> -->
+                                    
+                                    <tr>
+                                        <td>Insurance (%)</td>
+                                        <td colspan="5"><apex:inputField styleClass="slds-input" value="{!ObjectOLI1.Insurance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' required="true"/></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td  >Volumetric Divisor</td>
+                                        <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objectOLI1.Volumetric_Formulae__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    
+                                    <!-- <tr>
+<td  >GST</td>
+<td colspan="5"><apex:inputField value="{!objectOLI.Service_Charges__c}" style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+</tr> -->
+                                    
+                                    <tr>
+                                        <td>Fuel Surcharge (FSC)</td>
+                                        <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objectOLI1.Fuel_Surcharge__c}"  style="width:100%"  onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Maximum Liability for Forward (INR)</td>
+                                        <td colspan="5"><apex:inputField styleClass="slds-input" value="{!objectOLI1.Maximum_liability_per_consignment__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Maximum Liability for Reverse (INR)</td>
+                                        <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objectOLI1.Maximum_Liability_for_Reverse__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                        <td ><center>Maximum Liability for Forward (%)</center></td>
+                                        <td colspan="4"><apex:inputField styleClass="slds-input" value="{!objectOLI.Maximum_Liability_for_Forward_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>                             
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>COD Remittance</td>
+                                        <td colspan="2"><apex:inputField styleClass="slds-input" value="{!objectOLI1.COD_Remittance__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                                    <td ><center>Maximum Liability for Reverse (%)</center></td>
+                                        <td colspan="3"><apex:inputField styleClass="slds-input" value="{!objectOLI1.Maximum_Liability_for_Reverse_Percent__c}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' /></td>
+                        
+                                    </tr>
+                                    <!--SF-169 Starts-->
+                                    
+                                    <tr>
+                                        <td>Additional Charges</td>
+                                        <td>
+                                            <apex:selectList id="selectedOption" styleClass="slds-input" value="{!selectedOption}" size="1" multiselect="false">
+                                                <apex:selectOptions value="{!options}" />
+                                            </apex:selectList>
+                                        </td>
+                                        <td colspan="2"><apex:inputText id="selectedPrice" styleClass="slds-input" value="{!selectedPrice}" style="width:100%" onkeypress='return event.charCode >= 46 && event.charCode <= 57' onchange="calculateAdditionalCharges('{!$Component.selectedOption}', '{!$Component.selectedPrice}');"/></td>
+                                    </tr>
+                                    <!--SF-169 Ends-->
+               
+                                </table> 
+                                <br/>                       
+                                <!--   <br/>
+<br/> 
+<br/>
+<br/>
+<apex:outputPanel >
+<apex:pageBlockSection rendered="{!opp.OpportunityLineItems.size>0}">
+<apex:repeat value="{!opp.OpportunityLineItems}" var="line">              
+<apex:inputField value="{!line.Description__c}"/>
+</apex:repeat>
+</apex:pageBlockSection>
+<apex:pageBlockSection rendered="{!opp.OpportunityLineItems.size==0}">
+<apex:inputField value="{!objectOLI.Description__c}"/>
+</apex:pageBlockSection>
+</apex:outputPanel>-->
+                            </apex:pageBlock>
+                        </apex:form>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+            
+        </body>
+    </html>
+</apex:page>

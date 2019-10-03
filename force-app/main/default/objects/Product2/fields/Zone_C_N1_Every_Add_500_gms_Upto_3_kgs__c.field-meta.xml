@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zone_C_N1_Every_Add_500_gms_Upto_3_kgs__c</fullName>
+    <externalId>false</externalId>
+    <label>Zone C-N1 -Every Add 500 gms(Upto 3 kgs)</label>
+    <precision>12</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Currency</type>
+</CustomField>

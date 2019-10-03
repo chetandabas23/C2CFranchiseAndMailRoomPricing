@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cancelled cheque</fullName>
+                <default>false</default>
+                <label>Cancelled cheque</label>
+            </value>
+            <value>
+                <fullName>Pan card</fullName>
+                <default>false</default>
+                <label>Pan card</label>
+            </value>
+            <value>
+                <fullName>Address proof</fullName>
+                <default>false</default>
+                <label>Address proof</label>
+            </value>
+            <value>
+                <fullName>Agreement</fullName>
+                <default>false</default>
+                <label>Agreement</label>
+            </value>
+            <value>
+                <fullName>GST Declaration Form</fullName>
+                <default>false</default>
+                <label>GST Declaration Form</label>
+            </value>
+            <value>
+                <fullName>Saas</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Saas</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

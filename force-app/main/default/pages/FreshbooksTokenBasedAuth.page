@@ -1,0 +1,55 @@
+<apex:page standardController="Customer_Onboarding__c" extensions="FreshbookTokenBasedAuth_Cntrl" action="{!pushDataFreshbooks}">
+	<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>
+		<style>
+			.customMessage {
+			margin: 5px 0!important;
+			opacity: 1!important;
+			width: 100%;
+			font-size: 12px;
+			border: 0px;
+			border-radius: 6px;
+			padding-left: 10px;
+			}
+
+			.customMessage * {
+			color: #fff!important
+			}
+
+			.msgIcon {
+			display: none!important
+			}
+
+			.message {
+			opacity: .1
+			}
+			.center {
+			margin: auto;
+			width: 50%;
+			padding: 10px;
+			}
+		</style>
+	<script>
+		j$ = jQuery.noConflict();
+
+		j$(document).ready(function() { 
+			overridePageMessages();
+		});
+		function overridePageMessages(){    
+			j$('.warningM3').addClass('slds-notify slds-notify--toast slds-theme--warning customMessage ');          
+			j$('.confirmM3').addClass('slds-notify slds-notify--alert slds-theme--success  customMessage ');    
+			j$('.errorM3').addClass('slds-notify slds-notify--alert slds-theme--error customMessage ');                  
+			j$('.infoM3').addClass('slds-notify slds-notify--toast customMessage ');    
+
+			j$('.errorM3').removeClass('errorM3'); 
+			j$('.confirmM3').removeClass('confirmM3'); 
+			j$('.infoM3').removeClass('infoM3');   
+			j$('.warningM3').removeClass('warningM3');  
+		}
+	</script>
+	<apex:slds />
+
+	<apex:form styleClass="slds-scope">
+		<apex:pageMessages /><br/>
+        <apex:commandButton action="{!Cancel}" value="Back" status="status"/>
+	</apex:form>  
+</apex:page>

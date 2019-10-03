@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type__c</fullName>
+    <externalId>false</externalId>
+    <label>Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Contract</fullName>
+                <default>false</default>
+                <label>Contract</label>
+            </value>
+            <value>
+                <fullName>Onboarding Form</fullName>
+                <default>false</default>
+                <label>Onboarding Form</label>
+            </value>
+            <value>
+                <fullName>Batch</fullName>
+                <default>false</default>
+                <label>Batch</label>
+            </value>
+            <value>
+                <fullName>Operating Batch</fullName>
+                <default>false</default>
+                <label>Operating Batch</label>
+            </value>
+            <value>
+                <fullName>Delete Dropbox Files</fullName>
+                <default>false</default>
+                <label>Delete Dropbox Files</label>
+            </value>
+            <value>
+                <fullName>HQ</fullName>
+                <default>false</default>
+                <label>HQ</label>
+            </value>
+            <value>
+                <fullName>Client Warehouse</fullName>
+                <default>false</default>
+                <label>Client Warehouse</label>
+            </value>
+            <value>
+                <fullName>POC HQ</fullName>
+                <default>false</default>
+                <label>POC HQ</label>
+            </value>
+            <value>
+                <fullName>Dropbox</fullName>
+                <default>false</default>
+                <label>Dropbox</label>
+            </value>
+            <value>
+                <fullName>Dropbox Upsert</fullName>
+                <default>false</default>
+                <label>Dropbox Upsert</label>
+            </value>
+            <value>
+                <fullName>DateWiseData</fullName>
+                <default>false</default>
+                <label>DateWiseData</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
