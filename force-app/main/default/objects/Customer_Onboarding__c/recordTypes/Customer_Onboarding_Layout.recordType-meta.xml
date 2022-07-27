@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Onboarding_Layout</fullName>
+    <active>true</active>
+    <label>Customer Onboarding Layout</label>
+    <picklistValues>
+        <picklist>Billing_Client_Config__c</picklist>
+        <values>
+            <fullName>--None--</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client HO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drop State</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pickup State</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Billing_Mode__c</picklist>
+        <values>
+            <fullName>Express</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Surface</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Invoicing_Mode__c</picklist>
+        <values>
+            <fullName>Agreement execution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>COD Net-off</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delhivery Miles</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monthly Invoiced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prepaid</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Movement_Config__c</picklist>
+        <values>
+            <fullName>--None--</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Client HO state GST IN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warehouse state GST IN</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>POC_Team__c</picklist>
+        <values>
+            <fullName>C2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>East CSM B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fashion CSM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LT B2C POC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LT CSM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North CSM B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>North POC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ravinder Thakur</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South CSM B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>South POC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>West CSM B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>West POC</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Postal_Cat1__c</picklist>
+        <values>
+            <fullName>---------</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CatA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CatB</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CatC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CatD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CatE</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Type__c</picklist>
+        <values>
+            <fullName>B2B</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2C</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C2C Lite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heavy</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Return_Address__c</picklist>
+        <values>
+            <fullName>Client Warehouse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Center</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Null</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Services__c</picklist>
+        <values>
+            <fullName>COD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DTO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fulfilment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Paid</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>REPL</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Draft</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error Bird</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error HQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Error Oracle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Final</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Incomplete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On-boarded Manually</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Synced To HQ</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Synced To Oracle</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Synced to Bird</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Viewed</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Wallet_Provider__c</picklist>
+        <values>
+            <fullName>Delhivery miles</fullName>
+            <default>true</default>
+        </values>
+    </picklistValues>
+</RecordType>

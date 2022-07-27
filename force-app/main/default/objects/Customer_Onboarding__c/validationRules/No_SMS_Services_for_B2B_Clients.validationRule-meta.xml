@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>No_SMS_Services_for_B2B_Clients</fullName>
+    <active>false</active>
+    <description>SF-266</description>
+    <errorConditionFormula>$Profile.Name &lt;&gt; &#39;System Administrator&#39; &amp;&amp; $Profile.Name &lt;&gt; &#39;CustomerOnboarding Profile&#39; &amp;&amp; Opportunity__r.RecordType.Name = &#39;B2B&#39; &amp;&amp; ( ISCHANGED( send_sms_cash__c ) || ISCHANGED( Send_SMS_COD__c ) || ISCHANGED( Send_SMS_NDR__c ) || ISCHANGED( Send_SMS_Prepaid__c ) || ISCHANGED( Send_SMS_Reverse__c ) )</errorConditionFormula>
+    <errorMessage>SMS Services can only be edited by System Administrator for B2B Clients</errorMessage>
+</ValidationRule>

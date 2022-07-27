@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoicing_Mode__c</fullName>
+    <externalId>false</externalId>
+    <label>Invoicing Mode</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Prepaid</fullName>
+                <default>false</default>
+                <label>Prepaid</label>
+            </value>
+            <value>
+                <fullName>Monthly Invoiced</fullName>
+                <default>false</default>
+                <label>Monthly Invoiced</label>
+            </value>
+            <value>
+                <fullName>COD Net-off</fullName>
+                <default>false</default>
+                <label>COD Net-off</label>
+            </value>
+            <value>
+                <fullName>Delhivery Miles</fullName>
+                <default>false</default>
+                <label>Delhivery Miles</label>
+            </value>
+            <value>
+                <fullName>Agreement execution</fullName>
+                <default>false</default>
+                <label>Agreement execution</label>
+            </value>
+            <value>
+                <fullName>Post Paid</fullName>
+                <default>false</default>
+                <label>Post Paid</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

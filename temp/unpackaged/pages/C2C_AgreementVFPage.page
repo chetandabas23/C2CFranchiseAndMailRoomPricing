@@ -1,0 +1,1004 @@
+<!--
+Author Name:- Shahwaz Khan
+Description : To Create the Contract for the franchise pricing
+Updated By: Chetan Dabas
+Reason for Updation: To add the dynamic Pricing in the contract
+Updated Date: 09-08-2019
+-->
+<apex:page standardController="Opportunity" extensions="C2CAgreementPDFController" renderAs="PDF" applyHtmlTag="false" showHeader="false" >
+    <html> 
+        <body>
+            <h2>
+                <Strong><Center><u> BUSINESS ASSOCIATE AGREEMENT </u></Center></Strong>
+            </h2>
+            <br/>
+            <head>
+                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+            </head>
+            <table>
+                <tr>
+                    <td>
+                        This Agreement made and entered into at Gurgaon, on &nbsp;<Strong>{!startDate}</Strong>.
+                    </td>
+                    <h2>
+                        <Center> By and between</Center>
+                    </h2><br/>
+                    <td>
+                        <Strong> Delhivery Private Limited,</Strong> a Company registered under the provisions of Companies
+                        Act, 1956, and having its registered office at A-29 (Back Part), Mohan Cooperative
+                        Industrial Estate, New Delhi-110044 (hereinafter referred to as  “ <Strong><u>Delhivery</u></Strong>”) which term
+                        shall, unless repugnant to the subject to context, be deemed to include its successors and
+                        permitted assigns) on the ONE PART:
+                    </td>
+                    <br/>
+                    <h2>
+                        <Center> AND </Center>
+                    </h2><br/>
+                    <td>
+                        <Strong>[{!objOpportunity.Registered_Name__c}],</Strong> a Company/ partnership/ sole proprietor having its registered office/ permanent
+                        address at [insert] (hereinafter referred to as  “<Strong><u>ASSOCIATE</u></Strong>” which term shall, unless
+                        repugnant to the subject or context, be deemed to include its/their heirs, legal
+                        representatives, administrators, assigns, successors and permitted assigns) on the
+                        OTHER PART;
+                    </td>
+                    <br/>
+                    <h3>
+                        <strong><center> RECITALS </center></strong>  
+                    </h3><br/>
+                    <td>
+                        Whereas, Delhivery is engaged in the business activity of effecting and coordinating
+                        courier and freight services both on an international and national scale and has acquired
+                        substantial expertise, experience and reputation therefrom and; 
+                    </td>
+                    <br/>
+                    <td>
+                        Whereas, Delhivery owns, possesses, controls, and/or otherwise is in a position to
+                        provide and to grant to the ASSOCIATE technical information, know-how, assistance,
+                        services and marketing rights in respect of the “Outbound Consignments” (as defined in
+                        Article I hereof) and
+                    </td><br/>
+                    <td>
+                        Whereas, ASSOCIATE is desirous of receiving said, technical information, know-how,
+                        assistance, services and marketing rights, from Delhivery for the purposes of operating
+                        and marketing the Outbound Consignments in the city of &nbsp;<Strong>{!objOpportunity.City__c}</Strong>.
+                        
+                    </td><br/>
+                    <td>
+                        NOW, THEREFORE, IN CONSIDERATION OF THE TERMS, CONDITIONS AND
+                        COVENANTS HEREINAFTER CONTAINED, THE PARTIES HERETO, HEREBY
+                        AGREE AS FOLLOWS:
+                    </td><br/>
+                    <h3>
+                        <strong><center> ARTICLE I </center></strong>  
+                    </h3><br/>
+                    <h3>
+                        <strong><center> DEFINITIONS </center></strong>  
+                    </h3><br/>
+                    <td>
+                        In this Agreement, unless repugnant to the subject or context, the following terms shall
+                        have the meanings respectively assigned to them hereunder:   
+                    </td><br/>
+                    <td>
+                        1.1 &nbsp;&nbsp;“<Strong> Affiliate </Strong>” shall mean any entity which controls, is controlled by or under
+                        common control with a party to this Agreement.
+                    </td> <br/>
+                    <td>
+                        1.2 &nbsp;&nbsp; “<Strong>Air Waybill</Strong>” shall mean the bill of carriage duly authorized and or supplied by
+                        Delhivery for the purpose of booking shipments by the ASSOCIATE.
+                        
+                    </td> <br/>
+                    <td>
+                        1.3 &nbsp;&nbsp;“<Strong>Air Waybill Charge</Strong>” shall mean the amount due and payable by the
+                        ASSOCIATE to Delhivery per air waybill. 
+                    </td> <br/>
+                    <td>
+                        1.4 &nbsp;&nbsp;“<Strong>Business Plan</Strong>” shall mean the plan prepared by the ASSOCIATE and
+                        submitted to Delhivery at the beginning of each year, which shall include an
+                        operational plan including the operational inputs proposed, sales plan for each
+                        product and the expected revenue.
+                    </td> <br/>
+                    <td>
+                        1.5 &nbsp;&nbsp;“<Strong>COD (Cash On Delivery)</Strong>” shall mean the cost of the shipment as declared by
+                        shipper to be recovered from consignee.
+                    </td> <br/>
+                    <td>
+                        1.6 &nbsp;&nbsp;“<Strong>Delivery Rates</Strong>” shall mean the rates specified in SCHEDULE I and II
+                        attached hereto charged to the ASSOCIATE by DELHIVERY for international
+                        and domestic shipments, respectively, picked up within the Territory. 
+                    </td> <br/>
+                    <td>
+                        1.7 &nbsp;&nbsp;“<Strong>Express Products</Strong>” shall mean time sensitive shipments to be delivered to the
+                        consignee within a prescribed period of time (e.g. intercity, domestic,
+                        international etc).
+                    </td> <br/>
+                    <td>
+                        1.8 &nbsp;&nbsp;“<Strong>Line-Haul</Strong>” shall mean the routes on which shipments travel from the Transfer
+                        Point out of the Territory and likewise the routes on which shipments from out of
+                        the Territory travel to the Transfer Point.
+                        
+                    </td> <br/>
+                    <td>
+                        1.9 &nbsp;&nbsp;“<Strong>Outbound Consignments</Strong>” shall mean those time sensitive express and freight
+                        shipments sold by the ASSOCIATE in the Territory under the DELHIVERY
+                        name for delivery to any destination in the national or international network.
+                    </td> <br/>
+                    <td>
+                        1.10 &nbsp;&nbsp;“<Strong>Technical Know-How</Strong>” shall mean the information (digital or physical) relating
+                        to the operation and marketing of the Outbound Consignment.
+                    </td> <br/>
+                    <td>
+                        1.11 &nbsp;&nbsp;“<Strong>Territory</Strong>” shall mean the city of&nbsp;<Strong>{!objOpportunity.Registered_Name__c}</Strong>.
+                    </td> <br/>
+                    <td>
+                        1.12 &nbsp;&nbsp;“<Strong>Transfer Point</Strong>” shall mean the location/s as specified by DELHIVERY for
+                        giving/accepting shipments from the ASSOCIATE.
+                        
+                    </td> <br/>
+                    <td>
+                        1.13 &nbsp;&nbsp;“<Strong>TOPAY</Strong>” shall mean the freight or transportation charges to be recovered from
+                        the consignee as per the instructions of consignor.
+                    </td> <br/>
+                    <strong>2.&nbsp;<u>GRANT OF RIGHT</u></strong><br/>
+                    <td>
+                        2.1 &nbsp;&nbsp;DELHIVERY hereby appoints ASSOCIATE as its non-exclusive Business
+                        ASSOCIATE in the Territory to provide such services, perform such functions and
+                        fulfill such duties as may be provided for in this Agreement.
+                        
+                    </td> <br/>
+                    <td>
+                        2.2&nbsp;&nbsp; If this Agreement is terminated for any reasons, prior to the normal expiry date, then
+                        and in such an event, all rights and license granted to ASSOCIATE hereunder shall
+                        cease and ASSOCIATE shall forthwith cease to use and return to DELHIVERY
+                        immediately all the Technical Know How and all information/ confidential
+                        information and rights received from DELHIVERY.                        
+                    </td> <br/>
+                    <td>
+                        2.3 &nbsp;&nbsp;The ASSOCIATE, its directors, shareholders and partners shall be precluded
+                        throughout the term of this Agreement and for a period of twelve (12) months after
+                        its termination, for whatever reason, from performing any activity as mentioned in
+                        this Agreement either in their own capacity or from any other organization or entity
+                        which competes or intends to compete with DELHIVERY in the Territory, unless
+                        DELHIVERY has given its prior written consent.
+                    </td> <br/>
+                    <Strong> 3.&nbsp;&nbsp; <u> TRADEMARKS </u></Strong><br/>
+                    <td>
+                        3.1 &nbsp;&nbsp;Upon entering into a license Agreement with DELHIVERY, ASSOCIATE shall
+                        be permitted to sell all domestic, international and cargo products hereunder,
+                        under the trade name Delhivery and its trademarks. ASSOCIATE shall not be
+                        entitled to, and shall not, use or register on its own Delhivery trade names, brand
+                        names or any other similar name or simulation or contraction thereof. The
+                        ASSOCIATE shall also not be entitled to use, nor register on its own behalf the
+                        trade names, brand names or any other similar name or simulation of Delhivery.
+                        
+                    </td> <br/>
+                    <td>
+                        3.2 &nbsp;&nbsp;The ASSOCIATE shall however be entitled to append its name, or the name of
+                        its firm as “Authorised Service Provider of Delhivery” in that order.
+                    </td> <br/>
+                    <Strong> 4.&nbsp;LOCAL EXPRESS </Strong><br/>
+                    <td>
+                        In the event of the ASSOCIATE starting a local express facility, the ASSOCIATE shall
+                        be solely responsible for the same, and DELHIVERY shall have nothing to do with the
+                        said activity. The term local express shall mean “providing express services within the
+                        local limits of the city or Territory alone.” Any Express activity beyond such limits will
+                        not be considered as local express and will have to be routed through the network of
+                        DELHIVERY. ASSOCIATE shall not use the name “Delhivery” in connection with the
+                        provision of these local services nor may ASSOCIATE represent itself as ASSOCIATE
+                        with DELHIVERY for such local express facility without written approval from
+                        Delhivery
+                    </td><br/>
+                    <strong> 5. &nbsp; PAYMENTS, REPORTS AND RECORDS</strong><br/>
+                    <td>
+                        5.1 &nbsp;&nbsp;On receipt of invoice, the recipient shall make payment of the same within 15
+                        (fifteen) days towards payment of invoice. Failure of payment will entitle the
+                        recipient, notwithstanding any other legal rights, to charge interest at the rate of
+                        24% per annum for the period extending from the date when payment becomes
+                        due to the date of actual payment.
+                    </td><br/>
+                    <td>
+                        5.2 &nbsp;&nbsp; The parties shall within fourteen (14) days of end of each quarter agree in writing
+                        all amounts due to each other including resolving any dispute between them over
+                        any amount due. 
+                    </td><br/>
+                    <td>
+                        5.3 &nbsp;&nbsp; The rates shall be renegotiated by the parties yearly in the month of December.
+                        Should the parties fail to reach an agreement as to the new rates before the
+                        commencement of any year or within thirty (30) days of its commencement, the
+                        rates shall remain same as the previous year 
+                    </td><br/>
+                    <td>
+                        5.4 &nbsp;&nbsp; An Interest free security deposit of Rs._____________________/- in favour of
+                        Delhivery Pvt. Ltd. shall be issued by ASSOCIATE immediately after signing of
+                        this Agreement. The deposit/bank guarantee shall be renewed by the
+                        ASSOCIATE annually at a revised amount to be agreed upon. DELHIVERY
+                        shall have exclusive right to forfeit the interest free cash deposit/adjust the lawful
+                        dues receivable from the ASSOCIATE or to en-cash the bank guarantee with no
+                        further notice to the ASSOCIATE.
+                        
+                    </td><br/>
+                    <strong> 5.4.1 &nbsp; TAXES AND CONSIDERATION CLAUSE:</strong><br/>
+                    <td>
+                        The service fee/ price/ consideration is exclusive of Goods and Services Tax
+                        (‘GST’) / other indirect taxes and cess, as may be applicable and to be billed
+                        separately. Other taxes to be charged shall be specifically stated. GST include
+                        CGST, SGST, IGST, UTGST or any other tax under this nomenclature that may
+                        be imposed by the government from time to time. Appropriate taxes, if
+                        prescribed by GST Legislation to be charged and recovered by the ASSOCIATE
+                        along with the invoice.
+                        
+                    </td><br/>
+                    <p>
+                        Payment Terms  
+                    </p> <br/>
+                    <ol type="i">
+                        <li> It shall be the obligation of the ASSOCIATE to properly pay and discharge the
+                            tax burden and to timely file the tax returns so as to enable DELHIVERY to
+                            claim the input tax credit on the services taken from the ASSOCIATE Company
+                            could modify payment term subject to fulfillment of certain conditions. Due to
+                            any act or omission on the part of ASSOCIATE in case any input tax credit is not
+                            received or short received by DELHIVERY the same shall be recovered from the
+                            ASSOCIATE. Further in case the total amount of credit is in excess of the output
+                            liability of DELHIVERY then in such an event DELHIVERY reserves the right
+                            to recover the same from the ASSOCIATE.</li>
+                        
+                        
+                        <li> The ASSOCIATE shall upload data on the portal within timeline prescribed by
+                            the GST Legislation. In case data is not uploaded by ASSOCIATE, resulting in
+                            non-receipt of input tax credit or short receipt of input tax credit by
+                            DELHIVERY. DELHIVERY shall recover the same from ASSOCIATE by
+                            deducting the said amount from his invoice / bill. </li>
+                        
+                        
+                        <li>In case of One Time ASSOCIATE, DELHIVERY shall retain an amount
+                            equivalent to the amount of GST paid/payable under the GST Legislation to the
+                            ASSOCIATE. On compliance of the applicable provisions of GST on the portal by ASSOCIATE and upon DELHIVERY receiving the benefit of input tax
+                            credit, it shall release the amount retained to the ASSOCIATE.</li>
+                        
+                        
+                        
+                        <li> In case any amount is paid in advance by DELHIVERY, any differential amount
+                            which DELHIVERY is obligated to pay to the statutory authorities as per GST
+                            legislation, the same shall be either recovered separately from the ASSOCIATE
+                            or shall be adjusted from the amounts payable to the ASSOCIATE from the
+                            pending invoices.</li> 
+                        
+                        
+                        <li> In case of failure on the part of GST compliances on the part of ASSOCIATE
+                            due to which DELHIVERY is called upon to pay such amount, the same shall be
+                            recovered from the ASSOCIATE.</li>
+                    </ol>
+                    <strong>  5.10 &nbsp;&nbsp; <u>Indemnity Clause </u></strong> <br/>
+                    <td>
+                        To Indemnify DELHIVERY against any cost incurred (including but not limited
+                        to tax, interest, penalty) due to non-compliance or delay in compliance of GST
+                        law by the ASSOCIATE, an amount equal to amount payable / forgone by
+                        DELHIVERY shall be recovered from the ASSOCIATE .
+                    </td><br/>
+                    <strong> 6.&nbsp;&nbsp; TERM </strong>
+                    <td>
+                        6.1 &nbsp;&nbsp; This Agreement shall be effective on the date of the execution of this Agreement
+                        (“Effective Date”). The Agreement shall be valid, legal and binding from the
+                        Effective Date unless terminated by either Party in accordance with this Agreement.
+                        and thereafter it will stand terminated subject to the provisions of clause 6.2 of this
+                        Agreement.  
+                    </td><br/>
+                    <td>
+                        6.2 &nbsp;&nbsp;After the prescribed term of this Agreement, if this Agreement is not renewed
+                        and neither party expresses and communicates to the other party its intention in
+                        writing to not renew this Agreement then this Agreement shall be deemed to be
+                        continued under same terms and conditions unless otherwise decided and
+                        communicated in writing by either party to other party
+                    </td><br/>
+                    <strong> 7.&nbsp;&nbsp;TERMINATION </strong>
+                    <td>
+                        7.1&nbsp;&nbsp; DELHIVERY may terminate this Agreement by written notice if there is a direct
+                        or indirect change in the ownership, shareholding, re-constitution or change in
+                        control of the ASSOCIATE. In such an event parties may execute a fresh
+                        agreement to continue the business relationship in which case the ASSOCIATE
+                        shall provide all the required supporting documents in this regard.  
+                    </td><br/>
+                    <td>
+                        7.2 &nbsp;&nbsp;In case of breach of the provision of clause 11 or sub-clause 12.1.1 of this
+                        agreement by the ASSOCIATE, DELHIVERY shall have a right to immediately
+                        terminate this agreement without prejudice to the exercise of any other rights it
+                        may have against the ASSOCIATE in terms of this agreement. 
+                    </td><br/>
+                    <td>
+                        7.3&nbsp;&nbsp; Either of the parties may terminate the Agreement immediately upon written
+                        notice if the other becomes insolvent or bankrupt or in the opinion of the other
+                        party wishing to terminate gives the impression that it is likely to go insolvent or
+                        bankrupt.  
+                    </td><br/>
+                    <td>
+                        7.4 &nbsp;&nbsp;Either party may terminate the Agreement at will upon giving not less than thirty
+                        (30) days prior written notice to the other party. 
+                    </td><br/>
+                    <td>
+                        7.5 &nbsp;&nbsp;Notwithstanding anything contained anywhere in this agreement, in the event of
+                        default of performance of any of the services as specified under SCHEDULE V
+                        and VI written hereunder or the service provided herein is in contravention of any
+                        law, as may be applicable from time to time, or industry practice, Delhivery will
+                        provide a written notice describing in detail the nature of default. Following
+                        receipt of such notice, the ASSOCIATE will have an opportunity to improve upon
+                        the service performance or to remedy the default if any, as the case may be within
+                        Fifteen (15) days of receipt of the notice. If the default/service performance is not
+                        cured/improved upon within the given period, then Delhivery would be entitled to
+                        terminate this Agreement forthwith without providing any further written notice
+                        for the same.
+                        
+                    </td><br/>
+                    <td>
+                        7.6 &nbsp;&nbsp;In the event of termination, the parties shall render a final account to the other of
+                        all outstanding amounts and the net outstanding amount shall be paid within
+                        fifteen (15) days of the rendering of the account.
+                    </td><br/>
+                    <td>
+                        7.7&nbsp;&nbsp; Upon termination, the ASSOCIATE shall return to DELHIVERY within seven
+                        (7) days of the termination all sales, marketing and operational material in its
+                        possession (all materials bearing DELHIVERY intellectual property).  
+                    </td><br/>
+                    <td>
+                        7.8&nbsp;&nbsp; Upon termination, the ASSOCIATE shall cease to use any stationery, signs,
+                        notices, announcements and printed matter which states or leads to infer that it is
+                        authorized by DELHIVERY as its ASSOCIATE and shall not thereafter make use
+                        of DELHIVERY name, trademark, logo or other device. If ASSOCIATE is found
+                        using directly or indirectly the name of DELHIVERY as ASSOCIATE with
+                        ASSOCIATE’s business after termination or expiry of this Agreement, as the case
+                        may be, then DELHIVERY will be entitled to recover damages @ Rs. 10,000
+                        (Rupees Ten Thousand only) per day of default from the ASSOCIATE
+                    </td><br/>
+                    <Strong> 8.&nbsp;&nbsp; INDEMNIFICATION AND LIABILITY </Strong>
+                    <td>
+                        8.1 &nbsp;&nbsp; The ASSOCIATE shall indemnify and keep indemnified DELHIVERY against
+                        any expenses, cost, claims, loss, damages or penalties incurred by DELHIVERY,
+                        howsoever occasioned, including any damage or loss caused to any third parties,
+                        arising out of any acts or omissions on the part of the ASSOCIATE and/or its
+                        staff-members.   
+                    </td><br/>
+                    <td>
+                        8.2 &nbsp;&nbsp; The ASSOCIATE shall indemnify and keep indemnified DELHIVERY from and
+                        against payment of all fees, taxes and levies and other such liabilities whether
+                        past, present or future to the State and/or Central Government, Municipal
+                        Corporation or any other Government body or authority or person in respect of
+                        the any activity/operation arising out of this Agreement and keep DELHIVERY
+                        indemnified against all costs, charges, expenses that DELHIVERY may incur on
+                        account of failure on the part of ASSOCIATE to discharge its liabilities.  
+                    </td><br/>
+                    <td>
+                        8.3 &nbsp;&nbsp; In case of international shipments on CHARGES COLLECT basis, the
+                        ASSOCIATE will keep DELHIVERY compensated/indemnified against nonpayment of courier / freight charges payable by the consignee. The ASSOCIATE
+                        also undertakes to pay to DELHIVERY over and above the courier/ freight
+                        charges, customs duties and clearance charges and other taxes, if any, applicable
+                        according to the laws of the destination country.  
+                    </td><br/>
+                    <td>
+                        8.4 &nbsp;&nbsp; ASSOCIATE also confirms that even in the event of ASSOCIATE not being able
+                        to collect the amounts due from the consignee within the agreed time for any
+                        reason whatsoever, the ASSOCIATE shall compensate and indemnify for the
+                        charges as per the international charges collect tariff plus an amount of 20% as
+                        service charges plus customs duties, clearance charges and taxes as has been paid
+                        by DELHIVERY or its representative in respect of the said consignment 
+                    </td><br/>
+                    <td>
+                        8.5 &nbsp;&nbsp; Neither party shall be liable for any special or consequential loss suffered by the
+                        other party (including but not limited to loss of profit or loss of opportunity)
+                        arising from any breach of the other party and/or negligence of the other party
+                    </td><br/>
+                    <td>
+                        8.6 &nbsp;&nbsp; Limitation of Liability
+                        <ol style="list-style-type:disc;">
+                            <li> Our maximum liability for the damage, loss, theft or misappropriation of any
+                                Shipment during the transit period shall be INR 2000.00 or the actual aggregate
+                                value of the product, whichever is lower.</li> 
+                            <li> For any loss or theft or misappropriation of any Shipment with a value above
+                                INR 2000.00 we shall provide you a COF only.</li>
+                        </ol>
+                    </td><br/>
+                    <strong>9.&nbsp;&nbsp;SUB-LICENSING AND ASSOCIATION WITH OTHER ASSOCIATES OF DELHIVERY</strong>
+                    <br/>
+                    <td>
+                        ASSOCIATE shall not sub-license to any third party in the Territory the technical
+                        information, rights and licenses acquired by it hereunder, except when the terms and
+                        conditions of such sub-license are previously agreed upon in writing by all parties
+                        involved, i.e. such Third party, ASSOCIATE and DELHIVERY. Further the
+                        ASSOCIATE shall never have any association or arrangement direct or indirect with any
+                        other ASSOCIATE of DELHIVERY independent of DELHIVERY and violation of this
+                        clause will entitle DELHIVERY to terminate the Agreement without giving any notice
+                        in advance.
+                    </td><br/>
+                    <Strong> 10.&nbsp;&nbsp;SALES, MARKETING AND OBLIGATIONS OF THE PARTIES</Strong>
+                    <td>
+                        10.1&nbsp;&nbsp; Each of the parties shall perform its obligations as set forth in SCHEDULE V,
+                        VI and VII attached hereto relating to Outbound Consignments or as may be
+                        informed by Delhivery through mail or any written communication. 
+                    </td><br/>
+                    <td>
+                        10.2&nbsp;&nbsp; The parties at all times keep each others consignments in its possession and
+                        under its control safe from theft, loss, weather and all other dangers and shall
+                        ensure consignments are not delayed or detained unnecessarily by any
+                        government officials in the Territory. 
+                    </td><br/>
+                    <td>
+                        10.3 &nbsp;&nbsp; The ASSOCIATE shall duly perform, observe, abide by and otherwise comply
+                        with all Government or Statutory laws as applicable to the said
+                        activities/operations from time to time and for the time being in force and so far
+                        as to the extent they are required to be observed, performed or complied by it.   
+                    </td><br/>
+                    <td>
+                        10.4 &nbsp;&nbsp; DELHIVERY will provide specialized Know How as to information technology
+                        for providing computerized feed back to clients all over the country. The
+                        ASSOCIATE, will need to invest independently in compatible hardware and to recruit software competent personnel to manage the said activity in close coordination with DELHIVERY.
+                        
+                    </td><br/>
+                    <td>
+                        10.5 &nbsp;&nbsp;The ASSOCIATE agrees to diligently use its best efforts to maximize sales in the
+                        Territory, and to spend as much time and money as may be reasonable to
+                        promote the sale of Outbound Consignments in the Territory.
+                        
+                    </td><br/>
+                    <td>
+                        10.6 &nbsp;&nbsp;The ASSOCIATE agrees to comply with all of the DELHIVERY specifications,
+                        standards, policies and operating circulars and procedures as DELHIVERY may
+                        prescribe from time to time in writing relating to the manner in which the sales,
+                        service support and marketing of Outbound Consignments is to be performed.   
+                    </td><br/>
+                    <td>
+                        10.7 &nbsp;&nbsp; The ASSOCIATE shall ensure that it shall at all times have a sufficient number
+                        of customer service staff to meet the demands of the Outbound Consignments.  
+                    </td><br/>
+                    <td>
+                        10.8 &nbsp;&nbsp; The ASSOCIATE agrees that the DELHIVERY products and services provided
+                        by it shall be of a high quality and further agrees to promptly correct any
+                        deficiencies therein brought to its attention by DELHIVERY. 
+                    </td><br/>
+                    
+                    <td>
+                        10.9 &nbsp;&nbsp; The ASSOCIATE shall notify DELHIVERY every month the data concerning
+                        the volume, sales and pricing of its services and also shall supply any
+                        information reasonably requested by DELHIVERY concerning the same. 
+                    </td><br/>
+                    <td>
+                        10.10 &nbsp;&nbsp; The ASSOCIATE agrees and undertakes to use its best efforts to promote the
+                        sales of the products and services in the Territory and to develop the market to
+                        mutual advantage of DELHIVERY and the ASSOCIATE. 
+                    </td><br/>
+                    <td>
+                        10.11 &nbsp;&nbsp; The ASSOCIATE shall give 30 days prior written notice/information to
+                        DELHIVERY in case the ASSOCIATE wants to change the office location from
+                        the one agreed under the terms of this agreement or change in the name of
+                        ASSOCIATE mentioned under this agreement. The ASSOCIATE shall also
+                        provide supporting documents for the change in location or change in name
+                        within 7 days of such change to DELHIVERY.
+                    </td><br/>
+                    <td>
+                        10.12 &nbsp;&nbsp; DELHIVERY shall decide the requirements of training of ASSOCIATE
+                        personnel in selling Outbound Consignments and the training shall be conducted
+                        at the location designated by DELHIVERY and at such time and for such
+                        duration as DELHIVERY may decide. The ASSOCIATE shall be responsible to
+                        the traveling expenses of the trainee. The traveling expenses of the trainer shall
+                        be shared equally between the parties.
+                    </td><br/>
+                    <strong> 11.&nbsp;&nbsp;CONFIDENTIALITY</strong>
+                    <td>
+                        11.1 &nbsp;&nbsp; ASSOCIATE agrees that all information, whether written or oral, including but
+                        not limited to know-how, standards, instructions, procedures, notes or methods
+                        of business or such confidential or proprietary information which DELHIVERY
+                        may disclose to ASSOCIATE pursuant to the terms of this Agreement, shall be
+                        received and held by them on a strictly confidential basis and shall be used solely
+                        for the purposes of this Agreement and except as provided in this Agreement,
+                        may not be disclosed to any person or business entity whatsoever. 
+                    </td><br/>
+                    <td>
+                        11.2 &nbsp;&nbsp; ASSOCIATE will not, without DELHIVERY’s express written permission,
+                        make or have made, or permit to be made, copies of any of the information other
+                        than those necessary for its use hereunder.
+                    </td><br/>
+                    <td>
+                        11.3  &nbsp;&nbsp; The Technical Know-How, procedures and documents furnished here under be
+                        deemed to be and shall remain the property of DELHIVERY.
+                    </td><br/>
+                    <td>
+                        11.4 &nbsp;&nbsp; DELHIVERY shall designate an individual or individuals who shall have
+                        authority to consider and decide upon any request from the ASSOCIATE with
+                        regards to consents, permission or approvals as contemplated in Para’s in 11.1
+                        and 11.2 above. 
+                    </td><br/>
+                    <td>
+                        11.5 &nbsp;&nbsp; Neither the expiry of this Agreement, nor the early termination thereof for any
+                        reason whatsoever shall release either party from any of its obligations under
+                        11.1, 11.2, 11.3 above.   
+                    </td><br/> 
+                    <strong> 12.&nbsp;&nbsp; MISCELLANEOUS </strong>
+                    <br/>
+                    <br/>
+                    <strong> 12.1 &nbsp;&nbsp; Supply of stationery, Airway bills etc.</strong>
+                    <td>
+                        12.1.1 &nbsp;&nbsp; DELHIVERY shall make available for sale of the ASSOCIATE sets of
+                        Airway bills to be used for booking shipments (International and
+                        Domestic) on a cost basis for the duration of this Agreement or any
+                        renewals. ASSOCIATE is under obligation to use the Airway bills only
+                        for the shipments to be sent in its operational network. In case of misuse
+                        of the Airway bills, DELHIVERY shall exercise the right available to it
+                        under sub-clause 7.2 of this agreement.    
+                    </td><br/>
+                    <td>
+                        12.1.2 &nbsp;&nbsp; DELHIVERY may also make available, all other stationery (manifests,
+                        challans, marketing material including document sleeves etc.) on a cost
+                        basis, for which purposes, the ASSOCIATE would have to raise periodic
+                        indents.
+                    </td><br/>
+                    <td>
+                        12.1.3 &nbsp;&nbsp; Associate is expected to participate in marketing activities in order to
+                        grow the business in his local market from time to time at a cost sharing
+                        basis   
+                    </td><br/>
+                    <strong> 12.2 &nbsp;&nbsp; Additional Documents </strong>
+                    <td>
+                        Each party hereto shall promptly execute and deliver such additional documents
+                        as are reasonably required by the other party hereto for the purpose of
+                        implementing this agreement provided that no such document shall be
+                        inconsistent with the provisions hereof 
+                    </td><br/>
+                    <td>
+                        12.3 &nbsp;&nbsp; <strong>Independent Contractors:</strong> - The relations between parties for all the purposes
+                        of this agreement or matters arising from this Agreement shall be that of
+                        independent contractors and nothing contained herein, shall constitute either
+                        party the agent of the other. 
+                    </td><br/>
+                    <td>
+                        12.4 &nbsp;&nbsp;<strong> Arbitration:</strong> - The Parties hereby expressly agree that if any dispute or
+                        difference arises in connection with this Agreement, the same be referred for
+                        Arbitration by a single Arbitrator to be appointed by DELHIVERY. The award
+                        of the Arbitrator aforesaid (hereinafter referred to as “Arbitral Award”), shall be
+                        final and binding on the parties. It is also expressly agreed that neither party
+                        shall have the right to approach the court for any interim relief pending the grant
+                        of Arbitral Award as above. The venue of the Arbitration shall be Mumbai and
+                        the Arbitration proceedings shall be conducted in English language  
+                    </td><br/>
+                    <td>
+                        12.5 &nbsp;&nbsp; <strong>Jurisdiction: </strong>- Notwithstanding the place of signing of the agreement, the
+                        Parties expressly agree that Courts of competent jurisdiction at Mumbai shall
+                        have exclusive jurisdiction in all matters of dispute arising hereunder and
+                        objection regarding jurisdiction shall not be raised by either party.
+                        
+                    </td><br/>
+                    <td>
+                        12.6 &nbsp;&nbsp; <strong>Force Majeure:</strong> - Neither party to this Agreement shall be liable for any failure
+                        or delay on its part in performing any of its obligations under this Agreement or
+                        for any loss, damage, costs, charges and expenses incurred or suffered by the
+                        other party by reason thereof if such failure or delay shall be the result of the
+                        arising out of force ajeure conditions and, provided that the party claiming force
+                        Majeure shall use its best efforts to avoid or remove such cause of nonperformance and shall fulfill and continue performance hereunder with the
+                        utmost dispatch whenever and to the extent such cause or causes are removed.
+                        
+                    </td><br/>
+                    <td>
+                        12.7 &nbsp;&nbsp; <strong>Assignment and sub-contracting:</strong> - The Associate shall itself perform its
+                        obligations under this addendum and the said principal agreement. For any kind
+                        of sub-contracting/ assignment, Associate needs the prior written approval of
+                        Delhivery  
+                    </td><br/>
+                    <td>
+                        12.8 &nbsp;&nbsp; <strong>Waiver:</strong> - No express waiver or assent by either party to any breach of or default
+                        in any term or condition of this Agreement shall constitute a waiver of or assent
+                        to any other breach of or default in the same or any other term or condition
+                        hereof.     
+                    </td><br/>
+                    <td>
+                        12.9 &nbsp;&nbsp; <strong>Construction:</strong> - This Agreement sets forth the entire Agreement and
+                        understanding between the parties with respect to the subject matter hereof.
+                        
+                    </td><br/>
+                    <td>
+                        12.10 &nbsp;&nbsp; <strong>Applicable Law:</strong> - This Agreement shall be construed and enforced according to
+                        the laws of the Republic of India.
+                        
+                    </td><br/>
+                    <td>
+                        12.11 &nbsp;&nbsp; <strong>Amendments:</strong> - This Agreement shall not be amended, altered or modified
+                        except by an instrument on writing expressly referring to this Agreement and
+                        signed by the parties hereto. 
+                    </td><br/>
+                    <td>
+                        12.12 &nbsp;&nbsp; <strong>Representations and Authority:</strong> - Each party represents and warrants that it is
+                        permitted by its respective corporate charters and incorporating documents to
+                        enter, and are not restrained, prevented or inhibited (by way of contract or
+                        arrangement to which they are a party) from entering into this Agreement and
+                        undertaking the obligations herein.
+                        
+                    </td><br/>
+                    <td>
+                        12.13&nbsp;&nbsp; <strong>Notices:</strong> Except as specifically provided herein, all notices required hereunder
+                        shall be in writing and shall be given by personal delivery, facsimile,
+                        international courier service of recognized reputation or by registered postage
+                        prepaid, return receipt requested, to the parties at their respective addresses first
+                        set forth above, or to any party at such other addresses as shall be specified in
+                        writing by such party to the other parties. All notices shall be deemed effective
+                        upon personal delivery, or one business day following receipt by facsimile, or
+                        seven days following deposit in the mail or three business days following deposit
+                        with any international courier service of recognized reputation.   
+                    </td><br/>
+                    <td> <strong> IN WITNESS WHEREOF </strong>IN WITNESS WHEREOF, the parties hereto have hereunto set and subscribed their
+                        respective hands the day and the year first hereinabove written.</td><br/>
+                    <table style="width:100%">
+                        <tr>
+                            <td> For: &nbsp; <strong> DELHIVERY PRIVATE LIMITED </strong> </td>
+                            <td> For: &nbsp;<Strong>{!objOpportunity.Registered_Name__c}</Strong></td>
+                            </tr>
+                        <tr>
+                            <td> Authorized Signatory: &nbsp;<strong>{!objOpportunity.Director__c}</strong>.</td>
+                            <td>Authorized Signatory:{!ipAdress}</td>
+                        </tr>
+                        <tr>
+                            <td>Name:&nbsp; <Strong> Delhivery</Strong></td>
+                            <td>Name: &nbsp;<Strong>{!contactRoleList[0].Contact.Name}</Strong></td>
+                            </tr>
+                        <tr>
+                            <td>Designation : _________________</td>
+                            <td>Designation : ____________</td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <Strong><center>SCHEDULE I</center></Strong>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <th  width="650px" border="1" cellspacing="0" style="font-weight:bold"> <center>{!strProductName}</center> </th>
+                    <table width="650px" border="1" cellspacing="0" style="font-weight:bold">
+		        <tr>
+                    <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                    <th id="heading"><center>Within-city</center></th>
+                    <th id="heading"> <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                    <th id="heading"><center> Metro-Metro </center></th>
+                    <th id="heading"><center>Rest of India</center></th>
+                    <th id="heading"><center>North East, HP,<br/> Port Blair,<br/>J And<br/> K </center></th>
+                </tr>
+                
+                <tr>
+                    
+                    <th id="heading"><center>ZONE A</center></th>
+                    <th id="heading"><center>ZONE B </center></th>
+                    <th id="heading"><center>ZONE C</center></th>
+                    <th id="heading"><center>ZONE D</center></th>
+                    <th id="heading"><center>ZONE E</center></th>
+                </tr>
+                
+                <tr>
+                    <th id="heading">0-250 gm</th>
+                    
+                    <td><apex:outputField value="{!objectOLI.Zone_A_0_250gm__c}"   /></td> 
+                    <td><apex:outputField value="{!objectOLI.Zone_B_0_250gm__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_C_0_250gm__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_D_0_250gm__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_E_0_250gm__c}"   /></td>
+                </tr>
+                
+                <tr>
+                    <th id="heading">Additional 250 gms till 500 gms</th>
+                    <td><apex:outputField value="{!objectOLI.Zone_A_Additional_250_gms_till_500_gms__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_B_Additional_250_gms_till_500_gms__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_C_Additional_250_gms_till_500_gms__c}"    /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_D_Additional_250_gms_till_500_gms__c}"    /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_E_Additional_250_gms_till_500_gms__c}"    /></td>
+                </tr>
+                
+                <tr>
+                    <th id="heading">Additional 500 gm till 5kg</th>
+                    <td><apex:outputField value="{!objectOLI.Zone_A_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_B_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_C_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_D_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_E_Additional_500_gm_till_5kg__c}"   /></td>
+                </tr>
+                
+                <tr>
+                    <th id="heading" >Additional 1kg Above 5kg</th>
+                    <td><apex:outputField value="{!objectOLI.Zone_A_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_B_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_C_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_D_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI.Zone_E_Additional_1kg_Above_5kg__c}"   /></td>
+                </tr>                    
+                    </table>
+                    <br/>
+                    <br/>
+                    <th  width="650px" border="1" cellspacing="0" style="font-weight:bold"> <center>{!strProductName1}</center> </th>
+                    <table width="650px" border="1" cellspacing="0" style="font-weight:bold">
+                      <tr> 
+                    <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                    <th id="heading"><center>Within-city</center></th>
+                    <th id="heading"> <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                    <th id="heading"><center> Metro-Metro </center></th>
+                    <th id="heading"><center>Rest of India</center></th>
+                    <th id="heading"><center>North East, HP,<br/> Port Blair,<br/>J And<br/> K </center></th>
+                </tr>
+                <tr>
+                    
+                    <th id="heading"><center>ZONE A</center></th>
+                    <th id="heading"><center>ZONE B </center></th>
+                    <th id="heading"><center>ZONE C</center></th>
+                    <th id="heading"><center>ZONE D</center></th>
+                    <th id="heading"><center>ZONE E</center></th>
+                </tr>
+                
+                <tr>
+                    <th id="heading">0-250 gm</th>
+                    
+                    <td><apex:outputField value="{!objectOLI1.Zone_A_0_250gm__c}"   /></td> 
+                    <td><apex:outputField value="{!objectOLI1.Zone_B_0_250gm__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_C_0_250gm__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_D_0_250gm__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_E_0_250gm__c}"   /></td>
+                </tr>
+                
+                <tr>
+                    <th id="heading">Additional 250 gms till 500 gms</th>
+                    <td><apex:outputField value="{!objectOLI1.Zone_A_Additional_250_gms_till_500_gms__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_B_Additional_250_gms_till_500_gms__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_C_Additional_250_gms_till_500_gms__c}"    /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_D_Additional_250_gms_till_500_gms__c}"    /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_E_Additional_250_gms_till_500_gms__c}"    /></td>
+                </tr>
+                
+                <tr>
+                    <th id="heading">Additional 500 gm till 5kg</th>
+                    <td><apex:outputField value="{!objectOLI1.Zone_A_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_B_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_C_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_D_Additional_500_gm_till_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_E_Additional_500_gm_till_5kg__c}"   /></td>
+                </tr>
+                
+                <tr>
+                    <th id="heading" >Additional 1kg Above 5kg</th>
+                    <td><apex:outputField value="{!objectOLI1.Zone_A_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_B_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_C_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_D_Additional_1kg_Above_5kg__c}"   /></td>
+                    <td><apex:outputField value="{!objectOLI1.Zone_E_Additional_1kg_Above_5kg__c}"   /></td>
+                </tr>
+                                       
+                    </table>
+                    <br/>
+                    <h> Please note:</h>
+                    <td>
+                        1) &nbsp;&nbsp; Above rates are excluding GST.
+                    </td><br/>
+                    <td style="color:#85929E;">
+                        2)&nbsp;&nbsp; Rates are for shipments to be dropped at respective Delhivery Centres - PC or DC
+                    </td><br/>
+                    
+                    <td style="color:#85929E;">
+                        3)&nbsp;&nbsp; Weight Measurement : Dead Weight or Volumetric, whichever is higher. For volumetric weight
+                        calculation, all sides are measured in cm.(LxBxH/5000). In case of difference in weight, the weight
+                        captured by Delhivery Automated dimming machine will be treated final.
+                        
+                    </td><br/>
+                    <td style="color:#85929E;">
+                        4)&nbsp;&nbsp; Please note - the drop at DC incurs an additional cost, however The above rates are introductory rates
+                        for drop at PC or DC , which will be revisited in September , while the rates for PC will continue to
+                        remain the same, but the rate for drop at DC which go up so as to meet the cost of connectivity from
+                        DC to PC. We thus encourage you to drop at PC which will not only reduce the Delivery TAT for
+                        customers but also increase your profitability.
+                    </td><br/>
+                    <td style="color:#85929E;">
+                        5)&nbsp;&nbsp; Special Zones - North-east, Assam and Jammu-Kashmir
+                    </td><br/>
+                    <td style="color:#85929E;">
+                        6)&nbsp;&nbsp; Delhivery will launch volume based incentives from time to time. We will share communication for
+                        this separately.
+                    </td><br/>
+                    <strong><center> SCHEDULE II </center></strong>
+                    <br/>
+                    <strong> <center> CHARGES PAYABLE BY THE ASSOCIATE ON INTERNATIONAL
+                        OUTBOUND SHIPMENTS – TO BE LAUNCHED SHORTLY</center></strong>
+                    <br/>
+                    <strong> <u> DELHIVERY OPERATIONAL OBLIGATIONS: </u></strong><br/>
+                    <br/>
+                    <td>
+                        1.&nbsp;&nbsp; Ensure that the consignor or his representative signs the airway bill which is
+                        complete in all respects in legible writing and also any other related documents 
+                    </td><br/>
+                    <td>
+                        2.&nbsp;&nbsp; Ensure that the shipment is properly packed to protect against risk of loss or damage
+                    </td><br/>
+                    <td>
+                        3.&nbsp;&nbsp; Ensure necessary security checks are done on the shipment to ensure that it does not
+                        contain goods prohibited as per terms of carriage.
+                    </td><br/>
+                    <td>
+                        4.&nbsp;&nbsp; Sending pre alert of the consignment prior to the schedule time of arrival of flight at
+                        the destination.
+                    </td><br/>
+                    <strong> <center> SCHEDULE IV </center></strong>
+                    <strong> <center> OBLIGATIONS FOR OUTBOUND CONSIGNMENTS </center></strong>
+                    <br/>
+                    <strong><u> ASSOCIATE OPERATIONAL OBLIGATIONS:</u></strong>
+                    <td>
+                        1.&nbsp;&nbsp; Ensure that the consignor or his representative signs the airway bill which is
+                        complete in all respects in legible writing and also any other related documents
+                        
+                    </td><br/>
+                    <td>
+                        2.&nbsp;&nbsp; Ensure that the consignment is properly packed to protect against risk of loss or
+                        damage.
+                        
+                    </td><br/>
+                    <td>
+                        3.&nbsp;&nbsp; Ensure necessary security checks are done on the consignment to ensure that it does
+                        not contain goods prohibited as per terms of carriage.
+                    </td><br/>
+                    <td>
+                        4.&nbsp;&nbsp; Sending pre alert of the consignment prior to the schedule time of arrival of flight at
+                        the destination.
+                    </td><br/>
+                    <strong><u> DELHIVERY OPERATIONAL OBLIGATIONS (INTERNATIONAL): </u></strong>
+                    <td>
+                        1.&nbsp;&nbsp; Receive the shipment at the transfer point after clearance. 
+                    </td><br/>
+                    <td>
+                        2.&nbsp;&nbsp;  Sort, bag, manifest and forward consignment to the DELHIVERY gateway 
+                    </td><br/>
+                    <td>
+                        3.&nbsp;&nbsp;  Alert the shipment in INFOAXS 
+                    </td><br/>
+                    <td>
+                        4.&nbsp;&nbsp;  Provide the ASSOCIATE details of proof of delivery within the specified time
+                        period agreed hereto in writing separately and in the format agreed.
+                    </td><br/>
+                    <td>
+                        5.&nbsp;&nbsp;  Supply any other information as requested by the ASSOCIATE within 24 hours of
+                        request.
+                    </td><br/>
+                    <Strong> <u> DELHIVERY OPERATIONAL OBLIGATIONS (DOMESTIC):</u></Strong>
+                    <td>
+                        1.&nbsp;&nbsp; Receive the shipment at the transfer point after clearance.
+                    </td><br/>
+                    <td>
+                        2.&nbsp;&nbsp; Check the consignments to ensure they are undamaged and in good condition.
+                        
+                    </td><br/>
+                    <td>
+                        3.&nbsp;&nbsp; In case of transshipment sort, bag, manifest and forward consignment
+                    </td><br/>
+                    <td>
+                        4.&nbsp;&nbsp; Providing the initial report to the ASSOCIATE as required within one hour of
+                        clearing of shipment.
+                    </td><br/>
+                    <td>
+                        5.&nbsp;&nbsp; Deliver the consignment to the consignee shown on the airway bill and taking proof
+                        of delivery (POD) on the POD copy of the airway bill. The proof of delivery should
+                        clearly show the name of the signatory, the date and time of delivery and damage to
+                        contents of shipment if any
+                    </td><br/>
+                    <td>
+                        6.&nbsp;&nbsp; Provide the ASSOCIATE with the proof of delivery within the time agreed
+                        separately in writing and in the format set out. Also providing any other information
+                        as desired by any DELHIVERY office within 24 hours of request.
+                    </td><br/>
+                    <td>
+                        7.&nbsp;&nbsp; If it is not possible to deliver any Outbound Consignment before the close of the
+                        office hours, to raise a Non-delivery Report (NDR) within the time frame agreed in
+                        writing separately and in the format set out.
+                    </td><br/>
+                    <td>
+                        8.&nbsp;&nbsp; Collect tax from the consignee if any
+                    </td><br/>
+                    <td>
+                        9.&nbsp;&nbsp; Ensuring where an Outbound Consignment is not delivered on first attempt an
+                        agreed number as agreed separately in writing is made.
+                    </td><br/>
+                    <td>
+                        10.&nbsp;&nbsp; Ensure at all time to hire competent and suitable personnel who at all times shall be
+                        present in neat and clean appearance.
+                    </td><br/>
+                    <td>
+                        11.&nbsp;&nbsp; Maintain sufficient fleet of vehicle in good condition to affect deliveries.
+                    </td><br/>
+                    <Strong><center> SCHEDULE V </center></Strong>
+                    <Strong><center> GENERAL OBLIGATION OF THE ASSOCIATE </center></Strong>
+                    <br/>
+                    <Strong> 1. DISCREPANCY IN WEIGHT </Strong>
+                    <td>
+                        <p>
+                            In case of any discrepancy in dense/volumetric weight, the weight taken by our
+                            Delhivery will be deemed to be final and charges will be billed to the
+                            <strong>ASSOCIATE</strong>’S account accordingly.  
+                        </p>
+                        <p>
+                            The <strong>ASSOCIATE</strong> should therefore ensure that weights are mentioned on the
+                            airway bills accurately at the time of booking so that there should be no
+                            discrepancy in weight of shipments traveling to Delhivery’s hubs/offices for final
+                            connections/deliveries.   
+                        </p>
+                    </td><br/>
+                    <Strong> 2. CARRIAGE OF PROHIBITED, BANNED AND ILLICIT CONSIGNMENTS </Strong>
+                    <td>
+                        ASSOCIATE shall physically verify and inspect the Shipment and the same to
+                        be compulsorily mentioned under the Contents column of the airway bill.
+                        Declared value of the consignment shall also be mentioned under the declared
+                        value column of the airway bill and a copy of the invoice shall be attached as
+                        supporting.
+                    </td><br/>
+                    <td>
+                        I. &nbsp;&nbsp; A self-attested copy of any of the following document(s) shall be
+                        compulsorily collected from the shipper/consignor and shall be attached with
+                        the airway bill as a proof of identity and residence: 
+                    </td><br/>
+                    <ol type="a">
+                        <li> Voter Identity Card</li>
+                        <li> Valid Passport </li>
+                        <li>  Driving Licence </li>
+                        <li>  PAN Card and Ration card </li>
+                        <li> PAN Card and residential electricity/telephone bill copy  </li>
+                        <li> Any other document(s) confirming the proof of identity and residential
+                            address of the shipper/consignor. </li>
+                    </ol>
+                    <td>
+                        II.&nbsp;&nbsp; Noncompliance with the above operational guidelines shall result in
+                        summary seizure of such consignment by DELHIVERY besides the
+                        imposition and recovery of penalty and damages from the ASSOCIATE.
+                        
+                    </td><br/>
+                    <td>
+                        III.&nbsp;&nbsp; In case the consignment on reasonable suspicion turns out to contain
+                        prohibited, banned or illicit material the same will be handed over to
+                        police/law enforcement authorities for necessary action. 
+                    </td><br/>
+                    <strong> 3. ADC NOC FOR ALL CHEMICAL / PHARMA SHIPMENTS </strong>
+                    <p>
+                        DELHIVERY will accept only those chemical / pharma shipment if the
+                        following documents accompany the ASSOCIATE.
+                    </p>
+                    <p>
+                        1-3 Set original invoices should be on shipper letter head with stamp -
+                        Mandatory   
+                    </p>
+                    <p>
+                        2-16 points MSDS report should be on shipper stamp and signature
+                    </p>
+                    <p>
+                        3-lab analysis report should be with stamp and signature
+                    </p>
+                    <p>
+                        4-Non-hazardous Declaration on shipper’s letter head  
+                    </p>
+                    <p>
+                        5-ADC NOC certificate in original
+                    </p>
+                    <p>
+                        IN CASE THE ASSOCIATE CANNOT PRODUCE THE ADC NOC
+                        DELHIVERY CAN PROCURE THE SAME ON THE ASSOCIATES
+                        BEHALF BUT FOR A FEE OF Rs.350/- PER NOC
+                    </p>
+                    <strong> 4. BOOKING THE SHIPMENTS FROM OUTSIDE THE REGION </strong>
+                    <p>
+                        <Strong> ASSOCIATE </Strong> is not permitted to book consignments or to undertake any other
+                        business activity which is outside the territorial boundary of business assigned to
+                        him, in case of failure on the part of <Strong> ASSOCIATE </Strong>, DELHIVERY will charge
+                        full tariff for all shipment originating from outside the agreed region.
+                    </p>
+                    <strong> 5. NDR’S AND CUSTOMS DUTY </strong>
+                    <p>
+                        For all the undelivered International Shipments which are lying pending at the
+                        destination with reasons such as bad address will be given 7 days to close the
+                        case. In case of any clearance/duty payments or any other reason <strong> ASSOCIATE </strong>
+                        will be given 15 days from the date of the information reaches Associate for his
+                        line of action. If Delhivery does not receive any feedback within the given time
+                        frame, the shipments will be destroyed/returned/delivered (in case duty is refused
+                        by the consignee) and the charges on the shipment will be billed to Associate’s
+                        respective account.
+                    </p>
+                </tr>
+            </table>
+        </body>
+    </html>
+</apex:page>

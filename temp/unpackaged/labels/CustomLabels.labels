@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>B2B_Directors</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>B2B Directors</shortDescription>
+        <value>Aveek Nandi</value>
+    </labels>
+    <labels>
+        <fullName>C2C_CCAddress</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C2C CCAddress</shortDescription>
+        <value>gurdeep.singh@delhivery.com,farhan.mukhtar@delhivery.com</value>
+    </labels>
+    <labels>
+        <fullName>C2C_Directors</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C2C Directors</shortDescription>
+        <value>Sabyasachi Senapati</value>
+    </labels>
+    <labels>
+        <fullName>C2C_Pricebook</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>C2C Pricebook</shortDescription>
+        <value>C2C Pricing Model</value>
+    </labels>
+    <labels>
+        <fullName>COB_DesireHQError</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COB_DesireHQError</shortDescription>
+        <value>Duplicate Hq Name Found. Please enter other</value>
+    </labels>
+    <labels>
+        <fullName>COB_FilterDate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>COB_FilterDate</shortDescription>
+        <value>2018-08-06</value>
+    </labels>
+    <labels>
+        <fullName>Franchise_Express</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Franchise Express</shortDescription>
+        <value>Delhivery Commercial Express - C2C</value>
+    </labels>
+    <labels>
+        <fullName>Franchise_Standard</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Franchise Standard</shortDescription>
+        <value>Delhivery Commercial Standard - C2C</value>
+    </labels>
+    <labels>
+        <fullName>HQPOCToken</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HQPOCToken</shortDescription>
+        <value>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvY19pbnRlZ3JhdGlvbiIsInRva2VuX25hbWUiOiJwb2NfaW50ZWdyYXRpb24iLCJjZW50ZXIiOlsiSU5EMTIyMDAzQUFCIl0sInVzZXJfdHlwZSI6Ik5GIiwiYXBwX2lkIjoxLCJhdWQiOiIuZGVsaGl2ZXJ5LmNvbSIsImZpcnN0X25hbWUiOiJQT0NfSU5URUdSQVRJT04iLCJzdWIiOiJ1bXM6OnVzZXI6OjUwNmQxMDFlLTNlNDUtMTFlOS05NDVlLTA2OGNiNjkxNDZhMCIsImV4cCI6MTg2NzA0MDMwMywiYXBwX25hbWUiOiJVTVMiLCJhcGlfdmVyc2lvbiI6InYyIn0.Mqjf1BHFloGpnoQFObk78e3xqwz1D22W9gqiiGx0vG8</value>
+    </labels>
+    <labels>
+        <fullName>HQPOCUpdate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>HQPOCUpdate</shortDescription>
+        <value>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InBvY19pbnRlZ3JhdGlvbiIsInRva2VuX25hbWUiOiJwb2NfaW50ZWdyYXRpb24iLCJjZW50ZXIiOlsiSU5EMTIyMDAzQUFCIl0sInVzZXJfdHlwZSI6Ik5GIiwiYXBwX2lkIjoxLCJhdWQiOiIuZGVsaGl2ZXJ5LmNvbSIsImZpcnN0X25hbWUiOiJQT0NfSU5URUdSQVRJT04iLCJzdWIiOiJ1bXM6OnVzZXI6OjUwNmQxMDFlLTNlNDUtMTFlOS05NDVlLTA2OGNiNjkxNDZhMCIsImV4cCI6MTg2NzA0MDMwMywiYXBwX25hbWUiOiJVTVMiLCJhcGlfdmVyc2lvbiI6InYyIn0.Mqjf1BHFloGpnoQFObk78e3xqwz1D22W9gqiiGx0vG8</value>
+    </labels>
+    <labels>
+        <fullName>MailRoom_Express</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MailRoom Express</shortDescription>
+        <value>Delhivery Commercial Express - C2C MailRoom</value>
+    </labels>
+    <labels>
+        <fullName>MailRoom_Standard</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>MailRoom Standard</shortDescription>
+        <value>Delhivery Commercial Standard - C2C MailRoom</value>
+    </labels>
+    <labels>
+        <fullName>Oracle_End_Point</fullName>
+        <categories>Oracle</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Oracle End Point</shortDescription>
+        <value>https://orapp.delhivery.com:4443/webservices/SOAProvider/plsql/xxdpl_ar_customer_wbs/</value>
+    </labels>
+    <labels>
+        <fullName>Oracle_Token</fullName>
+        <categories>Oracle</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Oracle Security Token</shortDescription>
+        <value>&lt;wsse:Security soapenv:mustUnderstand=&quot;1&quot; xmlns:wsse=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd&quot; xmlns:wsu=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd&quot;&gt;&lt;wsse:UsernameToken wsu:Id=&quot;UsernameToken-F4EEAE555533B6A6A215361528468108&quot;&gt;&lt;wsse:Username&gt;SOA&lt;/wsse:Username&gt;&lt;wsse:Password Type=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText&quot;&gt;unrc4!@#&lt;/wsse:Password&gt;&lt;wsse:Nonce EncodingType=&quot;http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary&quot;&gt;u7cnRUAf8iKwKdzZEhfFjg==&lt;/wsse:Nonce&gt;&lt;wsu:Created&gt;2018-09-05T13:07:26.809Z&lt;/wsu:Created&gt;&lt;/wsse:UsernameToken&gt;&lt;/wsse:Security&gt;&lt;xxd:SOAHeader&gt;&lt;xxd:Responsibility&gt;FND_REP_APP&lt;/xxd:Responsibility&gt;&lt;xxd:RespApplication&gt;FND&lt;/xxd:RespApplication&gt;&lt;xxd:SecurityGroup&gt;STANDARD&lt;/xxd:SecurityGroup&gt;&lt;xxd:NLSLanguage&gt;AMERICAN&lt;/xxd:NLSLanguage&gt;&lt;xxd:Org_Id&gt;344&lt;/xxd:Org_Id&gt;&lt;/xxd:SOAHeader&gt;</value>
+    </labels>
+    <labels>
+        <fullName>POCTemplate</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>POCTemplate</shortDescription>
+        <value>00X0I000001cMCs</value>
+    </labels>
+    <labels>
+        <fullName>SiteURL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>SiteURL</shortDescription>
+        <value>https://delhivery.secure.force.com</value>
+    </labels>
+    <labels>
+        <fullName>Swagger_Authentication_Token</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Swagger Authentication Token</shortDescription>
+        <value>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbGVzZm9yY2UtdGVjaGlsYSIsInRva2VuX25hbWUiOiJzYWxlc2ZvcmNlLXRlY2hpbGEiLCJjZW50ZXIiOlsiSU5EMTIyMDAzQUFCIl0sInVzZXJfdHlwZSI6Ik5GIiwiYXBwX2lkIjozMCwiYXVkIjoiLmRlbGhpdmVyeS5jb20iLCJmaXJzdF9uYW1lIjoic2FsZXNmb3JjZS10ZWNoaWxhIiwic3ViIjoidW1zOjp1c2VyOjo1ZGViZjM0ZS02M2QxLTExZTgtYTIzYy0wNjg3YmE4Y2MwYTQiLCJleHAiOjE4NDMwMjExNTEsImFwcF9uYW1lIjoiRkFBUyIsImFwaV92ZXJzaW9uIjoidjIifQ.0dBojEeL3c23nQ-vK0cIk8e_CCY_zn8JLqdhBxgl_3Y</value>
+    </labels>
+    <labels>
+        <fullName>Swagger_End_Point_URL</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Swagger End Point URL</shortDescription>
+        <value>https://faas-api.delhivery.com/v2/client-warehouses/</value>
+    </labels>
+    <labels>
+        <fullName>Token</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Token</shortDescription>
+        <value>Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbGVzZm9yY2UgdG9rZW4iLCJ0b2tlbl9uYW1lIjoic2FsZXNmb3JjZSB0b2tlbiIsImNlbnRlciI6WyJJTkQxMjIwMDNBQUIiXSwidXNlcl90eXBlIjoiTkYiLCJhcHBfaWQiOjEsImF1ZCI6Ii5kZWxoaXZlcnkuY29tIiwiZmlyc3RfbmFtZSI6IlNhbGVzZm9yY2UgVG9rZW4iLCJzdWIiOiJ1bXM6OnVzZXI6OjIxZDliNDAyLTk2MjgtMTFlOC1hYjBkLTAyMzViNTEzMjU0NiIsImV4cCI6MTg0ODU1NTk3NCwiYXBwX25hbWUiOiJVTVMiLCJhcGlfdmVyc2lvbiI6InYyIn0.XggPm6sAB6rLqlxI6ry_aZlRKrK0sCbGucAOqi6FNwE</value>
+    </labels>
+</CustomLabels>

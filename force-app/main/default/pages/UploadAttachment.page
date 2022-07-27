@@ -1,0 +1,70 @@
+<apex:page standardController="Attachment__c" extensions="UploadAttachmentController" recordSetVar="Attachments" lightningStylesheets="true">
+    <apex:slds />
+    <apex:form id="formId">
+        <apex:actionStatus id="actionStatusID">
+            <apex:facet name="start">
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                &nbsp;
+            </div>
+            <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px; margin-left: -60px;">
+                    <img src="/img/loading.gif" /><!--style="float: left; margin: 8px;" /-->
+                    <span>Please Wait...</span>
+                </div>
+            </div>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:pageMessages id="pgMessages" />   
+        <!--Page Block for Customer Onboarding starts-->
+        <apex:pageBlock rendered="{!isCOB}" title="Upload Attachment for Customer Onboarding">
+            <center>
+                <apex:commandButton action="{!saveCOBAttachment}" value="Save Attachment" status="actionStatusID"/>
+                <apex:commandButton action="{!backRecord}" value="Back"/>
+            </center>
+            
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!cobRecord.Name}"/>
+                <apex:inputField value="{!Attachment__c.Type__c}" rendered="{!showNotFulfillment}"/>
+                <apex:inputField value="{!Attachment__c.Fulfillment_Document_Type__c}" rendered="{!showFulfillment}"/>
+                
+                <apex:outputLabel value="Select File" for="fileSelect" style="padding-left: 375px;color:  #4a4a56;font-weight:  bold;font-size:  91%;text-align:  right;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:inputFile value="{!attachmentUpload.body}" filename="{!attachmentUpload.name}" id="fileSelect"/>
+                </apex:outputLabel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>    
+        <!--Page Block for Customer Onboarding ends-->
+        
+        <!--Page Block for Contract starts-->
+        <apex:pageBlock rendered="{!isContract}" title="Upload Attachment for Contract">
+            <center>
+                <apex:commandButton action="{!saveContractAttachment}" value="Save Attachment" status="actionStatusID"/>
+                <apex:commandButton action="{!backRecord}" value="Back"/>
+            </center>
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!contractRecord.Name}"/>
+                <apex:outputLabel value="Select File" for="fileSelect" style="padding-left: 375px;color:  #4a4a56;font-weight:  bold;font-size:  91%;text-align:  right;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:inputFile value="{!attachmentUpload_Con.body}" filename="{!attachmentUpload_Con.name}" id="fileSelect"/>
+                </apex:outputLabel>
+            </apex:pageBlockSection>    
+        </apex:pageBlock>
+        <!--Page Block for Contract ends-->
+        
+        <!--Page Block for Case starts-->
+        <apex:pageBlock rendered="{!isCase}" title="Upload Attachment for Case">
+            <center>
+                <apex:commandButton action="{!saveCaseAttachment}" value="Save Attachment" status="actionStatusID"/>
+                <apex:commandButton action="{!backRecord}" value="Back"/>
+            </center>
+            <apex:pageBlockSection columns="1">
+                <apex:outputField value="{!CaseRecord.CaseNumber}"/>
+                <apex:outputLabel value="Select File" for="fileSelect" style="padding-left: 375px;color:  #4a4a56;font-weight:  bold;font-size:  91%;text-align:  right;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:inputFile value="{!attachmentUpload_Case.body}" filename="{!attachmentUpload_Case.name}" id="fileSelect"/>
+                </apex:outputLabel>
+            </apex:pageBlockSection>    
+        </apex:pageBlock>
+        <!--Page Block for Case ends-->
+    </apex:form>
+    
+</apex:page>

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Sub-Category</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Client_Category__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Large Horizontals</fullName>
+                <default>false</default>
+                <label>Large Horizontals</label>
+            </value>
+            <value>
+                <fullName>Vertical Leaders</fullName>
+                <default>false</default>
+                <label>Vertical Leaders</label>
+            </value>
+            <value>
+                <fullName>Long tail e-tailers and platform sellers</fullName>
+                <default>false</default>
+                <label>Long tail e-tailers and platform sellers</label>
+            </value>
+            <value>
+                <fullName>Marketplace Vendors</fullName>
+                <default>false</default>
+                <label>Marketplace Vendors</label>
+            </value>
+            <value>
+                <fullName>Independent SMBs</fullName>
+                <default>false</default>
+                <label>Independent SMBs</label>
+            </value>
+            <value>
+                <fullName>Fashion</fullName>
+                <default>false</default>
+                <label>Fashion</label>
+            </value>
+            <value>
+                <fullName>Electronics</fullName>
+                <default>false</default>
+                <label>Electronics</label>
+            </value>
+            <value>
+                <fullName>FMCG</fullName>
+                <default>false</default>
+                <label>FMCG</label>
+            </value>
+            <value>
+                <fullName>Home</fullName>
+                <default>false</default>
+                <label>Home</label>
+            </value>
+            <value>
+                <fullName>Auto</fullName>
+                <default>false</default>
+                <label>Auto</label>
+            </value>
+            <value>
+                <fullName>Education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>Health,Pharma</fullName>
+                <default>false</default>
+                <label>Health, Pharma</label>
+            </value>
+            <value>
+                <fullName>Industrial</fullName>
+                <default>false</default>
+                <label>Industrial</label>
+            </value>
+            <value>
+                <fullName>Office Products</fullName>
+                <default>false</default>
+                <label>Office Products</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+                <label>Aggregator</label>
+            </value>
+            <value>
+                <fullName>Ecommerce Horizontal</fullName>
+                <default>false</default>
+                <label>Ecommerce Horizontal</label>
+            </value>
+            <value>
+                <fullName>Ecommerce Vertical</fullName>
+                <default>false</default>
+                <label>Ecommerce Vertical</label>
+            </value>
+            <value>
+                <fullName>Consumer Durables</fullName>
+                <default>false</default>
+                <label>Consumer Durables</label>
+            </value>
+            <value>
+                <fullName>Industrials</fullName>
+                <default>false</default>
+                <label>Industrials</label>
+            </value>
+            <value>
+                <fullName>Auto Ancillaries &amp; Tyres</fullName>
+                <default>false</default>
+                <label>Auto Ancillaries &amp; Tyres</label>
+            </value>
+            <value>
+                <fullName>Health and Pharma</fullName>
+                <default>false</default>
+                <label>Health and Pharma</label>
+            </value>
+            <value>
+                <fullName>Books and Stationery</fullName>
+                <default>false</default>
+                <label>Books and Stationery</label>
+            </value>
+            <value>
+                <fullName>Textiles</fullName>
+                <default>false</default>
+                <label>Textiles</label>
+            </value>
+            <value>
+                <fullName>Lubricants &amp; Paints</fullName>
+                <default>false</default>
+                <label>Lubricants &amp; Paints</label>
+            </value>
+            <value>
+                <fullName>Furniture and White Goods</fullName>
+                <default>false</default>
+                <label>Furniture and White Goods</label>
+            </value>
+            <value>
+                <fullName>Etail Longtail</fullName>
+                <default>false</default>
+                <label>Etail Longtail</label>
+            </value>
+            <value>
+                <fullName>SMB</fullName>
+                <default>false</default>
+                <label>SMB</label>
+            </value>
+            <value>
+                <fullName>Aggregator/Co-loader</fullName>
+                <default>false</default>
+                <label>Aggregator/Co-loader</label>
+            </value>
+            <value>
+                <fullName>C2C</fullName>
+                <default>false</default>
+                <label>C2C</label>
+            </value>
+            <value>
+                <fullName>BANK</fullName>
+                <default>false</default>
+                <label>BANK</label>
+            </value>
+            <value>
+                <fullName>Insurance</fullName>
+                <default>false</default>
+                <label>Insurance</label>
+            </value>
+            <value>
+                <fullName>Enterprise</fullName>
+                <default>false</default>
+                <label>Enterprise</label>
+            </value>
+            <value>
+                <fullName>Tour &amp; Travel</fullName>
+                <default>false</default>
+                <label>Tour &amp; Travel</label>
+            </value>
+            <value>
+                <fullName>SME</fullName>
+                <default>false</default>
+                <label>SME</label>
+            </value>
+            <value>
+                <fullName>Proprietor</fullName>
+                <default>false</default>
+                <label>Proprietor</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>X Border - Import</controllingFieldValue>
+            <controllingFieldValue>X Border - Export</controllingFieldValue>
+            <controllingFieldValue>Others</controllingFieldValue>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Others</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>X Border - Import</controllingFieldValue>
+            <controllingFieldValue>X Border - Export</controllingFieldValue>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>Aggregator</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>X Border - Import</controllingFieldValue>
+            <controllingFieldValue>X Border - Export</controllingFieldValue>
+            <controllingFieldValue>FAPSSe</controllingFieldValue>
+            <controllingFieldValue>Key Accounts (Ecommerce)</controllingFieldValue>
+            <valueName>Ecommerce Horizontal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>X Border - Import</controllingFieldValue>
+            <controllingFieldValue>X Border - Export</controllingFieldValue>
+            <controllingFieldValue>Key Accounts (Ecommerce)</controllingFieldValue>
+            <valueName>Ecommerce Vertical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Fashion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>FMCG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Consumer Durables</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Industrials</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Auto Ancillaries &amp; Tyres</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Health and Pharma</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Books and Stationery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Textiles</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Brands/Enterprise</controllingFieldValue>
+            <valueName>Lubricants &amp; Paints</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>C2C</controllingFieldValue>
+            <valueName>C2C</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>BANK</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>Insurance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>Enterprise</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>Tour &amp; Travel</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>SME</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>BFSI</controllingFieldValue>
+            <valueName>Proprietor</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Long Tail/SMB</controllingFieldValue>
+            <valueName>Etail Longtail</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Long Tail/SMB</controllingFieldValue>
+            <valueName>SMB</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Long Tail/SMB</controllingFieldValue>
+            <controllingFieldValue>Aggregator/Co-loader</controllingFieldValue>
+            <valueName>Aggregator/Co-loader</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Zone_D_Upto_500_gms__c</fullName>
+    <externalId>false</externalId>
+    <label>Zone D - Upto 500 gms</label>
+    <precision>12</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Currency</type>
+</CustomField>

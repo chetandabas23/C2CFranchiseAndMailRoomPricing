@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Status__c</fullName>
+    <externalId>false</externalId>
+    <label>Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Draft</fullName>
+                <default>false</default>
+                <label>Draft</label>
+            </value>
+            <value>
+                <fullName>Accepted</fullName>
+                <default>false</default>
+                <label>Accepted</label>
+            </value>
+            <value>
+                <fullName>Final</fullName>
+                <default>false</default>
+                <label>Final</label>
+            </value>
+            <value>
+                <fullName>Viewed</fullName>
+                <default>false</default>
+                <label>Viewed</label>
+            </value>
+            <value>
+                <fullName>On-boarded Manually</fullName>
+                <default>false</default>
+                <label>On-boarded Manually</label>
+            </value>
+            <value>
+                <fullName>Synced To HQ</fullName>
+                <default>false</default>
+                <label>Synced To HQ</label>
+            </value>
+            <value>
+                <fullName>Synced To Oracle</fullName>
+                <default>false</default>
+                <label>Synced To Oracle</label>
+            </value>
+            <value>
+                <fullName>Submitted</fullName>
+                <default>true</default>
+                <label>Submitted</label>
+            </value>
+            <value>
+                <fullName>Duplicate</fullName>
+                <default>false</default>
+                <label>Duplicate</label>
+            </value>
+            <value>
+                <fullName>Incomplete</fullName>
+                <default>false</default>
+                <label>Incomplete</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Error</fullName>
+                <default>false</default>
+                <label>Error</label>
+            </value>
+            <value>
+                <fullName>Send to godam</fullName>
+                <default>false</default>
+                <label>Send to godam</label>
+            </value>
+            <value>
+                <fullName>Synced to Bird</fullName>
+                <default>false</default>
+                <label>Synced to Bird</label>
+            </value>
+            <value>
+                <fullName>Error HQ</fullName>
+                <default>false</default>
+                <label>Error HQ</label>
+            </value>
+            <value>
+                <fullName>Error Oracle</fullName>
+                <default>false</default>
+                <label>Error Oracle</label>
+            </value>
+            <value>
+                <fullName>Error Bird</fullName>
+                <default>false</default>
+                <label>Error Bird</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

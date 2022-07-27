@@ -1,0 +1,404 @@
+<!------------------------------------------------------------------------------------------------
+* Author: Chetan Dabas.
+* VF Page Name: C2CAddendumSendEmail
+* Created Date: 18-Sept-2019
+* Description: To send the Addendum PDF to the contact
+-------------------------------------------------------------------------------------------------->
+
+<apex:page id="AddendumSendEmail" standardController="Opportunity" extensions="C2CSignContractEmail_Ext" action="{!validateContractSigned}" standardStylesheets="false" sidebar="false" applyBodyTag="false" docType="html-5.0">
+
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            <style> span.dateFormat { display:none; } </style>
+            <style>
+                .slds-scope .slds-text-heading--large, .slds-scope .slds-text-heading_large {
+                    padding-top: 128px;
+                }
+                .empty {display:none;}
+                
+                /*.slds-scope .slds-notify--toast, .slds-scope .slds-notify_toast {
+                    width: 100%;
+                }*/
+                
+                
+                .slds-scope .slds-input {
+                    width: 40% !important;
+                }
+                .slds-scope
+                {
+                display:block;
+                }
+            </style>
+
+<script type="text/javascript">
+                /*function getSelectedContact(selectedCon){
+                    getSelectedCon(selectedCon);
+                    console.log('selectedCon>>> '+selectedCon);
+                }*/
+            
+            
+               window.onload=function()       
+            {        
+                document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:cntblock:startDate}').value = ''; 
+                   
+                   var today = new Date();
+                   today.setHours(0,0,0,0);
+                   console.log(today);
+                   var currentmonth = today.getMonth(); 
+                   var currentyear =today.getFullYear();
+                   var currentdate =today.getDate();
+                   var today =new Date(currentyear,currentmonth,currentdate);
+                   var expirydate = new Date(currentyear,currentmonth,25);
+                   console.log(expirydate);
+                   
+                   if(today > expirydate)
+                   {
+                       document.getElementsByClassName('slds-scope')[0].style.visibility = 'hidden';
+                       document.getElementsByClassName('addendum')[0].style.visibility = 'block';      
+                       element.style.opacity += 0.1;
+
+                   }
+                   else
+                   {
+                       document.getElementsByClassName('slds-scope')[0].style.visibility = 'block';
+                       document.getElementsByClassName('addendum')[0].style.visibility = 'hidden';
+                   }
+                   
+                   console.log('hide');  
+                   
+               }; 
+            
+            
+            j$ = jQuery.noConflict();
+            function setFocusOnLoad() {}
+            var contactSelected='';
+            var indexing='';
+            
+                function onSendEmail(){
+                    validateEndDate(selectdate);
+
+                    if(contactSelected!="" || contactSelected!='' || contactSelected!=null){
+                        console.log('contactSelected in onComplete '+contactSelected);
+                        console.log('indexing in onComplete '+indexing);
+                        console.log('oncomplete contactSelected>>'+contactSelected);
+                        
+                        var ele = document.getElementsByClassName(indexing);
+                        console.log('ele >>'+ele);
+                        for(var i = 0, length = ele.length; i < length; i++) {
+                            ele[i].checked = true;
+                        }
+                    }
+                }
+                
+                function getSelectedContact(selectedCon, index){
+                    contactSelected = selectedCon;
+                    indexing = "selectedContact" +index;
+                    getSelectedCon(selectedCon);
+                    console.log('selectedCon>>> '+selectedCon);
+                    console.log('contactSelected>>> '+contactSelected);
+                    console.log('index>>> '+index);
+                    console.log('indexing>>> '+indexing);
+                }
+            
+            
+            
+            </script>
+           
+        </head>
+        <body>
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds-scope">
+                
+                <apex:outputPanel id="errorMsgID" >
+                    <apex:outputPanel rendered="{!hasOLI}">
+                        <div class="demo-only" style="height: 4rem;">
+                            <div class="slds-notify_container slds-is-relative">
+                                <div class="slds-notify slds-notify_toast slds-theme_{!successError}" role="alert">
+                                    <span class="slds-assistive-text">{!successError}</span>
+                                      <span class="slds-icon_container slds-icon-utility-{!successError} slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#{!successError}" />
+                                        </svg>
+                                      </span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small ">{!msg}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="errorMesgID" >
+                    <apex:outputPanel rendered="{!showContent}">
+                        <div class="demo-only" style="height: 4rem;">
+                            <div class="slds-notify_container slds-is-relative">
+                                <div class="slds-notify slds-notify_toast slds-theme_{!successError}" role="alert">
+                                    <span class="slds-assistive-text">{!successError}</span>
+                                      <span class="slds-icon_container slds-icon-utility-{!successError} slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#{!successError}" />
+                                        </svg>
+                                      </span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small ">{!msg}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="sendAddendumID" >
+                    <apex:outputPanel rendered="{!!hasOLI}">
+                        <apex:form rendered="{!contactList.size==0}">
+                            <div class="slds-text-heading_large slds-align_absolute-center">There is no Contact associated to Opportunity for sending the Agreement.</div>
+                        <!--<apex:outputText >
+                          <center>
+                           <b>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                          There is no Contact associated to Opportunity for sending the Agreement.
+                           </b>
+                          </center>
+                        </apex:outputText>-->
+                        </apex:form>
+                        <apex:form id="formBlock" rendered="{!contactList.size>0}">
+                            <!-- <apex:pageMessages ></apex:pageMessages> -->
+                            <apex:actionFunction name="getSelectedCon" action="{!getSelectedContact}" rerender="cntblock">
+                                <apex:param name="selectedConID" value="" assignTo="{!selectedConID}" />
+                            </apex:actionFunction>
+                            <apex:outputPanel rendered="{!isContractPresent}">
+                                <div class="slds-page-header">
+                                  <div class="slds-media">
+                                    <div class="slds-media__figure">
+                                      <span class="slds-icon_container slds-icon-standard-opportunity" title="Description of icon when needed">
+                                        <!--<svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity" />
+                                        </svg>-->
+                                      </span>
+                                    </div>
+                                    <div class="slds-media__body">
+                                      <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Contact Selection">Send Addendum</h1>
+                                    </div>
+                                  </div>
+                                </div>
+                                <apex:pageBlock id="pgBlock" rendered="{!!setBack}">
+                                    <apex:outputPanel rendered="{!!renderSendEmailMessage}">
+                                        <div class="slds-section slds-is-open">
+                                          <h3 class="slds-section__title">
+                                            <section aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" style="background-color: #698abf;">
+                                              <!--<svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch" />
+                                              </svg>-->
+                                              <span class="slds-truncate" title="Section Title">Choose one Contact to send a Addendum Agreement</span>
+                                            </section>
+                                          </h3>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <apex:pageBlockSection rendered="{!!renderSendEmailMessage}">    
+                                        <apex:variable var="c" value="{!0}" />
+                                        <apex:pageBlockTable styleClass="slds-table slds-table_bordered slds-table_cell-buffer" value="{!contactList}" var="w">
+                                            <apex:column >
+                                                
+                                               <!--  <div class="slds-form-element__control">
+                                                     <label class="slds-radio__label">
+                                                        <span class="slds-radio">
+                                                            <input type="radio"  class="slds-input" name="<strong>selectRadio</strong>" id="radio">
+                                                                <apex:actionSupport event="onclick" action="{!getSelected}" status="buttonStatus" rerender="cntblock" >
+                                                                    <apex:param name="accid" value="{!w.id}" />
+                                                                </apex:actionSupport>
+                                                            </input>
+                                                            <span class="slds-radio_faux"></span>
+                                                        </span>
+                                                    </label>
+                                                </div> -->
+                                                
+                                                <div class="slds-form-element__control">
+                                                    <label class="slds-radio__label">
+                                                        <span class="slds-radio">
+                                                            <apex:variable var="c" value="{!c+1}" />
+                                                            <input type="radio" id="selectedContact{!c}"  class="slds-input selectedContact{!c}" name="contractType" onchange="getSelectedContact('{!w.id}',{!c})"/>
+                                                            <span class="slds-radio_faux"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                                
+                                            </apex:column>
+                                            
+                                            <apex:column >
+                                                <apex:facet name="header">NAME</apex:facet>{!w.Name}
+                                            </apex:column> 
+                                            
+                                            <apex:column >
+                                                <apex:facet name="header">EMAIL</apex:facet>{!w.Email}
+                                            </apex:column>  
+                                            
+                                            <!--<apex:column value="{!w.Email}"/>-->
+                                        </apex:pageBlockTable>
+                                    </apex:pageBlockSection>
+                                    <br/>
+                                    <br/>
+                                    <div class="slds-section slds-is-open">
+                                      <h3 class="slds-section__title">
+                                        <section aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" style="background-color: #698abf;">
+                                          <!--<svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch" />
+                                          </svg>-->
+                                          <span class="slds-truncate" title="Section Title">Contract Agreement Expiration Setting</span>
+                                        </section>
+                                      </h3>
+                                    </div>
+                                    <apex:pageBlockSection columns="1" id="cntblock">
+                                        
+                                         <!--<div class="slds-grid slds-wrap">
+                                            <div class="slds-p-horizontal_small slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                <div class="slds-p-horizontal_small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--4-of-12 padding-floatleft">
+                                                <apex:outputLabel > Finn From Date   <abbr class="slds-required" title="required">*</abbr> &nbsp;</apex:outputLabel>
+                                                </div>
+                                                <div style="margin-bottom: 20px;" class="slds-p-horizontal_small slds-size--1-of-1 slds-medium-size--5-of-6 slds-large-size--8-of-12 padding-floatleftOutputFields">
+                                                    <apex:inputField type="text" styleclass="slds-input" value="{!objContract1.Start_Date__c}"/>
+                                                    </div>
+                                            </div> <br/>
+                                            <div class="slds-p-horizontal_small slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                <div class="slds-p-horizontal_small slds-size--1-of-1 slds-medium-size--1-of-6 slds-large-size--4-of-12 padding-floatleft">
+                                                <apex:outputLabel >Finn To Date <abbr class="slds-required" title="required">*</abbr>&nbsp; </apex:outputLabel>
+                                                </div>
+                                                <apex:inputField styleclass="slds-input" value="{!objContract1.Start_Date__c}"/>
+                                                
+                                            </div>
+                                         </div>-->
+                                         
+                                        <!--<div class="slds-grid slds-wrap">
+                                            <div class="slds-p-horizontal_small slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="dateId">Start Date</label>
+                                                    <div class="slds-form-element__control" style="width:200px;">
+                                                        <div class="slds-input-has-icon slds-input-has-icon--right">
+                                                            <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
+                                                            <use xlink:href="{!URLFOR($Resource.SLDS0121, '/assets/icons/utility-sprite/svg/symbols.svg#event')}"></use>
+                                                            </svg>
+                                                            <input id="dateId" class="slds-input" type="text" onchange="saveDateofBirth();return false;"/>                                                          
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                    
+                                        <apex:inputField type="date" styleClass="slds-input" value="{!objContract1.Start_Date__c}" required="true" id="startDate" onchange="validateStartDate();"/><br/>
+                                        <apex:inputField type="date" styleClass="slds-input" value="{!objContract1.Effective_Date__c}"/><br/>
+                                        <apex:inputField type="date" styleClass="slds-input" value="{!objContract1.End_Date__c}" id="endDate" onchange="validateEndDate();" >
+                                        </apex:inputField>
+                                    </apex:pageBlockSection> 
+                                    <br/>
+                                    <div class="slds-align_absolute-center">
+                                        <apex:commandButton id="sendmail" styleClass="slds-button slds-button_brand" value="Send Email" rerender="errorMsgID,errorMesgID,sendAddendumID" action="{!toSendAddendum}" onComplete="onSendEmail()" status="actionStatusID" /> 
+                                        <apex:commandButton styleClass="slds-button slds-button_brand" value="Back" action="{!backLink}" />
+                                    </div>
+                                   
+                                </apex:pageBlock>
+                            </apex:outputPanel>
+                            <apex:actionStatus id="actionStatusID">
+                                <apex:facet name="start">
+                                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                                    &nbsp;
+                                </div>
+                                <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                                    <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px; margin-left: -60px;">
+                                        <img src="/img/loading.gif" /><!--style="float: left; margin: 8px;" /-->
+                                        <span>Please Wait...</span>
+                                    </div>
+                                </div>
+                                </apex:facet>
+                            </apex:actionStatus>        
+                            <!--&nbsp;&nbsp;&nbsp;
+                            &nbsp;<div style="font-size: 18px;color: #FF0000;">
+                            <apex:commandButton styleClass="slds-button slds-button_brand slds-align_absolute-center" value="Back" action="{!backLink}" style="align:center;" rendered="{!setBack}"/>
+                            </div>-->
+                        </apex:form>
+                    </apex:outputPanel>
+                    <apex:form >
+                        <div style="font-size: 18px;color: #FF0000;">
+                        <apex:commandButton styleClass="slds-button slds-button_brand slds-align_absolute-center" value="Back" action="{!backLink}" style="align:center;" rendered="{!setBack}"/>
+                        </div>
+                    </apex:form>
+                </apex:outputPanel>
+            </div>
+            <div class ="addendum" style="color:red;font-size:30px;text-align:center;margin-top:-100px;font-family:monospace;">
+                
+                <apex:outputText > You can not sign an addendum after 25th of the month</apex:outputText>
+                
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+        </body>
+        <script>
+           function validateEndDate()
+        {
+            var enddate = document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:cntblock:endDate}').value;
+            var dt = new Date(enddate);                       
+            var dtm = dt.getMonth();
+            var dty = dt.getFullYear();
+            var dtd = new Date(dt).getDate();
+            var selectdate = new Date(dty,dtm,dtd);
+            var lastDay = new Date(dty, dtm + 1, 0);
+            
+            if(enddate == '')
+            {
+                alert('Please Enter End Date');
+                document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:sendmail}').disabled =true;
+
+            }
+            else if(selectdate.toDateString() != lastDay.toDateString())
+            {
+                alert('Addenedum End Date should be the last day of the selected month');
+                document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:sendmail}').disabled =true;
+            }else if(selectdate.toDateString() == lastDay.toDateString())
+            {
+                document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:sendmail}').disabled =false;
+                            validateStartDate();
+            }
+        }
+         function validateStartDate()
+        {
+            var startdate = document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:cntblock:startDate}').value;
+            var today = new Date();
+            var currentmonth = today.getMonth(); 
+            var currentyear =today.getFullYear();
+            var dt = new Date(startdate);   
+            console.log(dt);
+            var dtm = dt.getMonth();
+            console.log(dtm);
+            var dty = dt.getFullYear();            
+            console.log(dty);
+            var dtd = new Date(dt).getDate();
+            console.log(dtd);
+            var selectdate = new Date(dty,dtm,dtd);
+            console.log(selectdate);
+            var firstday = new Date(currentyear, currentmonth , 1);
+            console.log(firstday);
+            if(selectdate.toDateString() != firstday.toDateString())
+            {
+                alert('Addenedum Start Date should be the first day of the current month');
+                document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:sendmail}').disabled =true;
+
+            }else if(selectdate.toDateString() == firstday.toDateString())
+            {
+                document.getElementById('{!$Component.AddendumSendEmail:formBlock:pgBlock:sendmail}').disabled =false;
+                validateEndDate();
+            }
+        } 
+        
+        </script>
+    </html>
+    
+</apex:page>

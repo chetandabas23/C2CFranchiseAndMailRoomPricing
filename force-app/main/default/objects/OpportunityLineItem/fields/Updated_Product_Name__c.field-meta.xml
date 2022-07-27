@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Updated_Product_Name__c</fullName>
+    <description>Used to replace 500gm with base and Incremental weights present on Opportunity</description>
+    <externalId>false</externalId>
+    <formula>CASE( PricebookEntry.Product2.Name , &quot;Upto 500gms&quot;,  SUBSTITUTE(
+&quot;Upto 500gms&quot;, &quot;500&quot;,  Text(Opportunity.Forward_Base__c) )  , &quot;Additional 500gms&quot;,SUBSTITUTE(&quot;Additional 500gms&quot;, &quot;500&quot;,Text(Opportunity.Forward_Incremental__c)), &quot;DTO (500gms)&quot;, SUBSTITUTE(
+&quot;DTO (500gms)&quot;, &quot;500&quot;, Text(Opportunity.DTO_Base__c)  ) ,&quot;DTO (Additional 500gms)&quot;,  SUBSTITUTE(&quot;DTO (Additional 500gms)&quot;, &quot;500&quot;,  Text(Opportunity.DTO_Incremental__c)), &quot;RTO (Every 500gms)&quot;, SUBSTITUTE(&quot;RTO (Every 500gms)&quot;, &quot;500&quot;,  Text(Opportunity.RTO__c) ), &quot;Additional 500gms (up to 3kgs)&quot;, SUBSTITUTE(&quot;Additional 500gms (up to 3kgs)&quot;,&quot;500&quot;, TEXT(Opportunity.Forward_Incremental__c) ), &quot;RTO (Every 1000gms)&quot;,SUBSTITUTE(&quot;RTO (Every 1000gms)&quot;,&quot;1000&quot;, TEXT(Opportunity.RTO__c)), &quot;DTO (Every 1000gms)&quot;,SUBSTITUTE(&quot;DTO (Every 1000gms)&quot;,&quot;1000&quot;,TEXT( Opportunity.DTO_Base__c )),&quot;DTO (Add 1000gms)&quot;,SUBSTITUTE(&quot;DTO (Add 1000gms)&quot;,&quot;1000&quot;,TEXT( Opportunity.DTO_Incremental__c )),&quot;DTO (1000gms)&quot;,SUBSTITUTE(&quot;DTO (1000gms)&quot;,&quot;1000&quot;,TEXT( Opportunity.DTO_Base__c )), PricebookEntry.Product2.Name)</formula>
+    <label>Updated Product Name</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

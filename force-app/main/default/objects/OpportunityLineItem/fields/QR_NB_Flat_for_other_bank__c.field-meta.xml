@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QR_NB_Flat_for_other_bank__c</fullName>
+    <defaultValue>0</defaultValue>
+    <externalId>false</externalId>
+    <label>QR NB Flat for other bank</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <type>Currency</type>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sync_to_Bird</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <height>600</height>
+    <linkType>page</linkType>
+    <masterLabel>Sync to Bird</masterLabel>
+    <openType>sidebar</openType>
+    <page>birdPricingUplodad</page>
+    <protected>false</protected>
+</WebLink>

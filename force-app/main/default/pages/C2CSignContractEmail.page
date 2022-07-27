@@ -1,0 +1,257 @@
+<!-----------------------------------------------------------------------------------------------
+    * Author: Chetan Dabas.
+* VF Page Name: C2CSignContractEmail
+* Created Date: 15-Sept-2019
+* Description: To send the contract agreement to Opportunity according to Account's Invoice Mode. 
+----------------------------------------------------------------------------------------------- -->
+
+<apex:page action="{!sendContract}" standardController="Opportunity" extensions="C2CSignContractEmail_Ext" standardStylesheets="false" sidebar="false"  applyBodyTag="false" docType="html-5.0" >
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            <style>
+                .slds-scope .slds-text-heading--large, .slds-scope .slds-text-heading_large {
+                    padding-top: 128px;
+                }                
+                .slds-scope .slds-input { width: 40% !important; }
+            </style>        
+            
+            <!-- jQuery CDN -->
+            <style> span.dateFormat { display:none; } </style>
+            <!-- MomentJS CDN -->
+             <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.js"></script>-->
+             
+            <script>            
+                /*function getSelectedContact(selectedCon){
+                    getSelectedCon(selectedCon);
+                    console.log('selectedCon>>> '+selectedCon);
+                }*/
+                
+                j$ = jQuery.noConflict();
+                function setFocusOnLoad() {}
+                var contactSelected='';
+                var indexing='';
+                
+                function onSendEmail(){
+                    if(contactSelected!="" || contactSelected!='' || contactSelected!=null){
+                        console.log('contactSelected in onComplete '+contactSelected);
+                        console.log('indexing in onComplete '+indexing);
+                        console.log('oncomplete contactSelected>>'+contactSelected);
+                        
+                        var ele = document.getElementsByClassName(indexing);
+                        console.log('ele >>'+ele);
+                        for(var i = 0, length = ele.length; i < length; i++) {
+                            ele[i].checked = true;
+                        }
+                    }
+                }
+                
+                function getSelectedContact(selectedCon, index){
+                    contactSelected = selectedCon;
+                    indexing = "selectedContact" +index;
+                    getSelectedCon(selectedCon);
+                    console.log('selectedCon>>> '+selectedCon);
+                    console.log('contactSelected>>> '+contactSelected);
+                    console.log('index>>> '+index);
+                    console.log('indexing>>> '+indexing);
+                }
+            </script>
+        </head>
+        <body>
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds-scope">    
+                <apex:outputPanel id="errorMsgID" >
+                    <apex:outputPanel rendered="{!hasOLI}">
+                        <div class="demo-only" style="height: 4rem;">
+                          <div class="slds-notify_container slds-is-relative">
+                            <div class="slds-notify slds-notify_toast slds-theme_{!successError}" role="alert">
+                              <span class="slds-assistive-text">{!successError}</span>
+                              <span class="slds-icon_container slds-icon-utility-{!successError} slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#{!successError}" />
+                                </svg>
+                              </span>
+                              <div class="slds-notify__content">
+                                <h2 class="slds-text-heading_small ">{!msg}</h2>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </apex:outputPanel>
+                    <apex:form >
+                        <apex:commandButton rendered="{!hasOLI}" styleClass="slds-button slds-button_brand slds-align_absolute-center" value="Back" action="{!backLink}"/>
+                    </apex:form>
+                </apex:outputPanel>
+                
+                <apex:outputPanel id="errorMesgID" >
+                    <apex:outputPanel rendered="{!showContent}">
+                        <div class="demo-only" style="height: 4rem;">
+                            <div class="slds-notify_container slds-is-relative">
+                                <div class="slds-notify slds-notify_toast slds-theme_{!successError}" role="alert">
+                                    <span class="slds-assistive-text">{!successError}</span>
+                                      <span class="slds-icon_container slds-icon-utility-{!successError} slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                                        <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#{!successError}" />
+                                        </svg>
+                                      </span>
+                                    <div class="slds-notify__content">
+                                        <h2 class="slds-text-heading_small ">{!msg}</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                <apex:outputPanel id="b2bPricingID" >
+                    <apex:outputPanel rendered="{!!hasOLI}">
+                        <apex:form rendered="{!contactList.size==0}">
+                            <div class="slds-text-heading_large slds-align_absolute-center">There is no Contact associated to Opportunity for sending the Agreement.</div>
+                         <!--<apex:outputText >
+                          <center>
+                           <b>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                          There is no Contact associated to Opportunity for sending the Agreement.
+                           </b>
+                          </center>
+                         </apex:outputText>-->
+                        </apex:form>
+                        <apex:form rendered="{!contactList.size>0}" >
+                        <apex:actionFunction name="getSelectedCon" action="{!getSelectedContact}" rerender="cntblock">
+                            <apex:param name="selectedConID" value="" assignTo="{!selectedConID}" />
+                        </apex:actionFunction>
+                                <!--<apex:pageMessages ></apex:pageMessages> -->
+                            <apex:outputPanel rendered="{!isContractPresent}">
+                                <apex:outputPanel rendered="{!!setBack}">
+                                    <div class="slds-page-header">
+                                      <div class="slds-media">
+                                        <div class="slds-media__figure">
+                                          <span class="slds-icon_container slds-icon-standard-opportunity" title="Description of icon when needed">
+                                            <!--<svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#opportunity" />
+                                            </svg>-->
+                                          </span>
+                                        </div>
+                                        <div class="slds-media__body">
+                                          <h1 class="slds-page-header__title slds-truncate slds-align-middle slds-align_absolute-center" title="Contact Selection">SEND CONTRACT</h1>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </apex:outputPanel>
+                                    
+                                <apex:pageBlock rendered="{!!setBack}"> 
+                                    <apex:outputPanel rendered="{!!renderSendEmailMessage}">
+                                        <div class="slds-section slds-is-open">
+                                          <h3 class="slds-section__title">
+                                            <section aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" style="background-color: #698abf;">
+                                              <svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch" />
+                                              </svg>
+                                              <span class="slds-truncate" title="Section Title">Choose one Contact to send a Contract Agreement</span>
+                                            </section>
+                                          </h3>
+                                        </div>
+                                    </apex:outputPanel> 
+                                        
+                                    <apex:pageBlockSection rendered="{!!renderSendEmailMessage}">
+                                        <apex:variable var="c" value="{!0}" />
+                                        <apex:pageBlockTable styleClass="slds-table slds-table_bordered slds-table_cell-buffer" value="{!contactList}" var="w">
+                                            <apex:column >
+                                                <div class="slds-form-element__control">
+                                                    <label class="slds-radio__label">
+                                                        <span class="slds-radio">
+                                                            <apex:variable var="c" value="{!c+1}" />
+                                                            <input type="radio" id="selectedContact{!c}"  class="slds-input selectedContact{!c}" name="contractType" onchange="getSelectedContact('{!w.id}',{!c})"/>
+                                                            <span class="slds-radio_faux"></span>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            
+                                            
+                                            </apex:column>
+                                            
+                                            <apex:column >
+                                                <apex:facet name="header">NAME</apex:facet>{!w.Name}
+                                            </apex:column> 
+                                            
+                                            <apex:column >
+                                                <apex:facet name="header">EMAIL</apex:facet>{!w.Email}
+                                            </apex:column>
+                                            <!--<input type="radio" name="<strong>selectRadio</strong>" id="radio">
+                                                    <br/>
+                                                    <apex:actionSupport event="onclick" action="{!getSelected}" status="buttonStatus" reRender="cntblock">
+                                                        <apex:param name="accid" value="{!w.id}" />
+                                                    </apex:actionSupport>
+                                            </input>
+                                            <apex:column value="{!w.Name}"/>
+                                            <apex:column value="{!w.Email}"/>-->
+                                        </apex:pageBlockTable>            
+                                    </apex:pageBlockSection>
+                                <br/>
+                                 <br/>
+                                <div class="slds-section slds-is-open">
+                                  <h3 class="slds-section__title">
+                                    <section aria-controls="expando-unique-id" aria-expanded="true" class="slds-button slds-section__title-action" style="background-color: #698abf;">
+                                      <svg class="slds-section__title-action-icon slds-button__icon slds-button__icon_left" aria-hidden="true">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch" />
+                                      </svg>
+                                      <span class="slds-truncate" title="Section Title">Send Contract Agreement</span>
+                                    </section>
+                                  </h3>
+                                </div>      
+                                <apex:pageBlockSection columns="1" id="cntblock">
+                                
+                                    <apex:inputField type="date" styleClass="slds-input" value="{!objContract1.Start_Date__c}" required="true" /><br/>
+                                    
+                                    <apex:inputField type="date" styleClass="slds-input" value="{!objContract1.Effective_Date__c}" required="true"/><br/>
+                                    <apex:inputField type="date" styleClass="slds-input" value="{!objContract1.End_Date__c}" required="true"/>
+                                </apex:pageBlockSection> <br/>  
+                                
+                                
+                               
+                                <br/>
+                                <br/>
+                                <div class="slds-align_absolute-center">
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="Send Email" action="{!toSendEmail}" status="actionStatusID" rerender="errorMsgID,errorMesgID,b2bPricingID" onComplete="onSendEmail()"/>  
+                                    <apex:commandButton styleClass="slds-button slds-button_brand" value="Back" action="{!backLink}" />
+                                </div>
+                            </apex:pageblock>
+                               
+                        </apex:outputPanel>     
+                        </apex:form>
+                        <apex:form >
+                            <div style="font-size: 18px;color: #FF0000;">
+                                <apex:commandButton styleClass="slds-button slds-button_brand slds-align_absolute-center" value="Back" action="{!backLink}" style="align:center;" rendered="{!setBack}"/>
+                            </div>
+                        </apex:form>
+                    </apex:outputPanel>
+                </apex:outputPanel>
+                
+                <apex:actionStatus id="actionStatusID">
+                    <apex:facet name="start">
+                    <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                        &nbsp;
+                    </div>
+                    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                        <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px; margin-left: -60px;">
+                            <img src="/img/loading.gif" /><!--style="float: left; margin: 8px;" /-->
+                            <span>Please Wait...</span>
+                        </div>
+                    </div>
+                    </apex:facet>
+                </apex:actionStatus>
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+        </body>
+    </html>
+    
+</apex:page>

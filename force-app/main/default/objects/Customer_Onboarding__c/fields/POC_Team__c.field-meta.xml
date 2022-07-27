@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>POC_Team__c</fullName>
+    <externalId>false</externalId>
+    <label>POC Team</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>North POC</fullName>
+                <default>false</default>
+                <label>North POC</label>
+            </value>
+            <value>
+                <fullName>Fashion CSM</fullName>
+                <default>false</default>
+                <label>Fashion CSM</label>
+            </value>
+            <value>
+                <fullName>West POC</fullName>
+                <default>false</default>
+                <label>West POC</label>
+            </value>
+            <value>
+                <fullName>South POC</fullName>
+                <default>false</default>
+                <label>South POC</label>
+            </value>
+            <value>
+                <fullName>LT B2C POC</fullName>
+                <default>false</default>
+                <label>LT B2C POC</label>
+            </value>
+            <value>
+                <fullName>Ravinder Thakur</fullName>
+                <default>false</default>
+                <label>Ravinder Thakur</label>
+            </value>
+            <value>
+                <fullName>North CSM B2B</fullName>
+                <default>false</default>
+                <label>North CSM B2B</label>
+            </value>
+            <value>
+                <fullName>West CSM B2B</fullName>
+                <default>false</default>
+                <label>West CSM B2B</label>
+            </value>
+            <value>
+                <fullName>South CSM B2B</fullName>
+                <default>false</default>
+                <label>South CSM B2B</label>
+            </value>
+            <value>
+                <fullName>East CSM B2B</fullName>
+                <default>false</default>
+                <label>East CSM B2B</label>
+            </value>
+            <value>
+                <fullName>LT CSM</fullName>
+                <default>false</default>
+                <label>LT CSM</label>
+            </value>
+            <value>
+                <fullName>C2C</fullName>
+                <default>false</default>
+                <label>C2C</label>
+            </value>
+            <value>
+                <fullName>Xborder Team</fullName>
+                <default>false</default>
+                <label>Xborder Team</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,136 @@
+<!------------------------------------------------------------------------------------------------
+* Author: Techila Global Services Pvt Ltd.
+* VF Page Name: B2BAgreementPDF
+* Created Date: 20-May-2017
+* Description: To show the B2B Agreement PDF in iFrame and to implement the "I Agree" functionality. 
+-------------------------------------------------------------------------------------------------->
+<apex:page standardController="Opportunity" extensions="SignContractPage_Ext" sidebar="false" action="{!ViewTrack}"  cache="false" showHeader="false">
+    <!--   <script>
+function openPopup(page,param){
+    window.open(page+'?id='+param+'&ContractId={!conid}','_blank', 'toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400')
+}
+</script> -->
+<script> 
+    var previousOnload = window.onload; 
+    window.onload = function() {
+        if (previousOnload) { 
+            previousOnload(); 
+        } 
+        
+    } 
+</script>
+    <apex:form rendered="{!NullAgreement}">
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <div style="font-size: 26px;color: #ff0000;">            
+            <center>Contract does not exist !<br/><br/>
+                The contract you attempted to access does not exist or has been deleted.</center>
+        </div>
+        
+    </apex:form>
+    
+    <apex:form rendered="{!isContractIdPresent }">
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <div style="font-size: 26px;color: #ff0000;">            
+            <center> Invalid URL !<br/><br/>
+                Please try opening the link in the mail again</center>
+        </div>
+        
+    </apex:form>
+    
+    <apex:form rendered="{!bool}">
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <center>
+            <!--<div style="font-size: 26px;color: #ff0000;">
+                <apex:outputText rendered="{!If(objContract.Status__c == 'Accepted',true,false)}"> You have already signed this Contract.</apex:outputText>
+            </div>-->
+        </center>
+        
+    </apex:form>
+    
+    <!-- <apex:form rendered="{!!NullAgreement}"> -->
+    <apex:form rendered="{!!isContractIdPresent && !NullAgreement }" id="mainForm">
+        <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"/>
+        <script type="text/javascript">
+            function changeError(){
+                if($(".errorM3").is(":visible")){
+                    $( "div .messageText" ).html("<h4>Something went wrong. Please try again opening the link in email.</h4>");
+                }
+            }
+        </script>
+        <apex:pageMessages />
+        <apex:actionStatus id="actionStatusID">
+            <apex:facet name="start">
+            <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 1000; background-color: black;">
+                &nbsp;
+            </div>
+            <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 1001; margin: 15% 50%">
+                <div style="display: inline-block; padding: 2px; background-color: #fff; width: 125px; margin-left: -60px;">
+                    <img src="/img/loading.gif" /><!--style="float: left; margin: 8px;" /-->
+                    <span>Please Wait...</span>
+                </div>
+            </div>
+            </apex:facet>
+        </apex:actionStatus>
+        <apex:outputPanel rendered="{!!bool}">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <center>
+                <div style="font-size: 16px;">
+                    <apex:outputText rendered="{!!bool && objContract.is_Latest_Contract__c}"> If you agree the below defined Agreement then click on the button "I Agree".</apex:outputText>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <apex:commandButton value="I Agree" action="{!UpdateContract}" styleClass="buttonStyle" style="width:150px;" rendered="{!!bool && objContract.is_Latest_Contract__c}" status="actionStatusID" reRender="mainForm" oncomplete="changeError();">
+                    </apex:commandButton>
+                </div>
+            </center>
+            <!--<center>
+<div style="font-size: 16px;color: #ff0000;">
+<apex:outputText rendered="{!If(con.Status__c == 'Accepted',true,false)}">Thank You! You have agreed the mentioned terms and conditions.</apex:outputText>
+</div>
+</center> -->
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+         
+        </apex:outputPanel>
+  
+        <apex:outputPanel id="renderUpload" rendered="{!IF(renderUploadButton==true && objContract.is_Latest_Contract__c , true, false)}">
+            &nbsp;&nbsp; 
+            <center>
+            <apex:outputLabel value="Please upload Signed Contract" for="fileSelect"/>&nbsp;
+            <apex:inputFile value="{!attachmentUpload.body}" filename="{!attachmentUpload.name}" id="fileSelect"/>
+            <br/><br/>
+            <apex:commandButton value="Submit Signed Contract" action="{!submitSignedContract}" styleClass="buttonStyle" style="width:150px;" status="actionStatusID"/>
+            </center>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{!!bool && !objContract.is_Latest_Contract__c}">
+             <center>
+                <div style="font-size: 16px;">
+                    <apex:outputText >Please open the latest Contract Document for Signatures.</apex:outputText>
+                </div>
+                </center>
+        </apex:outputPanel>  
+        <apex:iframe src="{!$Label.SiteURL}/SignContractPage/apex/B2BWithInsurancePDF?id={!oppid}&ContractId={!objContract.id}" rendered="{!insurance && objAttachment_SuccessList.size==0}" scrolling="true"/>
+        <apex:iframe src="{!$Label.SiteURL}/SignContractPage/apex/B2BNoInsurancePDF?id={!oppid}&ContractId={!objContract.id}" rendered="{!!insurance && objAttachment_SuccessList.size==0}" scrolling="true"/>
+        <apex:iframe src="{!objAttachment_Success.Dropbox_Link__c}" rendered="{!IF(!renderUploadButton && objAttachment_Success!=null, true, false)}" scrolling="true"/>
+    </apex:form>
+</apex:page>

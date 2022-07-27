@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Domain</label>
+    <protected>false</protected>
+    <values>
+        <field>cloudFrontDomain__c</field>
+        <value xsi:type="xsd:string">dlq25435y4vf81.cloudfront.net</value>
+    </values>
+    <values>
+        <field>s3Domain__c</field>
+        <value xsi:type="xsd:string">nam-mktplace.s3.eu-central-1.amazonaws.com</value>
+    </values>
+</CustomMetadata>

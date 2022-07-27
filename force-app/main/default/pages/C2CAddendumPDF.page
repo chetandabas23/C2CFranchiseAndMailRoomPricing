@@ -1,0 +1,78 @@
+<!------------------------------------------------------------------------------------------------
+* Author: Chetan Dabas.
+* VF Page Name: C2CAddendumPDF
+* Created Date: 19-May-2017
+* Description: To show the Addendum PDF in iFrame and to implement the "I Agree" functionality. 
+-------------------------------------------------------------------------------------------------->
+<apex:page standardController="Opportunity" extensions="C2CSignContractPage_Ext" sidebar="false" showHeader="false" action="{!ViewTrack}">
+    <!--<script>
+function openPopup(page,param){
+    window.open(page+'?id='+param+'&ContractId={!conid}','_blank', 'toolbar=yes, scrollbars=yes, resizable=yes, top=500, left=500, width=400, height=400')
+}
+</script>-->
+    <apex:form rendered="{!NullAgreement}">
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <div style="font-size: 26px;color: #ff0000;">            
+            <center>Contract does not exist !<br/><br/>
+                The contract you attempted to access does not exist or has been deleted.</center>
+        </div>
+        
+    </apex:form>
+    
+    <apex:form rendered="{!isContractIdPresent || isContactIdPresent}">
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <div style="font-size: 26px;color: #ff0000;">            
+            <center> Invalid URL !<br/><br/>
+                Please try opening the link in the mail again</center>
+        </div>
+        
+    </apex:form>
+    
+    <apex:form rendered="{!!isContractIdPresent && !NullAgreement && !isContactIdPresent}">
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <center>
+            <div style="font-size: 26px;color: #ff0000;">
+                <apex:outputText rendered="{!bool}"> You have already signed this Contract.</apex:outputText>
+            </div>
+        </center>
+        <center>
+            <div style="font-size: 16px;">
+                <apex:outputText rendered="{!!bool}"> If you agree the below defined Agreement then click on the button "I Agree".</apex:outputText>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <apex:commandButton value="I Agree" action="{!UpdateContract}" styleClass="buttonStyle" style="width:150px;" rendered="{!!bool}">
+                </apex:commandButton>
+            </div>
+        </center>
+        <!--   <center>
+<div style="font-size: 16px;color: #ff0000;">
+<apex:outputText rendered="{!If(objContract.Status__c == 'Accepted',true,false)}">Thank You! You have agreed the mentioned terms and conditions.</apex:outputText>
+</div>
+</center> -->
+        &nbsp;&nbsp;
+        &nbsp;&nbsp;
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <apex:outputPanel rendered="{!!bool}">   
+            
+            <apex:iframe src="{!$Label.SiteURL}/C2CSignContractEmail/apex/C2COpportunityAddendumAsPDF?id={!oppid}&ContractId={!objContract.id}&ContactId={!contactid}" scrolling="true" rendered="{!if(Opportunity.RecordType.Name=='C2C',true,false)}"/>
+          <!--  <apex:iframe src="{!$Label.SiteURL}/SignContractPage/apex/OpportunityB2BAddendumAsPDF?id={!oppid}&ContractId={!objContract.id}&ContactId={!contact.id}" scrolling="true" rendered="{!if(Opportunity.RecordType.Name=='B2B',true,false)}"/>-->
+        </apex:outputPanel>   
+    </apex:form>
+</apex:page>

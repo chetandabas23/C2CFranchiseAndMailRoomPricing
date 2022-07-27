@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Postal_Cat1__c</fullName>
+    <externalId>false</externalId>
+    <label>Postal Cat</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>---------</fullName>
+                <default>false</default>
+                <label>---------</label>
+            </value>
+            <value>
+                <fullName>CatA</fullName>
+                <default>false</default>
+                <label>CatA</label>
+            </value>
+            <value>
+                <fullName>CatB</fullName>
+                <default>false</default>
+                <label>CatB</label>
+            </value>
+            <value>
+                <fullName>CatC</fullName>
+                <default>false</default>
+                <label>CatC</label>
+            </value>
+            <value>
+                <fullName>CatD</fullName>
+                <default>false</default>
+                <label>CatD</label>
+            </value>
+            <value>
+                <fullName>CatE</fullName>
+                <default>false</default>
+                <label>CatE</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

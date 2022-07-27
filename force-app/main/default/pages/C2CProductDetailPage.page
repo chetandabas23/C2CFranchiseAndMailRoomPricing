@@ -1,0 +1,2117 @@
+<apex:page standardController="Product2" extensions="C2CProductDetailPageExtension" showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+    
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="x-ua-compatible" content="ie=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- Import the Design System style sheet -->
+            <apex:slds />
+            
+            <style>
+                .minfyTable
+                {
+                border-collapse: collapse;
+                width : 30%;
+                }
+                .mainTable
+                {
+                border-collapse: collapse;
+                width : 100%;
+                }
+                /*table {
+                border-collapse: collapse;
+                width: 100%;
+                }*/
+                table td {
+                
+                Text-align:center;
+                }
+                
+                
+                #ExpressTable{
+                height:100%
+                }
+                #HyperlocalTable{
+                height:100%
+                }
+                
+                #heading {
+                background-color: #698abf;
+                color: white;
+                font-weight: bold;
+                padding: 8px;
+                letter-spacing: 0.5px;
+                font-size:13px;
+                }
+                p{
+                font-size:15px;
+                }
+                .centerAlign{
+                text-align: center !important;
+                }
+                
+                .pbButton {
+                text-align:center !important;
+                }
+                .pbBottomButtons tr td {
+                text-align:center !important;
+                }
+                .textcenter tr td {
+                text-align:center !important;
+                padding: 0.4em !important;
+                }
+                
+            </style>
+        </head>
+        <body>
+            <!-- REQUIRED SLDS WRAPPER -->
+            <div class="slds-scope">
+                
+                <apex:form rendered="{!Product2.RecordType.Name=='Hyperlocal'}">
+                    <apex:pageBlock ><br/>
+                        <apex:pageBlockButtons ><br/>
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}"  />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}"  rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons><br/>
+                        
+                        <apex:outputPanel id="table1">
+                            <apex:variable value="{!0}" var="cnt" />
+                            <table border="1" id="HyperlocalTable" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">      
+                                <tr border="1">
+                                    <td id="heading"><center>No of Order per trip</center></td>
+                                    <td id="heading"><center>Base Charge per Order(INR)</center></td>
+                                    <td id="heading"><center>Base Range(IN KM)</center></td>
+                                    <td id="heading"><center>Additional Charge(INR Per Km)</center></td>
+                                    <td id="heading"><center>Additional Range(in Km)</center></td>
+                                    <td id="heading"><center>COD Charges(Applicable only onOrders size > INR 100)[%]</center></td>
+                                    <td id="heading"><center>COD Charges(Applicable only on Orders size > INR 100)[INR]</center></td>
+                                </tr>
+                                <apex:repeat value="{!hpList}" var="hp">   
+                                    <tr border="1">
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.Number_of_Order_per_trip__c}"  />
+                                            </center></td>
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.Base_Charge_per_Order_INR__c}"/>
+                                            </center></td>
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.Base_Range_in_Km__c}"  />
+                                            </center></td>
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.Additional_Charge_INR_per_Km__c}"  />
+                                            </center></td>
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.Additional_Range__c}"  />
+                                            </center>
+                                        </td>
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.COD_Charges_in__c}"  />
+                                            </center></td>
+                                        <td><center>
+                                            <apex:outputField styleClass="slds-output" value="{!hp.COD_Charges__c}"  />
+                                            </center></td> 
+                                    </tr>
+                                </apex:repeat>                                              
+                            </table>
+                        </apex:outputPanel>
+                        <apex:pageBlockSection >
+                        </apex:pageBlockSection>
+                    </apex:pageBlock>
+                </apex:form>
+                
+                
+                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'Express_shipping' }" >
+                    <apex:pageBlock id="Express">
+                        
+                        <apex:pageBlockButtons >
+                            
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}"  />       
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}"  rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons><br/>
+                        <apex:pageMessages ></apex:pageMessages>
+                        <table cellspacing="10" cellpadding="10" border="1" id="ExpressTable" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                            <tr><td colspan="8" id="heading" ><center><p>Delhivery Commercials - EXPRESS</p></center></td></tr> 
+                            <tr>
+                                <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                                <th id="heading" ><center>Within-city</center></th>
+                                <th id="heading" > <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                                <th id="heading" ><center> Metro-Metro </center></th>
+                                <th id="heading"><center> Rest of India </center></th>
+                                <th id="heading"><center>North East, HP,<br/> Port Blair,J And K </center></th>
+                            </tr>
+                            <tr>
+                                <th id="heading"><center>Zone A</center></th>
+                                <th id="heading"><center>Zone B </center></th>
+                                <th id="heading"><center>Zone C</center></th>
+                                <th id="heading"><center>Zone D</center></th>
+                                <th id="heading"><center>Zone E</center></th>
+                            </tr>
+                            <tr>
+                                <th id="heading">Upto 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Upto_500_gms__c}"  /> </td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Upto_500_gms__c}"   /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Every additional 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Every_additional_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Every_additional_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Every_additional_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Every_additional_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Every_additional_500_gms__c}"    /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">RTO (Every 500 gms)</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_RTO_every_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_RTO_every_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_RTO_every_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_RTO_every_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_RTO_every_500_gms__c}"   /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >DTO Upto 500 gm</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_DTO_Upto_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_DTO_Upto_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_DTO_Upto_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_DTO_Upto_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_DTO_Upto_500gm__c}"   /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >DTO Every Add 500 gm</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_DTO_every_add_500gm__c}"   /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Charges</th>
+                                <!-- <apex:outputPanel rendered="{!objectOLI.COD_Charges__c != null && objectOLI.COD_Value__c != null}"> -->
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c != null || objProduct.COD_Value__c != null }"> 
+                                    <td colspan="5"><center>
+                                        <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Charges__c}"  />
+                                        <apex:outputPanel rendered="{!objProduct.COD_Value__c != null}">
+                                            
+                                            <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                or&nbsp;
+                                            </apex:outputPanel>
+                                            
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Value__c}"  />
+                                            of product bill value
+                                            
+                                            <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                whichever is higher 
+                                            </apex:outputPanel>
+                                            
+                                        </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Wallet Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Charge__c != null || objProduct.Wallet_Transaction_Rate__c != null }"> 
+                                    <th id="heading">Wallet on Delivery Charges (Paytm)</th>
+                                    <td colspan="5">
+                                        <center>
+                                            Per Applicable shipment Transaction Charge of the flat Wallet charges of &nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Charge__c}"  />
+                                            
+                                            <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Rate__c != null && objProduct.Wallet_Transaction_Charge__c !=null}">
+                                                +&nbsp;
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Rate__c}"  />
+                                                &nbsp;of Invoice Value
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Card on Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null || objProduct.Credit_Card_Transaction_Charge__c != null }"> 
+                                    <th id="heading">Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                         MDR rates + Flat transaction charge for<br/>
+                                        <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null}">
+                                            Debit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Transaction_Charge__c}"  /> 
+                                        </apex:outputPanel>
+                                        <apex:outputText rendered="{!IF(objProduct.Transaction_Charge__c != null && objProduct.Credit_Card_Transaction_Charge__c != null,true,false)}" value=" and " />
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Transaction_Charge__c != null}">
+                                            Credit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Transaction_Charge__c}"  />
+                                        </apex:outputPanel>
+                                    </td>
+                                    <td colspan="3">
+                                        Where MDR rates are as follows: <br/>
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Rates__c != null}">
+                                            1. Credit Card rates:&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Rates__c}" />&nbsp;(Total Invoice Value)<br/>
+                                        </apex:outputPanel>
+                                        <apex:outputtext value="{!IF(objProduct.Credit_Card_Rates__c == null,'1.','2.')}" />&nbsp;Debit card rates: Transaction Amount up to&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputText styleClass="slds-output" value="{!IF(objProduct.Debit_Before_Rates__c == 0,'Free','')}" />  <apex:outputField styleClass="slds-output" rendered="{!objProduct.Debit_Before_Rates__c != 0} " value="{!objProduct.Debit_Before_Rates__c}" /> <br/>
+                                        ><apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Debit_After_Rates__c}" />&nbsp;of Transaction Amount<br/>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            <tr><!-- For FOV Factor -->
+                                <apex:outputPanel rendered="{!objProduct.Frieght_Value_Factor__c != null}" >
+                                <th id="heading">FOV Factor(Frieght On Value)</th>
+                                <td colspan="5">
+                                    <center>
+                                        <apex:outPutText rendered="{!objProduct.Frieght_Value_Factor__c == 0 || objProduct.Frieght_Value_Factor__c == null}" value="Default to be 0" /> 
+                                        <apex:outputField rendered="{!objProduct.Frieght_Value_Factor__c != 0 && objProduct.Frieght_Value_Factor__c != null}" value="{!objProduct.Frieght_Value_Factor__c}"   />
+                                    </center>
+                                </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            
+                            
+                            <tr>
+                                <th id="heading">Volumetric Divisor</th>
+                                <td colspan="5"><apex:outputText styleClass="slds-output" value="{!objProduct.Volumetric_Formulae__c}" /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">GST</th>
+                                <td colspan="5">As Applicable</td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Fuel Surcharge (FSC)</th>
+                                
+                                <apex:outputPanel rendered="{!objProduct.Fuel_Surcharge__c!=null }">
+                                    <td colspan="5"><center><apex:outputField styleClass="slds-output" value="{!objProduct.Fuel_Surcharge__c}"  />&nbsp;on Freight Charges</center></td>
+                                </apex:outputPanel>
+                                
+                                <apex:outputPanel rendered="{!objProduct.Fuel_Surcharge__c==null }">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for  Forward (INR)</th>
+                                <td colspan="5"><apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_liability_per_consignment__c}"  /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading">Maximum Liability for Reverse </th>
+                                <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null || objProduct.Maximum_Liability_for_Reverse_Percent__c != null }"> 
+                                    <td colspan="5"><center>
+                                        <!-- When Both % and Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c !=null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  />
+                                            of product value or &nbsp;<apex:outputField value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>
+                                        <!-- When Only Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null && objProduct.Maximum_Liability_for_Reverse_Percent__c == null}">
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>      
+                                        <!-- When Only % is Present -->        
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c ==null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  /> of product value
+                                        </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <!-- Display Blank when both are undefined -->
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading">COD Remittance</th>
+                                <td colspan="8">
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Bi-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Tue,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Tri-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Wed,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Daily'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </apex:pageBlock>
+                </apex:form>
+                
+                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'Standard_Shipping' }" >
+                    <apex:pageBlock >
+                        <apex:pageMessages ></apex:pageMessages>
+                        <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}"  />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}"   rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons><br/>
+                        <table cellspacing="10" cellpadding="10" border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                            <tr><td colspan="8" id="heading" ><center><p>Delhivery Commercials - STANDARD</p></center></td></tr> 
+                            <tr>
+                                <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                                <th id="heading" ><center>Within City</center></th>
+                                <th id="heading" ><center>Regional (Single <br/>Connection And <br/>Less than 500 Kms)</center></th>
+                                <th colspan ="2" id="heading"><center>Metro to Metro<br/>(ZONE C)</center></th>
+                                <th colspan="2" id="heading" ><center>Rest of India <br/>(ZONE D)</center></th>
+                                <th id="heading" ><center>North East,HP,<br/> Port Blair, J And K</center></th>
+                            </tr>
+                            <tr><td id="heading"><center>ZONE A</center></td><td id="heading"><center>ZONE B</center></td><td id="heading" ><center>N1</center></td><td id="heading"><center >N2</center></td><td id="heading"><center>N1</center></td><td id="heading"><center>N2</center></td><td id="heading"><center>ZONE E</center></td></tr>
+                            
+                            <tr>
+                                <th id="heading">Upto 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Upto_500_gms__c}"  /> </td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N1_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N2_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N1_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N2_Upto_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Upto_500_gms__c}"   /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >Every Additional 500 gms(Upto 3 kgs)</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Every_Add_500_gms_upto_3_kgs__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Every_Add_500_gms_upto_3_kgs__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N1_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N2_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N1_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N2_Every_Add_500_gms_Upto_3_kgs__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Every_additional_500_gms__c}"    /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >Every Additional Slab (1 Kg)</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Every_Additional_Slab_1_Kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Every_Additional_Slab_1_Kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N1_Every_Additional_Slab_1_Kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N2_Every_Additional_Slab_1_Kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N1_Every_Additional_Slab_1_Kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N2_Every_Additional_Slab_1_Kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Every_Additional_Slab_1_Kg__c}"   /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >RTO (Every 1 kg)</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_RTO_every_1_kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_RTO_every_1_kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N1_RTO_every_1_kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N2_RTO_every_1_kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N1_RTO_every_1_kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N2_RTO_every_1_kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_RTO_every_1_kg__c}"   /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >DTO Upto 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_DTO_Upto_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_DTO_Upto_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N1_DTO_Upto_500gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N2_DTO_Upto_500gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N1_DTO_Upto_500gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N2_DTO_Upto_500gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_DTO_Upto_500gm__c}"   /></td>
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading">DTO Every Add 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N1_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_N2_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N1_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_N2_DTO_every_add_500gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_DTO_every_add_500gm__c}"   /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Charges</th>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c != null || objProduct.COD_Value__c != null }"> 
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Charges__c}"  />
+                                            <apex:outputPanel rendered="{!objProduct.COD_Value__c != null}">
+                                                
+                                                <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                    or&nbsp;
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Value__c}"  />
+                                                of product bill value
+                                                
+                                                <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                    whichever is higher 
+                                                </apex:outputPanel>
+                                                
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="8"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            
+                            <tr><!-- For Wallet Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Charge__c != null || objProduct.Wallet_Transaction_Rate__c != null }"> 
+                                    <th id="heading">Wallet on Delivery Charges (Paytm)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            Per Applicable shipment Transaction Charge of the flat Wallet charges of &nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Charge__c}"  />
+                                            
+                                            <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Rate__c != null && objProduct.Wallet_Transaction_Charge__c !=null}">
+                                                +&nbsp;
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Rate__c}"  />
+                                                &nbsp;of Invoice Value
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Card on Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null || objProduct.Credit_Card_Transaction_Charge__c != null }"> 
+                                    <th id="heading">Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                        MDR rates + Flat transaction charge for<br/>
+                                        <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null}">
+                                            Debit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Transaction_Charge__c}"  /> 
+                                        </apex:outputPanel>
+                                        <apex:outputText rendered="{!IF(objProduct.Transaction_Charge__c != null && objProduct.Credit_Card_Transaction_Charge__c != null,true,false)}" value=" and " />
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Transaction_Charge__c != null}">
+                                            Credit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Transaction_Charge__c}"  />
+                                        </apex:outputPanel>
+                                        
+                                    </td>
+                                    <td colspan="6">
+                                        Where MDR rates are as follows: <br/>
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Rates__c != null}">
+                                            1. Credit Card rates:&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Rates__c}" />&nbsp;(Total Invoice Value)<br/>
+                                        </apex:outputPanel>
+                                        <apex:outputtext value="{!IF(objProduct.Credit_Card_Rates__c == null,'1.','2.')}" />&nbsp;Debit card rates: Transaction Amount up to&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputText styleClass="slds-output" value="{!IF(objProduct.Debit_Before_Rates__c == 0,'Free','')}" />  <apex:outputField styleClass="slds-output" rendered="{!objProduct.Debit_Before_Rates__c != 0} " value="{!objProduct.Debit_Before_Rates__c}" /> <br/>
+                                        ><apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Debit_After_Rates__c}" />&nbsp;of Transaction Amount<br/>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            <tr><!-- For FOV Factor -->
+                                <apex:outputPanel rendered="{!objProduct.Frieght_Value_Factor__c != null}" >
+                                    <th id="heading">FOV Factor(Frieght On Value)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outPutText rendered="{!objProduct.Frieght_Value_Factor__c == 0}" value="Default to be 0" /> 
+                                            <apex:outputField rendered="{!objProduct.Frieght_Value_Factor__c != 0 && objProduct.Frieght_Value_Factor__c != null}" value="{!objProduct.Frieght_Value_Factor__c}"   />
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >Volumetric Divisor</th>
+                                <td colspan="8">
+                                    <!--  L*B*H/4000 (L, B, H in cms)-->
+                                    <apex:outputText styleClass="slds-output" value="{!objProduct.Volumetric_Formulae__c}"/></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >GST</th>
+                                <td colspan="8">As Applicable</td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Fuel Surcharge (FSC)</th>
+                                <td colspan="8">No Fuel Surcharge</td> 
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Forward (INR) </th>
+                                <td colspan="8"><apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_liability_per_consignment__c}" /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Reverse </th>
+                                <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null || objProduct.Maximum_Liability_for_Reverse_Percent__c != null }"> 
+                                    <td colspan="8"><center>
+                                        <!-- When Both % and Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c !=null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  />
+                                            of product value or &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>
+                                        <!-- When Only Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null && objProduct.Maximum_Liability_for_Reverse_Percent__c == null}">
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>      
+                                        <!-- When Only % is Present -->        
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c ==null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  /> of product value
+                                        </apex:outputPanel>
+                                        
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <!-- Display Blank when both are undefined -->
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Remittance</th>
+                                <td colspan="8">
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Bi-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Tue,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Tri-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Wed,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Daily'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>  
+                    </apex:pageBlock>           
+                </apex:form>
+                
+ <!--====================>>>>>>>>>>>>>>>>>>>>>>>For Franchise Model Pricing<<<<<<<<<<<<<<<<<<<<===========================-->
+               
+                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'Franchise_Shipping'}" >                   
+                    
+                    <apex:pageBlock >
+                         <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}"  />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!EditFranchise}"   rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons><br/>  
+                        <apex:pageMessages ></apex:pageMessages>                        
+                        <table cellspacing="10" cellpadding="10" border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                             <tr><td colspan="6" id="heading" ><center><p>{!strProductName}</p></center></td></tr> 
+                
+                <tr>
+                    <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                    <th id="heading"><center>Within-city</center></th>
+                    <th id="heading"> <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                    <th id="heading"><center> Metro-Metro </center></th>
+                    <th id="heading"><center>Rest of India</center></th>
+                    <th id="heading"><center>North East, HP,<br/> Port Blair,<br/>J And<br/> K </center></th>
+                </tr>
+                
+                <tr>
+                    
+                    <th id="heading"><center>ZONE A</center></th>
+                    <th id="heading"><center>ZONE B </center></th>
+                    <th id="heading"><center>ZONE C</center></th>
+                    <th id="heading"><center>ZONE D</center></th>
+                    <th id="heading"><center>ZONE E</center></th>
+                </tr>
+                            <tr>
+                                <th id="heading">0-250 gm</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_0_250gm__c}"  /> </td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_0_250gm__c}"   /></td>
+                               
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >Additional 250 gms till 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Additional_250_gms_till_500_gms__c}"    /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 500 gm till 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Additional_500_gm_till_5kg__c}"   /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 1kg Above 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Additional_1kg_Above_5kg__c}"   /></td>
+                              
+                            </tr>              
+                            <tr>
+                                <th id="heading">COD Charges</th>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c != null || objProduct.COD_Value__c != null }"> 
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Charges__c}"  />
+                                            <apex:outputPanel rendered="{!objProduct.COD_Value__c != null}">
+                                                
+                                                <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                    or&nbsp;
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Value__c}"  />
+                                                of product bill value
+                                                
+                                                <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                    whichever is higher 
+                                                </apex:outputPanel>
+                                                
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="8"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            
+                            <tr><!-- For Wallet Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Charge__c != null || objProduct.Wallet_Transaction_Rate__c != null }"> 
+                                    <th id="heading">Wallet on Delivery Charges</th>
+                                    <td colspan="8">
+                                        <center>
+                                            Per Applicable shipment Transaction Charge of the flat Wallet charges of &nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Charge__c}"  />
+                                            
+                                            <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Rate__c != null && objProduct.Wallet_Transaction_Charge__c !=null}">
+                                                +&nbsp;
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Rate__c}"  />
+                                                &nbsp;of Invoice Value
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Card on Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null || objProduct.Credit_Card_Transaction_Charge__c != null }"> 
+                                    <th id="heading">Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                        MDR rates + Flat transaction charge for<br/>
+                                        <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null}">
+                                            Debit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Transaction_Charge__c}"  /> 
+                                        </apex:outputPanel>
+                                        <apex:outputText rendered="{!IF(objProduct.Transaction_Charge__c != null && objProduct.Credit_Card_Transaction_Charge__c != null,true,false)}" value=" and " />
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Transaction_Charge__c != null}">
+                                            Credit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Transaction_Charge__c}"  />
+                                        </apex:outputPanel>
+                                        
+                                    </td>
+                                    <td colspan="6">
+                                        Where MDR rates are as follows: <br/>
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Rates__c != null}">
+                                            1. Credit Card rates:&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Rates__c}" />&nbsp;(Total Invoice Value)<br/>
+                                        </apex:outputPanel>
+                                        <apex:outputtext value="{!IF(objProduct.Credit_Card_Rates__c == null,'1.','2.')}" />&nbsp;Debit card rates: Transaction Amount up to&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputText styleClass="slds-output" value="{!IF(objProduct.Debit_Before_Rates__c == 0,'Free','')}" />  <apex:outputField styleClass="slds-output" rendered="{!objProduct.Debit_Before_Rates__c != 0} " value="{!objProduct.Debit_Before_Rates__c}" /> <br/>
+                                        ><apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Debit_After_Rates__c}" />&nbsp;of Transaction Amount<br/>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                         <!--   <tr>
+                                <apex:outputPanel rendered="{!objProduct.Frieght_Value_Factor__c != null}" >
+                                    <th id="heading">FOV Factor(Frieght On Value)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outPutText rendered="{!objProduct.Frieght_Value_Factor__c == 0}" value="Default to be 0" /> 
+                                            <apex:outputField rendered="{!objProduct.Frieght_Value_Factor__c != 0 && objProduct.Frieght_Value_Factor__c != null}" value="{!objProduct.Frieght_Value_Factor__c}"   />
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr> -->
+                            <tr> 
+                                <apex:outputPanel >
+                                	<th id="heading">Insurance(%)</th>
+                                    <td colspan="8">
+                                    	<center>
+                                        	<apex:outputText value="Default to be 0"></apex:outputText>
+                                            <apex:outputField rendered="{!objProduct.Insurance__c !=null}" value="{!objProduct.Insurance__c}"/>
+                                        </center>
+                                    </td>
+                               </apex:outputPanel> 
+                            </tr>
+                            <tr>
+                                <th id="heading" >Volumetric Divisor</th>
+                                <td colspan="8">
+                                    <!--  L*B*H/4000 (L, B, H in cms)-->
+                                    <apex:outputText styleClass="slds-output" value="{!objProduct.Volumetric_Formulae__c}"/></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >GST</th>
+                                <td colspan="8">As Applicable</td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Fuel Surcharge (FSC)</th>
+                                <td colspan="8">No Fuel Surcharge</td> 
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Forward (INR) </th>
+                                <td colspan="8"><apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_liability_per_consignment__c}" /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Reverse </th>
+                                <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null || objProduct.Maximum_Liability_for_Reverse_Percent__c != null }"> 
+                                    <td colspan="8"><center>
+                                        <!-- When Both % and Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c !=null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  />
+                                            of product value or &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>
+                                        <!-- When Only Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null && objProduct.Maximum_Liability_for_Reverse_Percent__c == null}">
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>      
+                                        <!-- When Only % is Present -->        
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c ==null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  /> of product value
+                                        </apex:outputPanel>
+                                        
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <!-- Display Blank when both are undefined -->
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Remittance</th>
+                                <td colspan="8">
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Bi-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Tue,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Tri-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Wed,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Daily'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>  
+                   
+                        <br/>               
+                        <center> <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!EditFranchise1}"   rendered="{!$Profile.Name=='System Administrator'}"/> </center>
+                        <table cellspacing="10" cellpadding="10" border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                             <tr><td colspan="6" id="heading" ><center><p>{!strProductName1}</p></center></td></tr> 
+                
+                <tr>
+                    <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                    <th id="heading"><center>Within-city</center></th>
+                    <th id="heading"> <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                    <th id="heading"><center> Metro-Metro </center></th>
+                    <th id="heading"><center>Rest of India</center></th>
+                    <th id="heading"><center>North East, HP,<br/> Port Blair,<br/>J And<br/> K </center></th>
+                </tr>
+                
+                <tr>
+                    
+                    <th id="heading"><center>ZONE A</center></th>
+                    <th id="heading"><center>ZONE B </center></th>
+                    <th id="heading"><center>ZONE C</center></th>
+                    <th id="heading"><center>ZONE D</center></th>
+                    <th id="heading"><center>ZONE E</center></th>
+                </tr>
+                            <tr>
+                                <th id="heading">0-250 gm</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_0_250gm__c}"  /> </td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_0_250gm__c}"   /></td>
+                               
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >Additional 250 gms till 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_Additional_250_gms_till_500_gms__c}"    /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 500 gm till 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_Additional_500_gm_till_5kg__c}"   /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 1kg Above 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_Additional_1kg_Above_5kg__c}"   /></td>
+                              
+                            </tr>              
+                            <tr>
+                                <th id="heading">COD Charges</th>
+                                <apex:outputPanel rendered="{!objProduct1.COD_Charges__c != null || objProduct1.COD_Value__c != null }"> 
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.COD_Charges__c}"  />
+                                            <apex:outputPanel rendered="{!objProduct1.COD_Value__c != null}">
+                                                
+                                                <apex:outputPanel rendered="{!objProduct1.COD_Value__c != null && objProduct1.COD_Charges__c !=null}">
+                                                    or&nbsp;
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct1.COD_Value__c}"  />
+                                                of product bill value
+                                                
+                                                <apex:outputPanel rendered="{!objProduct1.COD_Value__c != null && objProduct1.COD_Charges__c !=null}">
+                                                    whichever is higher 
+                                                </apex:outputPanel>
+                                                
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!objProduct1.COD_Charges__c == null && objProduct1.COD_Value__c == null}">
+                                    <td colspan="8"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            
+                            <tr><!-- For Wallet Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct1.Wallet_Transaction_Charge__c != null || objProduct1.Wallet_Transaction_Rate__c != null }"> 
+                                    <th id="heading">Wallet on Delivery Charges</th>
+                                    <td colspan="8">
+                                        <center>
+                                            Per Applicable shipment Transaction Charge of the flat Wallet charges of &nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Wallet_Transaction_Charge__c}"  />
+                                            
+                                            <apex:outputPanel rendered="{!objProduct1.Wallet_Transaction_Rate__c != null && objProduct1.Wallet_Transaction_Charge__c !=null}">
+                                                +&nbsp;
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct1.Wallet_Transaction_Rate__c}"  />
+                                                &nbsp;of Invoice Value
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Card on Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct1.Transaction_Charge__c != null || objProduct1.Credit_Card_Transaction_Charge__c != null }"> 
+                                    <th id="heading">Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                        MDR rates + Flat transaction charge for<br/>
+                                        <apex:outputPanel rendered="{!objProduct1.Transaction_Charge__c != null}">
+                                            Debit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Transaction_Charge__c}"  /> 
+                                        </apex:outputPanel>
+                                        <apex:outputText rendered="{!IF(objProduct1.Transaction_Charge__c != null && objProduct1.Credit_Card_Transaction_Charge__c != null,true,false)}" value=" and " />
+                                        <apex:outputPanel rendered="{!objProduct1.Credit_Card_Transaction_Charge__c != null}">
+                                            Credit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Credit_Card_Transaction_Charge__c}"  />
+                                        </apex:outputPanel>
+                                        
+                                    </td>
+                                    <td colspan="6">
+                                        Where MDR rates are as follows: <br/>
+                                        <apex:outputPanel rendered="{!objProduct1.Credit_Card_Rates__c != null}">
+                                            1. Credit Card rates:&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Credit_Card_Rates__c}" />&nbsp;(Total Invoice Value)<br/>
+                                        </apex:outputPanel>
+                                        <apex:outputtext value="{!IF(objProduct1.Credit_Card_Rates__c == null,'1.','2.')}" />&nbsp;Debit card rates: Transaction Amount up to&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Threshold_Charge__c}" /> -&nbsp;<apex:outputText styleClass="slds-output" value="{!IF(objProduct1.Debit_Before_Rates__c == 0,'Free','')}" />  <apex:outputField styleClass="slds-output" rendered="{!objProduct1.Debit_Before_Rates__c != 0} " value="{!objProduct1.Debit_Before_Rates__c}" /> <br/>
+                                        ><apex:outputField styleClass="slds-output" value="{!objProduct1.Threshold_Charge__c}" /> -&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Debit_After_Rates__c}" />&nbsp;of Transaction Amount<br/>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                         <!--   <tr>
+                                <apex:outputPanel rendered="{!objProduct.Frieght_Value_Factor__c != null}" >
+                                    <th id="heading">FOV Factor(Frieght On Value)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outPutText rendered="{!objProduct.Frieght_Value_Factor__c == 0}" value="Default to be 0" /> 
+                                            <apex:outputField rendered="{!objProduct.Frieght_Value_Factor__c != 0 && objProduct.Frieght_Value_Factor__c != null}" value="{!objProduct.Frieght_Value_Factor__c}"   />
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr> -->
+                            <tr>
+                                <apex:outputPanel >
+                                	<th id="heading">Insurance(%)</th>
+                                    <td colspan="8">
+                                    	<center>
+                                        	<apex:outputText value="Default to be 0"></apex:outputText>
+                                            <apex:outputField rendered="{!objProduct1.Insurance__c !=null}" value="{!objProduct1.Insurance__c}"/>
+                                        </center>
+                                    </td>
+                               </apex:outputPanel> 
+                            </tr>
+                            <tr>
+                                <th id="heading" >Volumetric Divisor</th>
+                                <td colspan="8">
+                                    <!--  L*B*H/4000 (L, B, H in cms)-->
+                                    <apex:outputText styleClass="slds-output" value="{!objProduct1.Volumetric_Formulae__c}"/></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >GST</th>
+                                <td colspan="8">As Applicable</td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Fuel Surcharge (FSC)</th>
+                                <td colspan="8">No Fuel Surcharge</td> 
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Forward (INR) </th>
+                                <td colspan="8"><apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_liability_per_consignment__c}" /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Reverse </th>
+                                <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse__c != null || objProduct1.Maximum_Liability_for_Reverse_Percent__c != null }"> 
+                                    <td colspan="8"><center>
+                                        <!-- When Both % and Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c != null && objProduct1.Maximum_Liability_for_Reverse__c !=null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c}"  />
+                                            of product value or &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>
+                                        <!-- When Only Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse__c != null && objProduct1.Maximum_Liability_for_Reverse_Percent__c == null}">
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>      
+                                        <!-- When Only % is Present -->        
+                                        <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c != null && objProduct1.Maximum_Liability_for_Reverse__c ==null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c}"  /> of product value
+                                        </apex:outputPanel>
+                                        
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <!-- Display Blank when both are undefined -->
+                                <apex:outputPanel rendered="{!objProduct1.COD_Charges__c == null && objProduct1.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Remittance</th>
+                                <td colspan="8">
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Weekly'}">
+                                        {!objProduct1.COD_Remittance__c}(Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Bi-weekly'}">
+                                        {!objProduct1.COD_Remittance__c}(Tue,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Tri-weekly'}">
+                                        {!objProduct1.COD_Remittance__c}(Mon,Wed,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Daily'}">
+                                        {!objProduct1.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>  
+                    </apex:pageBlock>         
+                </apex:form>
+                                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'Mail_Room'}" >                   
+                    
+                    <apex:pageBlock >
+                         <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}"  />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!EditFranchise}"   rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons><br/>  
+                        <apex:pageMessages ></apex:pageMessages>                        
+                        <table cellspacing="10" cellpadding="10" border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                             <tr><td colspan="6" id="heading" ><center><p>{!strProductName}</p></center></td></tr> 
+                
+                <tr>
+                    <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                    <th id="heading"><center>Within-city</center></th>
+                    <th id="heading"> <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                    <th id="heading"><center> Metro-Metro </center></th>
+                    <th id="heading"><center>Rest of India</center></th>
+                    <th id="heading"><center>North East, HP,<br/> Port Blair,<br/>J And<br/> K </center></th>
+                </tr>
+                
+                <tr>
+                    
+                    <th id="heading"><center>ZONE A</center></th>
+                    <th id="heading"><center>ZONE B </center></th>
+                    <th id="heading"><center>ZONE C</center></th>
+                    <th id="heading"><center>ZONE D</center></th>
+                    <th id="heading"><center>ZONE E</center></th>
+                </tr>
+                            <tr>
+                                <th id="heading">0-250 gm</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_0_250gm__c}"  /> </td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_0_250gm__c}"   /></td>
+                               
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >Additional 250 gms till 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Additional_250_gms_till_500_gms__c}"    /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 500 gm till 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Additional_500_gm_till_5kg__c}"   /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 1kg Above 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_A_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_B_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_C_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_D_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct.Zone_E_Additional_1kg_Above_5kg__c}"   /></td>
+                              
+                            </tr>              
+                            <tr>
+                                <th id="heading">COD Charges</th>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c != null || objProduct.COD_Value__c != null }"> 
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Charges__c}"  />
+                                            <apex:outputPanel rendered="{!objProduct.COD_Value__c != null}">
+                                                
+                                                <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                    or&nbsp;
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.COD_Value__c}"  />
+                                                of product bill value
+                                                
+                                                <apex:outputPanel rendered="{!objProduct.COD_Value__c != null && objProduct.COD_Charges__c !=null}">
+                                                    whichever is higher 
+                                                </apex:outputPanel>
+                                                
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="8"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            
+                            <tr><!-- For Wallet Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Charge__c != null || objProduct.Wallet_Transaction_Rate__c != null }"> 
+                                    <th id="heading">Wallet on Delivery Charges</th>
+                                    <td colspan="8">
+                                        <center>
+                                            Per Applicable shipment Transaction Charge of the flat Wallet charges of &nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Charge__c}"  />
+                                            
+                                            <apex:outputPanel rendered="{!objProduct.Wallet_Transaction_Rate__c != null && objProduct.Wallet_Transaction_Charge__c !=null}">
+                                                +&nbsp;
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct.Wallet_Transaction_Rate__c}"  />
+                                                &nbsp;of Invoice Value
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Card on Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null || objProduct.Credit_Card_Transaction_Charge__c != null }"> 
+                                    <th id="heading">Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                        MDR rates + Flat transaction charge for<br/>
+                                        <apex:outputPanel rendered="{!objProduct.Transaction_Charge__c != null}">
+                                            Debit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Transaction_Charge__c}"  /> 
+                                        </apex:outputPanel>
+                                        <apex:outputText rendered="{!IF(objProduct.Transaction_Charge__c != null && objProduct.Credit_Card_Transaction_Charge__c != null,true,false)}" value=" and " />
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Transaction_Charge__c != null}">
+                                            Credit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Transaction_Charge__c}"  />
+                                        </apex:outputPanel>
+                                        
+                                    </td>
+                                    <td colspan="6">
+                                        Where MDR rates are as follows: <br/>
+                                        <apex:outputPanel rendered="{!objProduct.Credit_Card_Rates__c != null}">
+                                            1. Credit Card rates:&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Credit_Card_Rates__c}" />&nbsp;(Total Invoice Value)<br/>
+                                        </apex:outputPanel>
+                                        <apex:outputtext value="{!IF(objProduct.Credit_Card_Rates__c == null,'1.','2.')}" />&nbsp;Debit card rates: Transaction Amount up to&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputText styleClass="slds-output" value="{!IF(objProduct.Debit_Before_Rates__c == 0,'Free','')}" />  <apex:outputField styleClass="slds-output" rendered="{!objProduct.Debit_Before_Rates__c != 0} " value="{!objProduct.Debit_Before_Rates__c}" /> <br/>
+                                        ><apex:outputField styleClass="slds-output" value="{!objProduct.Threshold_Charge__c}" /> -&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Debit_After_Rates__c}" />&nbsp;of Transaction Amount<br/>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                         <!--   <tr>
+                                <apex:outputPanel rendered="{!objProduct.Frieght_Value_Factor__c != null}" >
+                                    <th id="heading">FOV Factor(Frieght On Value)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outPutText rendered="{!objProduct.Frieght_Value_Factor__c == 0}" value="Default to be 0" /> 
+                                            <apex:outputField rendered="{!objProduct.Frieght_Value_Factor__c != 0 && objProduct.Frieght_Value_Factor__c != null}" value="{!objProduct.Frieght_Value_Factor__c}"   />
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr> -->
+                            <tr> 
+                                <apex:outputPanel >
+                                	<th id="heading">Insurance(%)</th>
+                                    <td colspan="8">
+                                    	<center>
+                                        	<apex:outputText value="Default to be 0"></apex:outputText>
+                                            <apex:outputField rendered="{!objProduct.Insurance__c !=null}" value="{!objProduct.Insurance__c}"/>
+                                        </center>
+                                    </td>
+                               </apex:outputPanel> 
+                            </tr>
+                            <tr>
+                                <th id="heading" >Volumetric Divisor</th>
+                                <td colspan="8">
+                                    <!--  L*B*H/4000 (L, B, H in cms)-->
+                                    <apex:outputText styleClass="slds-output" value="{!objProduct.Volumetric_Formulae__c}"/></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >GST</th>
+                                <td colspan="8">As Applicable</td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Fuel Surcharge (FSC)</th>
+                                <td colspan="8">No Fuel Surcharge</td> 
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Forward (INR) </th>
+                                <td colspan="8"><apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_liability_per_consignment__c}" /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Reverse </th>
+                                <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null || objProduct.Maximum_Liability_for_Reverse_Percent__c != null }"> 
+                                    <td colspan="8"><center>
+                                        <!-- When Both % and Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c !=null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  />
+                                            of product value or &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>
+                                        <!-- When Only Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse__c != null && objProduct.Maximum_Liability_for_Reverse_Percent__c == null}">
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>      
+                                        <!-- When Only % is Present -->        
+                                        <apex:outputPanel rendered="{!objProduct.Maximum_Liability_for_Reverse_Percent__c != null && objProduct.Maximum_Liability_for_Reverse__c ==null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct.Maximum_Liability_for_Reverse_Percent__c}"  /> of product value
+                                        </apex:outputPanel>
+                                        
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <!-- Display Blank when both are undefined -->
+                                <apex:outputPanel rendered="{!objProduct.COD_Charges__c == null && objProduct.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Remittance</th>
+                                <td colspan="8">
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Bi-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Tue,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Tri-weekly'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Wed,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct.COD_Remittance__c=='Daily'}">
+                                        {!objProduct.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>  
+                   
+                        <br/>               
+                        <center> <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!EditFranchise1}"   rendered="{!$Profile.Name=='System Administrator'}"/> </center>
+                        <table cellspacing="10" cellpadding="10" border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                             <tr><td colspan="6" id="heading" ><center><p>{!strProductName1}</p></center></td></tr> 
+                
+                <tr>
+                    <th rowspan="2" id="heading"><center>Weight Slabs</center></th>
+                    <th id="heading"><center>Within-city</center></th>
+                    <th id="heading"> <center>Regional (Single <br/>Connection And <br/> Less than 500 Kms)</center></th>
+                    <th id="heading"><center> Metro-Metro </center></th>
+                    <th id="heading"><center>Rest of India</center></th>
+                    <th id="heading"><center>North East, HP,<br/> Port Blair,<br/>J And<br/> K </center></th>
+                </tr>
+                
+                <tr>
+                    
+                    <th id="heading"><center>ZONE A</center></th>
+                    <th id="heading"><center>ZONE B </center></th>
+                    <th id="heading"><center>ZONE C</center></th>
+                    <th id="heading"><center>ZONE D</center></th>
+                    <th id="heading"><center>ZONE E</center></th>
+                </tr>
+                            <tr>
+                                <th id="heading">0-250 gm</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_0_250gm__c}"  /> </td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_0_250gm__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_0_250gm__c}"   /></td>
+                               
+                            </tr>
+                            
+                            <tr>
+                                <th id="heading" >Additional 250 gms till 500 gms</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_Additional_250_gms_till_500_gms__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_Additional_250_gms_till_500_gms__c}"    /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_Additional_250_gms_till_500_gms__c}"    /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 500 gm till 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_Additional_500_gm_till_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_Additional_500_gm_till_5kg__c}"   /></td>                               
+                            </tr>
+                            <tr>
+                                <th id="heading" >Additional 1kg Above 5kg</th>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_A_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_B_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_C_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_D_Additional_1kg_Above_5kg__c}"   /></td>
+                                <td><apex:outputField styleClass="slds-output" value="{!objProduct1.Zone_E_Additional_1kg_Above_5kg__c}"   /></td>
+                              
+                            </tr>              
+                            <tr>
+                                <th id="heading">COD Charges</th>
+                                <apex:outputPanel rendered="{!objProduct1.COD_Charges__c != null || objProduct1.COD_Value__c != null }"> 
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.COD_Charges__c}"  />
+                                            <apex:outputPanel rendered="{!objProduct1.COD_Value__c != null}">
+                                                
+                                                <apex:outputPanel rendered="{!objProduct1.COD_Value__c != null && objProduct1.COD_Charges__c !=null}">
+                                                    or&nbsp;
+                                                </apex:outputPanel>
+                                                
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct1.COD_Value__c}"  />
+                                                of product bill value
+                                                
+                                                <apex:outputPanel rendered="{!objProduct1.COD_Value__c != null && objProduct1.COD_Charges__c !=null}">
+                                                    whichever is higher 
+                                                </apex:outputPanel>
+                                                
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!objProduct1.COD_Charges__c == null && objProduct1.COD_Value__c == null}">
+                                    <td colspan="8"/>
+                                </apex:outputPanel>
+                                
+                            </tr>
+                            
+                            <tr><!-- For Wallet Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct1.Wallet_Transaction_Charge__c != null || objProduct1.Wallet_Transaction_Rate__c != null }"> 
+                                    <th id="heading">Wallet on Delivery Charges</th>
+                                    <td colspan="8">
+                                        <center>
+                                            Per Applicable shipment Transaction Charge of the flat Wallet charges of &nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Wallet_Transaction_Charge__c}"  />
+                                            
+                                            <apex:outputPanel rendered="{!objProduct1.Wallet_Transaction_Rate__c != null && objProduct1.Wallet_Transaction_Charge__c !=null}">
+                                                +&nbsp;
+                                                <apex:outputField styleClass="slds-output" value="{!objProduct1.Wallet_Transaction_Rate__c}"  />
+                                                &nbsp;of Invoice Value
+                                            </apex:outputPanel>
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                            
+                            <tr><!-- For Card on Delivery Charges -->
+                                <apex:outputPanel rendered="{!objProduct1.Transaction_Charge__c != null || objProduct1.Credit_Card_Transaction_Charge__c != null }"> 
+                                    <th id="heading">Card on Delivery Charges</th>
+                                    
+                                    <td colspan="2">
+                                        MDR rates + Flat transaction charge for<br/>
+                                        <apex:outputPanel rendered="{!objProduct1.Transaction_Charge__c != null}">
+                                            Debit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Transaction_Charge__c}"  /> 
+                                        </apex:outputPanel>
+                                        <apex:outputText rendered="{!IF(objProduct1.Transaction_Charge__c != null && objProduct1.Credit_Card_Transaction_Charge__c != null,true,false)}" value=" and " />
+                                        <apex:outputPanel rendered="{!objProduct1.Credit_Card_Transaction_Charge__c != null}">
+                                            Credit Card will be&nbsp;
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Credit_Card_Transaction_Charge__c}"  />
+                                        </apex:outputPanel>
+                                        
+                                    </td>
+                                    <td colspan="6">
+                                        Where MDR rates are as follows: <br/>
+                                        <apex:outputPanel rendered="{!objProduct1.Credit_Card_Rates__c != null}">
+                                            1. Credit Card rates:&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Credit_Card_Rates__c}" />&nbsp;(Total Invoice Value)<br/>
+                                        </apex:outputPanel>
+                                        <apex:outputtext value="{!IF(objProduct1.Credit_Card_Rates__c == null,'1.','2.')}" />&nbsp;Debit card rates: Transaction Amount up to&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Threshold_Charge__c}" /> -&nbsp;<apex:outputText styleClass="slds-output" value="{!IF(objProduct1.Debit_Before_Rates__c == 0,'Free','')}" />  <apex:outputField styleClass="slds-output" rendered="{!objProduct1.Debit_Before_Rates__c != 0} " value="{!objProduct1.Debit_Before_Rates__c}" /> <br/>
+                                        ><apex:outputField styleClass="slds-output" value="{!objProduct1.Threshold_Charge__c}" /> -&nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Debit_After_Rates__c}" />&nbsp;of Transaction Amount<br/>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr>
+                            
+                         <!--   <tr>
+                                <apex:outputPanel rendered="{!objProduct.Frieght_Value_Factor__c != null}" >
+                                    <th id="heading">FOV Factor(Frieght On Value)</th>
+                                    <td colspan="8">
+                                        <center>
+                                            <apex:outPutText rendered="{!objProduct.Frieght_Value_Factor__c == 0}" value="Default to be 0" /> 
+                                            <apex:outputField rendered="{!objProduct.Frieght_Value_Factor__c != 0 && objProduct.Frieght_Value_Factor__c != null}" value="{!objProduct.Frieght_Value_Factor__c}"   />
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                            </tr> -->
+                            <tr>
+                                <apex:outputPanel >
+                                	<th id="heading">Insurance(%)</th>
+                                    <td colspan="8">
+                                    	<center>
+                                        	<apex:outputText value="Default to be 0"></apex:outputText>
+                                            <apex:outputField rendered="{!objProduct1.Insurance__c !=null}" value="{!objProduct1.Insurance__c}"/>
+                                        </center>
+                                    </td>
+                               </apex:outputPanel> 
+                            </tr>
+                            <tr>
+                                <th id="heading" >Volumetric Divisor</th>
+                                <td colspan="8">
+                                    <!--  L*B*H/4000 (L, B, H in cms)-->
+                                    <apex:outputText styleClass="slds-output" value="{!objProduct1.Volumetric_Formulae__c}"/></td>
+                            </tr>
+                            <tr>
+                                <th id="heading" >GST</th>
+                                <td colspan="8">As Applicable</td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Fuel Surcharge (FSC)</th>
+                                <td colspan="8">No Fuel Surcharge</td> 
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Forward (INR) </th>
+                                <td colspan="8"><apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_liability_per_consignment__c}" /></td>
+                            </tr>
+                            <tr>
+                                <th id="heading">Maximum Liability for Reverse </th>
+                                <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse__c != null || objProduct1.Maximum_Liability_for_Reverse_Percent__c != null }"> 
+                                    <td colspan="8"><center>
+                                        <!-- When Both % and Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c != null && objProduct1.Maximum_Liability_for_Reverse__c !=null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c}"  />
+                                            of product value or &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>
+                                        <!-- When Only Value is Present -->
+                                        <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse__c != null && objProduct1.Maximum_Liability_for_Reverse_Percent__c == null}">
+                                            <apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse__c}"  />
+                                        </apex:outputPanel>      
+                                        <!-- When Only % is Present -->        
+                                        <apex:outputPanel rendered="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c != null && objProduct1.Maximum_Liability_for_Reverse__c ==null}">
+                                            Lower of &nbsp;<apex:outputField styleClass="slds-output" value="{!objProduct1.Maximum_Liability_for_Reverse_Percent__c}"  /> of product value
+                                        </apex:outputPanel>
+                                        
+                                        </center>
+                                    </td>
+                                </apex:outputPanel>
+                                <!-- Display Blank when both are undefined -->
+                                <apex:outputPanel rendered="{!objProduct1.COD_Charges__c == null && objProduct1.COD_Value__c == null}">
+                                    <td colspan="5"/>
+                                </apex:outputPanel>
+                            </tr>
+                            <tr>
+                                <th id="heading">COD Remittance</th>
+                                <td colspan="8">
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Weekly'}">
+                                        {!objProduct1.COD_Remittance__c}(Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Bi-weekly'}">
+                                        {!objProduct1.COD_Remittance__c}(Tue,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Tri-weekly'}">
+                                        {!objProduct1.COD_Remittance__c}(Mon,Wed,Fri)
+                                    </apex:outputLabel>
+                                    <apex:outputLabel styleClass="slds-output" rendered="{!objProduct1.COD_Remittance__c=='Daily'}">
+                                        {!objProduct1.COD_Remittance__c}(Mon,Tue,Wed,Thu,Fri)
+                                    </apex:outputLabel>
+                                </td>
+                            </tr>
+                        </table>  
+                    </apex:pageBlock>         
+                </apex:form>
+                
+ <!--====================>>>>>>>>>>>>>>>>>>>>>>>>End of Franchise Model Pricing<<<<<<<<<<<<<<<<<========================= -->
+      
+                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'B2B_5x5'}">
+                    <apex:pageBlock >
+                        <apex:pageMessages ></apex:pageMessages>
+                        <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}" />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}"   rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons><br/>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                            <tr class="boldFont">
+                                <td id="heading"></td>
+                                <td id="heading" class="centerAlign">North</td>
+                                <td id="heading" class="centerAlign">West</td>
+                                <td id="heading" class="centerAlign">South</td>
+                                <td id="heading" class="centerAlign">East</td>
+                                <td id="heading" class="centerAlign">North East</td>                                                                                    
+                            </tr>
+                            <apex:repeat value="{!B2B5By5PriceWrapperList}" var="w">
+                                <tr>
+                                    <td id="heading" class="boldFont"><apex:outputText styleClass="slds-output" value="{!w.source}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.northAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.westAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.southAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.eastAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.northEastAmount}"/></td>
+                                </tr>                            
+                            </apex:repeat>          
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/><b>Intra City Charges:</b> &nbsp; <apex:outputfield styleClass="slds-output" value="{!objProduct.Intra_City__c}"></apex:outputField>
+                        <br/>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer minfyTable textcenter" cellspacing="10" cellpadding="6" align="center" style="width:35%;">
+                            <tr>            
+                                <th id="heading" class="centerAlign" colspan="2">Overheads</th>
+                            </tr>
+                            <tr>            
+                                <td>Min Billable Weight</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Min_Billable_Weight__c}"></apex:outputField></td>
+                            </tr>
+                            
+                            <tr>
+                                <td id="">GST</td>
+                                <td>As Applicable</td>
+                            </tr>
+                            <tr>            
+                                <td id="">Max Dead weight/package</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>AWB Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.AWB_Charges__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>CFT</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CFT__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Amount(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}">  </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Weight(Kg)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Free Storage Period (days)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Free_Storage_Period_days__c}"> </apex:outputField></td>
+                            </tr>  
+                            <tr>            
+                                <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c} Per MAwb"></apex:outputText></td>
+                            </tr>                                                       
+                            <tr>            
+                                <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Fuel Surcharge</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Fuel_Surcharge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">ODA (Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_MAwb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>                            
+                            <tr>            
+                                <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Time specific deliveries </td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Mall Deliveries(Additional)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Delivery re-attempt charge, in case of failed delivery</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Insurance (optional)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Insurance__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">ROV (on invoice value)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.ROV_on_invoice_value__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Liability per consignment</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Liability_per_consignment__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Average Diesel Price</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Average_Diesel_Price__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Diesel Tolerance Value</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                            </tr>
+                             <tr>            
+                                <td id="">FM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.FM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">LM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.LM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                        </table>
+                        <br/>
+                    </apex:pageBlock>
+                </apex:form>
+                
+                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'B2B_6x6'}">
+                    <apex:pageBlock >
+                        <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}" />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}" rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                            <tr>
+                                <td id="heading">O/D</td>
+                                <td id="heading" class="centerAlign">North</td>
+                                <td id="heading" class="centerAlign">West</td>
+                                <td id="heading" class="centerAlign">South</td>
+                                <td id="heading" class="centerAlign">Kerala</td>
+                                <td id="heading" class="centerAlign">East</td>
+                                <td id="heading" class="centerAlign">North East</td>
+                            </tr>
+                            <apex:repeat value="{!B2B6By6PriceWrapperList}" var="w">
+                                <tr>
+                                    <td id="heading" class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.northAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.westAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.southAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.keralaAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.eastAmount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.northEastAmount}"/></td>
+                                </tr>                            
+                            </apex:repeat>  
+                        </table>
+                        <br/>
+                        <br/>
+                        <b>Intra City Charges:</b> &nbsp; <apex:outputfield styleClass="slds-output" value="{!objProduct.Intra_City__c}"></apex:outputField>
+                        <br/>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer minfyTable textcenter" cellspacing="10" cellpadding="6" align="center" style="width:35%;">
+                            <tr>            
+                                <th id="heading" class="centerAlign" colspan="2">Overheads</th>
+                            </tr>
+                            <tr>            
+                                <td>Min Billable Weight</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Min_Billable_Weight__c}"></apex:outputField></td>
+                            </tr>
+                            
+                            <tr>
+                                <td id="">GST</td>
+                                <td>As Applicable</td>
+                            </tr>
+                            <tr>            
+                                <td id="">Max Dead weight/package</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>AWB Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.AWB_Charges__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>CFT</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CFT__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Amount(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}">  </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Weight(Kg)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Free Storage Period (days)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Free_Storage_Period_days__c}"> </apex:outputField></td>
+                            </tr>  
+                            <tr>            
+                                <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c} Per MAwb"></apex:outputText></td>
+                            </tr>                                                       
+                            <tr>            
+                                <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Fuel Surcharge</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Fuel_Surcharge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">ODA (Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_MAwb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>                            
+                            <tr>            
+                                <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Time specific deliveries </td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Mall Deliveries(Additional)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Delivery re-attempt charge, in case of failed delivery</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Insurance (optional)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Insurance__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">ROV (on invoice value)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.ROV_on_invoice_value__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Liability per consignment</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Liability_per_consignment__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Average Diesel Price</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Average_Diesel_Price__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Diesel Tolerance Value</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">FM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.FM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">LM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.LM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                        </table>
+                        <br/>
+                    </apex:pageBlock>
+                </apex:form>
+                <!-- 14x14 Matrix -->
+                <apex:form rendered="{!Product2.RecordType.DeveloperName == 'B2B_14x14'}">
+                    <apex:pageBlock >
+                        <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}" />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}" rendered="{!$Profile.Name=='System Administrator'}"/>
+                        </apex:pageBlockButtons>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                            <tr>
+                                <td id="heading">O/D</td>
+                                <td id="heading" class="centerAlign">N1</td>
+                                <td id="heading" class="centerAlign">N2</td>
+                                <td id="heading" class="centerAlign">N3</td>
+                                <td id="heading" class="centerAlign">C1</td>
+                                <td id="heading" class="centerAlign">C2</td>
+                                <td id="heading" class="centerAlign">W1</td>
+                                <td id="heading" class="centerAlign">W2</td>
+                                <td id="heading" class="centerAlign">S1</td>
+                                <td id="heading" class="centerAlign">S2</td>
+                                <td id="heading" class="centerAlign">S3</td>
+                                <td id="heading" class="centerAlign">E1</td>
+                                <td id="heading" class="centerAlign">E2</td>
+                                <td id="heading" class="centerAlign">NE1</td>
+                                <td id="heading" class="centerAlign">NE2</td>
+                            </tr>
+                            <apex:repeat value="{!B2B14By14PriceWrapperList}" var="w">
+                                <tr>
+                                    <td id="heading" class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.n1Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.n2Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.n3Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.c1Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.c2Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.w1Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.w2Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.s1Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.s2Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.s3Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.e1Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.e2Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.ne1Amount}"/></td>
+                                    <td class="centerAlign"><apex:outputText styleClass="slds-output" value="{!w.ne2Amount}"/></td>
+                                </tr>                            
+                            </apex:repeat>  
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer minfyTable textcenter" cellspacing="10" cellpadding="6" align="center" style="width:35%;">
+                            <tr>            
+                                <th id="heading" class="centerAlign" colspan="2">Overheads</th>
+                            </tr>
+                            <tr>            
+                                <td>Min Billable Weight</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Min_Billable_Weight__c}"></apex:outputField></td>
+                            </tr>
+                            
+                            <tr>
+                                <td id="">GST</td>
+                                <td>As Applicable</td>
+                            </tr>
+                            <tr>            
+                                <td id="">Max Dead weight/package</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>AWB Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.AWB_Charges__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>CFT</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CFT__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Amount(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}">  </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Weight(Kg)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Free Storage Period (days)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Free_Storage_Period_days__c}"> </apex:outputField></td>
+                            </tr>  
+                            <tr>            
+                                <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c} Per MAwb"></apex:outputText></td>
+                            </tr>                                                       
+                            <tr>            
+                                <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Fuel Surcharge</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Fuel_Surcharge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">ODA (Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_MAwb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>                            
+                            <tr>            
+                                <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Time specific deliveries </td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Mall Deliveries(Additional)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Delivery re-attempt charge, in case of failed delivery</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Insurance (optional)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Insurance__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">ROV (on invoice value)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.ROV_on_invoice_value__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Liability per consignment</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Liability_per_consignment__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Average Diesel Price</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Average_Diesel_Price__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Diesel Tolerance Value</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">FM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.FM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">LM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.LM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                        </table>
+                        <br/>
+                    </apex:pageBlock>
+                </apex:form> 
+                <!-- End 14x14 Matrix -->
+                
+                <apex:form rendered="{!Product2.RecordType.DeveloperName='B2b_15x15'}">
+                    <apex:pageBlock >
+                        <apex:pageMessages ></apex:pageMessages>
+                        <apex:pageBlockButtons >
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Back" action="{!goBack}"  />
+                            <apex:CommandButton styleClass="slds-button slds-button_brand" value="Edit" action="{!edit}" rendered="{!$Profile.Name=='System Administrator'}"/>
+                            
+                        </apex:pageBlockButtons><br/>
+                        <table cellspacing="10" cellpadding="10" border="1" class="slds-table slds-table_bordered slds-table_cell-buffer mainTable">
+                            <tr class="boldFont">
+                                <td id="heading"></td>
+                                <td id="heading">NCR</td>
+                                <td id="heading">LUH</td>
+                                <td id="heading">JAI</td>
+                                <td id="heading">JAM</td>
+                                <td id="heading">LKO</td>
+                                <td id="heading">BOM</td>
+                                <td id="heading">AMD</td>
+                                <td id="heading">GOA</td>
+                                <td id="heading">IXR</td>
+                                <td id="heading">IDR</td>
+                                <td id="heading">BLR</td>
+                                <td id="heading">HYD</td>
+                                <td id="heading">CJB</td>
+                                <td id="heading">CCU</td>
+                                <td id="heading">GUA</td>                            
+                            </tr>
+                            <apex:repeat value="{!B2B15By15PriceWrapperList}" var="w">
+                                <tr>
+                                    <td id="heading" class="boldFont"><apex:outputText value="{!w.source}"/></td>
+                                    <td><apex:outputText value="{!w.ncrAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.luhAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.jaiAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.jamAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.lkoAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.bomAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.amdAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.goaAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.ixrAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.idrAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.blrAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.hydAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.cjbAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.ccuAmount}" styleClass="slds-output inputTextClass"/></td>
+                                    <td><apex:outputText value="{!w.guaAmount}" styleClass="slds-output inputTextClass"/></td>
+                                </tr>                            
+                            </apex:repeat>          
+                        </table>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <!-- <b>Intra City Charges:</b> &nbsp; <apex:outputfield styleClass="slds-output" value="{!objProduct.Intra_City__c}"></apex:outputField>-->
+                        <br/>
+                        <table border="1" class="slds-table slds-table_bordered slds-table_cell-buffer minfyTable textcenter" cellspacing="10" cellpadding="6" align="center" style="width:35%;">
+                            <tr>            
+                                <th id="heading" class="centerAlign" colspan="2">Overheads</th>
+                            </tr>
+                            <tr>            
+                                <td>Min Billable Weight</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Min_Billable_Weight__c}"></apex:outputField></td>
+                            </tr>
+                            
+                            <tr>
+                                <td id="">GST</td>
+                                <td>As Applicable</td>
+                            </tr>
+                            <tr>            
+                                <td id="">Max Dead weight/package</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Max_Dead_weight_package__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>AWB Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.AWB_Charges__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td>CFT</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CFT__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Amount(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Amount_Rs__c}">  </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Minimum Chargeable Weight(Kg)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Minimum_Chargeable_Weight_Kg__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Free Storage Period (days)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Free_Storage_Period_days__c}"> </apex:outputField></td>
+                            </tr>  
+                            <tr>            
+                                <td rowspan="2">Demurrage Charges(Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_awb_Rs_per_consig__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Demurrage_Charges_Per_Kg_Per_day__c} Per MAwb"></apex:outputText></td>
+                            </tr>                                                       
+                            <tr>            
+                                <td id="">Public holiday/Sunday Pickup/Delivery (Additional)(Rs)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Public_holiday_SundayPickup_Delivery_A__c}"> </apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Fuel Surcharge</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Fuel_Surcharge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">ODA (Whichever is higher)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.ODA_Per_MAwb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>                            
+                            <tr>            
+                                <td id="">CSD(Army) Deliveries Rs. Per MAwb</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.CSD_Army_Deliveries_Rs_Per_MAwb__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Time specific deliveries </td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_KG__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Time_specific_deliveries_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Mall Deliveries(Additional)</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Kg_Rs__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Mall_Deliveries_Additional_Per_Mawb_Rs__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td rowspan="2">Delivery re-attempt charge, in case of failed delivery</td>
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_Kg__c} Per KG"></apex:outputText></td><br/>
+                            </tr>
+                            <tr>            
+                                <td><apex:outputText styleClass="slds-output" value="{!objProduct.Delivery_re_attempt_charge_Per_MAwb__c} Per MAwb"></apex:outputText></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Insurance (optional)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Insurance__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">ROV (on invoice value)</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.ROV_on_invoice_value__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Liability per consignment</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Liability_per_consignment__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Average Diesel Price</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Average_Diesel_Price__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">Diesel Tolerance Value</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.Diesel_Tolerance_Value__c}"></apex:outputField></td>
+                            </tr>
+                             <tr>            
+                                <td id="">FM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.FM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                            <tr>            
+                                <td id="">LM Charges</td>
+                                <td><apex:outputfield styleClass="slds-output" value="{!objProduct.LM_Charge__c}"></apex:outputField></td>
+                            </tr>
+                            </table>
+                        <br/>
+                    </apex:pageBlock>
+                </apex:form>
+                
+            </div>
+            <!-- / REQUIRED SLDS WRAPPER -->
+        </body>
+    </html>
+    
+</apex:page>

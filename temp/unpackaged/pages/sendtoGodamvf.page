@@ -1,0 +1,7 @@
+<apex:page StandardController="Customer_Onboarding__c" extensions="OnboardingSendToGodam_Ctl" action="{!sendToGodam}" lightningStylesheets="true">
+  <apex:slds />
+  <apex:pagemessages escape="false" ></apex:pagemessages>
+  <apex:form >
+      <apex:commandButton action="{!Cancel}" value="Back" status="status"/>
+  </apex:form>
+</apex:page>

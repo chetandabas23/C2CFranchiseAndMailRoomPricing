@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>COD_BU_Head_Approval_Required__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Regarding SF -244</description>
+    <externalId>false</externalId>
+    <label>COD BU Head Approval Required</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

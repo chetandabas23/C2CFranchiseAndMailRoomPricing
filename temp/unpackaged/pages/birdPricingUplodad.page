@@ -1,0 +1,10 @@
+<apex:page StandardController="Customer_Onboarding__c" extensions="birdPricingcheck" action="{!birdPricingUpload}" lightningStylesheets="true" >
+  <apex:slds />
+    <apex:pagemessages escape="false" ></apex:pagemessages>
+    <apex:form >
+        <apex:inputHidden value="{!Customer_Onboarding__c.Opportunity__c}"/>
+        <apex:inputHidden value="{!Customer_Onboarding__c.File_Uploaded__c}"/>    
+        <apex:commandButton styleClass="slds-button slds-button_brand slds-align_absolute-center" value="Back" action="{!backLink}"/>
+    </apex:form>
+
+</apex:page>

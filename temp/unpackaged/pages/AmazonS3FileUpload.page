@@ -1,0 +1,11 @@
+<apex:page StandardController="Customer_Onboarding__c" extensions="AmazonS3FileUpload_Cntrl" action="{!AmazonS3FileUpload}" lightningStylesheets="true" >
+  <apex:slds />
+    <apex:pagemessages escape="false" ></apex:pagemessages>
+    <apex:form >
+       <apex:commandButton action="{!Cancel}" value="Back" status="status"/>
+     
+     
+    </apex:form>
+    
+    <apex:form ></apex:form>
+</apex:page>

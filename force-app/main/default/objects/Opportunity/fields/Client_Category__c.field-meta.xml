@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Client_Category__c</fullName>
+    <externalId>false</externalId>
+    <label>Client Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>E-tail</fullName>
+                <default>false</default>
+                <label>E-tail</label>
+            </value>
+            <value>
+                <fullName>SMB</fullName>
+                <default>false</default>
+                <label>SMB</label>
+            </value>
+            <value>
+                <fullName>Brands/Enterprise</fullName>
+                <default>false</default>
+                <label>Brands/Enterprise</label>
+            </value>
+            <value>
+                <fullName>Aggregator</fullName>
+                <default>false</default>
+                <label>Aggregator</label>
+            </value>
+            <value>
+                <fullName>Long Tail Clients</fullName>
+                <default>false</default>
+                <label>Long Tail Clients</label>
+            </value>
+            <value>
+                <fullName>C2C</fullName>
+                <default>false</default>
+                <label>C2C</label>
+            </value>
+            <value>
+                <fullName>INT</fullName>
+                <default>false</default>
+                <label>International</label>
+            </value>
+            <value>
+                <fullName>Long Tail/SMB</fullName>
+                <default>false</default>
+                <label>Long Tail/SMB</label>
+            </value>
+            <value>
+                <fullName>Aggregator/Co-loader</fullName>
+                <default>false</default>
+                <label>Aggregator/Co-loader</label>
+            </value>
+            <value>
+                <fullName>FAPSSe</fullName>
+                <default>false</default>
+                <label>FAPSSe</label>
+            </value>
+            <value>
+                <fullName>BFSI</fullName>
+                <default>false</default>
+                <label>BFSI</label>
+            </value>
+            <value>
+                <fullName>Other Customers</fullName>
+                <default>false</default>
+                <label>Other Customers</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Key Accounts (Ecommerce)</fullName>
+                <default>false</default>
+                <label>Key Accounts (Ecommerce)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
